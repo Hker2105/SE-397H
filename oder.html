@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt hàng</title>
+    <link rel="stylesheet" href="asset/css/styleoder.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">G5 LAPTOP</div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Tìm Kiếm Sản Phẩm">
+            <button><i class="fa fa-search"></i></button>
+        </div>
+
+        <div class="header-icons">
+            <i class="fa fa-heart icon"></i>
+            <i class="fa fa-shopping-cart icon"></i>
+            <a href="#" style="margin-left: 15px; font-weight: bold;">Thoát</a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Danh mục sản phẩm <i class="fa fa-caret-down"></i></button>
+        </div>
+
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Sản phẩm</a></li>
+            <li><a href="#">Giỏ hàng</a></li>
+            <li><a href="#">Tài khoản <i class="fa fa-caret-down"></i></a></li>
+            <li><a href="#">Quản lý lịch sử đơn hàng</a></li>
+        </ul>
+
+        <ul class="menu-right">
+            <li><a href="#">Đăng nhập</a></li>
+            <li><a href="#">Đăng ký</a></li>
+        </ul>
+    </nav>
+
+    <section class="order-header">
+        <h1>ĐẶT HÀNG</h1>
+        <p><a href="#">Trang chủ</a> - Đặt hàng</p>
+    </section>
+
+    <section class="order-container">
+
+        <div class="order-left">
+            <h2>Thông tin người đặt hàng</h2>
+
+            <div class="order-grid">
+                <div>
+                    <label>Họ và tên</label>
+                    <input type="text" placeholder="Nhập họ và tên">
+                </div>
+
+                <div>
+                    <label>Số điện thoại</label>
+                    <input type="text" placeholder="Nhập số điện thoại">
+                </div>
+
+                <div>
+                    <label>Email</label>
+                    <input type="email" placeholder="Nhập email">
+                </div>
+
+                <div>
+                    <label>Địa chỉ</label>
+                    <input type="text" placeholder="Nhập địa chỉ">
+                </div>
+
+                <div style="grid-column: span 2;">
+                    <label>Ghi chú</label>
+                    <input type="text" placeholder="Ghi chú đơn hàng">
+                </div>
+            </div>
+        </div>
+
+        <div class="order-right">
+            <div class="invoice-box">
+                <div class="invoice-title">Tổng hóa đơn</div>
+
+                <div class="invoice-item">
+                    <strong>Sản phẩm</strong>
+                </div>
+
+                <div class="invoice-item">
+                    <strong>Thành tiền</strong>
+                </div>
+
+                <div class="invoice-item">
+                    <strong>Phí vận chuyển</strong>
+                </div>
+
+                <button class="order-btn">Đặt Hàng</button>
+            </div>
+        </div>
+
+    </section>
+    <script src="backend/order.js"></script>
+</body>
+</html>
