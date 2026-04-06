@@ -1,0 +1,175 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.header {
+    width: 100%;
+    background: #fff;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: #e60023;
+}
+
+.search-box {
+    display: flex;
+    width: 40%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.search-box button {
+    width: 50px;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.header-icons .icon {
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+}
+
+.navbar {
+    background: #e2faff;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.navbar ul li a {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.menu-right {
+    margin-left: auto;
+}
+
+.dropbtn {
+    background: #7ffbff;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.order-header {
+    background: #eef0ff;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.order-header h1 {
+    font-size: 42px;
+    font-weight: 800;
+}
+
+.order-header p {
+    margin-top: 10px;
+}
+
+.order-container {
+    display: flex;
+    width: 85%;
+    margin: 40px auto;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.order-left {
+    width: 60%;
+}
+
+.order-left h2 {
+    margin-bottom: 20px;
+}
+
+.order-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
+}
+
+.order-grid input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.order-right {
+    width: 35%;
+}
+
+.invoice-box {
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.invoice-title {
+    background: #ddd;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.invoice-item {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+}
+
+.order-btn {
+    width: 100%;
+    background: #7ffbff;
+    border: none;
+    padding: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 10px;
+}
