@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #8a4af3; /* Phủ tím toàn bộ */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: flex-end; /* Đẩy menu sang phải */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin-left: 30px;
+    transition: color 0.3s;
+}
+
+.nav-links a.active {
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.main-content {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding-bottom: 50px;
+}
+
+.login-container {
+    background-color: #ffffff;
+    width: 400px;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h2 {
+    text-align: center;
+    color: #8a4af3;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.input-group, .captcha-group { 
+    margin-bottom: 15px; 
+}
+
+.input-group input, .captcha-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #8a4af3;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-group input:focus, .captcha-group input:focus {
+    box-shadow: 0 0 5px rgba(138, 74, 243, 0.5);
+}
+
+.captcha-group { display: flex; gap: 10px; }
+.captcha-group input { flex: 2; }
+.captcha-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #8a4af3;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.remember-me input { 
+    margin-right: 8px; width: 16px; height: 16px; accent-color: #8a4af3; 
+}
+
+.remember-me label { font-size: 14px; color: #888; }
+
+.btn-login {
+    width: 100%; padding: 12px; background-color: #8a4af3; color: white;
+    border: none; border-radius: 5px; font-size: 16px; cursor: pointer;
+    transition: background-color 0.3s; margin-bottom: 20px;
+}
+
+.btn-login:hover { background-color: #7138c7; }
+
+.register-link { text-align: center; }
+.register-link a { text-decoration: none; color: #333; font-size: 15px; }
+.register-link a:hover { color: #8a4af3; text-decoration: underline; }

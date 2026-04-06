@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff; /* Nền trắng */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: flex-end; /* Đẩy chữ sang phải */
+    border-bottom: 1px solid #eeeeee;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    margin-left: 30px;
+    transition: color 0.3s;
+}
+
+.nav-links a.active {
+    font-weight: bold;
+    color: #2b78e4; /* Màu xanh khi đang ở trang đăng ký */
+}
+
+.nav-links a:hover {
+    color: #2b78e4;
+}
+
+.main-content {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.register-container {
+    width: 700px;
+    max-width: 90%;
+    background-color: #ffffff;
+    padding: 20px 40px;
+}
+
+.register-container h2 {
+    color: #2b78e4; 
+    font-size: 26px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+    display: block;
+    color: #2b78e4;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #cccccc;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    color: #333;
+}
+
+.form-group input:focus {
+    border-color: #2b78e4;
+    box-shadow: 0 0 5px rgba(43, 120, 228, 0.3);
+}
+
+.address-group input { margin-bottom: 15px; }
+.address-group input:last-child { margin-bottom: 0; }
+
+.radio-options { display: flex; align-items: center; gap: 20px; }
+.radio-options input[type="radio"] { margin-right: 5px; accent-color: #2b78e4; }
+.radio-label { color: #555; font-weight: normal; cursor: pointer; }
+
+.btn-register {
+    width: 100%;
+    padding: 15px;
+    background-color: #4caf50; 
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-register:hover {
+    background-color: #43a047;
+}
