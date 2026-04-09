@@ -4,38 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập</title>
-    <link rel="stylesheet" href="asset/css/login.css">
+    <title>G5 Laptop - Đăng Nhập</title>
+    <link rel="stylesheet" href="/Asset/Css/Style.css">
 </head>
 
 <body>
-    <div class="login-container">
-        <h1>ĐĂNG NHẬP</h1>
+    <div class="login-page">
 
-        <div class="input-group">
-            <input type="text" placeholder="Nhập tên đăng nhập" maxlength="8">
+        <div class="login-box">
+            <h1 class="login-title">ĐĂNG NHẬP</h1>
+
+            <div class="login-input-group">
+                <input type="text" placeholder="Nhập tên đăng nhập" maxlength="8">
+            </div>
+
+            <div class="login-input-group">
+                <input type="password" placeholder="Nhập mật khẩu">
+            </div>
+
+            <div class="login-captcha-group">
+                <input type="text" placeholder="Mã xác nhận">
+                <button class="login-captcha-btn">of2</button>
+            </div>
+
+            <div class="login-remember-group">
+                <input type="checkbox" id="remember">
+                <label for="remember">Nhớ đăng nhập lần sau</label>
+            </div>
+
+            <button class="login-btn">Đăng nhập</button>
+
+            <div class="login-create-account">Tạo tài khoản mới</div>
         </div>
-
-        <div class="input-group">
-            <input type="password" placeholder="Nhập mật khẩu">
-        </div>
-
-        <div class="captcha-group">
-            <input type="text" placeholder="Mã xác nhận">
-            <button class="captcha-btn">of2</button>
-        </div>
-
-        <div class="remember-group">
-            <input type="checkbox" id="remember">
-            <label for="remember">Nhớ đăng nhập lần sau</label>
-        </div>
-
-        <button class="login-btn">Đăng nhập</button>
-
-        <div class="create-account">Tạo tài khoản mới</div>
     </div>
-
-    <script src="backend/login.js"></script>
+    <script src="/Asset/BackEnd/login.js"></script>
 </body>
 
 </html>

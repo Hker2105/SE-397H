@@ -260,8 +260,13 @@ body {
 }
 
 /* LOGIN */
-.login-page {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
@@ -271,7 +276,7 @@ body {
     padding: 20px;
 }
 
-.login-box {
+.login-container {
     background: white;
     border-radius: 16px;
     padding: 40px;
@@ -280,7 +285,7 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-.login-title {
+h1 {
     text-align: center;
     color: #667eea;
     font-size: 32px;
@@ -289,13 +294,13 @@ body {
     letter-spacing: 1px;
 }
 
-.login-input-group {
+.input-group {
     margin-bottom: 24px;
     position: relative;
 }
 
-.login-input-group input {
-    width: 91%;
+.input-group input {
+    width: 100%;
     padding: 16px 20px;
     font-size: 16px;
     border: 2px solid #e0e0e0;
@@ -305,22 +310,22 @@ body {
     color: #333;
 }
 
-.login-input-group input::placeholder {
+.input-group input::placeholder {
     color: #999;
 }
 
-.login-input-group input:focus {
+.input-group input:focus {
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.login-captcha-group {
+.captcha-group {
     display: flex;
     gap: 12px;
     margin-bottom: 24px;
 }
 
-.login-captcha-group input {
+.captcha-group input {
     flex: 1;
     padding: 16px 20px;
     font-size: 16px;
@@ -330,12 +335,12 @@ body {
     transition: all 0.3s ease;
 }
 
-.login-captcha-group input:focus {
+.captcha-group input:focus {
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.login-captcha-btn {
+.captcha-btn {
     background: #ff0000;
     color: white;
     border: none;
@@ -347,26 +352,26 @@ body {
     transition: all 0.3s ease;
 }
 
-.login-captcha-btn:hover {
+.captcha-btn:hover {
     background: #cc0000;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
 }
 
-.login-remember-group {
+.remember-group {
     display: flex;
     align-items: center;
     margin-bottom: 30px;
 }
 
-.login-remember-group input[type="checkbox"] {
+.remember-group input[type="checkbox"] {
     width: 18px;
     height: 18px;
     margin-right: 10px;
     cursor: pointer;
 }
 
-.login-remember-group label {
+.remember-group label {
     color: #667eea;
     font-size: 15px;
     cursor: pointer;
@@ -393,13 +398,13 @@ body {
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-.login-create-account {
+.create-account {
     text-align: center;
     color: #333;
     font-size: 15px;
 }
 
-.login-create-account:hover {
+.create-account:hover {
     color: #667eea;
     cursor: pointer;
 }
@@ -538,6 +543,14 @@ body {
 }
 
 /* Oder */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 a {
     text-decoration: none;
     color: #000;
@@ -553,15 +566,91 @@ a {
     border-bottom: 1px solid #ddd;
 }
 
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: #e60023;
+}
+
+.search-box {
+    display: flex;
+    width: 40%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.search-box button {
+    width: 50px;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.header-icons .icon {
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+}
+
+.navbar {
+    background: #e2faff;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.navbar ul li a {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.menu-right {
+    margin-left: auto;
+}
+
+.dropbtn {
+    background: #7ffbff;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 .order-header {
     background: #eef0ff;
     text-align: center;
-    padding: 1px 0;
+    padding: 40px 0;
 }
 
 .order-header h1 {
     font-size: 42px;
-    color: #000;
+    font-weight: 800;
+}
+
+.order-header p {
+    margin-top: 10px;
 }
 
 .order-container {
@@ -598,7 +687,9 @@ a {
 }
 
 .invoice-box {
+    border: 1px solid #ccc;
     background: #fff;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -613,10 +704,7 @@ a {
     padding: 15px;
     display: flex;
     justify-content: space-between;
-}
-
-.invoice-line {
-    border-bottom: 2px solid #cfcfcf;
+    border-bottom: 1px solid #eee;
 }
 
 .order-btn {
@@ -628,4 +716,5 @@ a {
     font-weight: bold;
     cursor: pointer;
     margin-top: 20px;
+    border-radius: 10px;
 }

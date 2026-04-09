@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>Đặt hàng</title>
-    <link rel="stylesheet" href="asset/css/style.css">
+    <link rel="stylesheet" href="/Asset/Css/Style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
     <header class="header">
@@ -17,9 +19,8 @@
         </div>
 
         <div class="header-icons">
-            <i class="fa fa-heart icon"></i>
-            <i class="fa fa-shopping-cart icon"></i>
-            <a href="#" style="margin-left: 15px; font-weight: bold;">Thoát</a>
+            <div class="icon"><i class="fa fa-heart"></i> <span>0</span></div>
+            <div class="icon"><i class="fa fa-shopping-cart"></i> <span>0</span></div>
         </div>
     </header>
 
@@ -33,15 +34,16 @@
             <li><a href="#">Sản phẩm</a></li>
             <li><a href="#">Giỏ hàng</a></li>
             <li><a href="#">Tài khoản <i class="fa fa-caret-down"></i></a></li>
-            <li><a href="#">Quản lý lịch sử đơn hàng</a></li>
+            <li><a href="#">Quản lí lịch sử đơn hàng</a></li>
         </ul>
 
-        <ul class="menu-right">
-            <li><a href="#">Đăng nhập</a></li>
-            <li><a href="#">Đăng ký</a></li>
-        </ul>
+        <div class="out-right">
+            Thoát
+            <div class="icon-exit"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+        </div>
     </nav>
 
+    <!-- ORDER -->
     <section class="order-header">
         <h1>ĐẶT HÀNG</h1>
         <p><a href="#">Trang chủ</a> - Đặt hàng</p>
@@ -54,28 +56,23 @@
 
             <div class="order-grid">
                 <div>
-                    <label>Họ và tên</label>
-                    <input type="text" placeholder="Nhập họ và tên">
+                    <input type="text" placeholder="Họ và tên">
                 </div>
 
                 <div>
-                    <label>Số điện thoại</label>
-                    <input type="text" placeholder="Nhập số điện thoại">
+                    <input type="text" placeholder="Số điện thoại">
                 </div>
 
                 <div>
-                    <label>Email</label>
-                    <input type="email" placeholder="Nhập email">
+                    <input type="email" placeholder="Email">
                 </div>
 
                 <div>
-                    <label>Địa chỉ</label>
-                    <input type="text" placeholder="Nhập địa chỉ">
+                    <input type="text" placeholder="Địa chỉ">
                 </div>
 
                 <div style="grid-column: span 2;">
-                    <label>Ghi chú</label>
-                    <input type="text" placeholder="Ghi chú đơn hàng">
+                    <input type="text" placeholder="Ghi chú">
                 </div>
             </div>
         </div>
@@ -84,7 +81,7 @@
             <div class="invoice-box">
                 <div class="invoice-title">Tổng hóa đơn</div>
 
-                <div class="invoice-item">
+                <div class="invoice-item invoice-line">
                     <strong>Sản phẩm</strong>
                 </div>
 
@@ -96,11 +93,16 @@
                     <strong>Phí vận chuyển</strong>
                 </div>
 
+                <div class="invoice-item">
+                    <strong>Chọn phương thức thanh toán <i class="fa fa-caret-down"></i></strong>
+                </div>
+
                 <button class="order-btn">Đặt Hàng</button>
             </div>
         </div>
 
     </section>
-    <script src="backend/order.js"></script>
+    <script src="/Asset/BackEnd/oder.js"></script>
 </body>
+
 </html>
