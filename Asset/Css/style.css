@@ -62,11 +62,8 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    background: #fff;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
+    background: #fff;
     padding: 10px 20px;
 }
 
@@ -188,6 +185,7 @@ body {
     background: #fff;
 }
 
+/* Gender */
 .gender {
     margin: 10px 0;
 }
@@ -241,22 +239,46 @@ body {
     transform: translateY(2px);
 }
 
-.btn-submit {
-    width: 102%;
-    background: #4caf50;
-    color: #fff;
-    padding: 14px 0;
-    border: none;
-    border-radius: 18px;
-    font-size: 17px;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: center;
-    transition: 0.25s;
-}
-
 .btn-submit:hover {
     background: #57a75c;
+}
+
+.navbar ul li {
+    position: relative;
+}
+
+.dropdown-account {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    width: max-content;   
+    padding: 0;
+}
+
+.dropdown-menu {
+    display: none !important;
+    flex-direction: column;
+}
+
+.dropdown-account:hover .dropdown-menu {
+    display: block !important;
+}
+
+.dropdown-menu li {
+    display: block;
+}
+
+.dropdown-menu li a {
+    padding: 8px 12px;
+    white-space: nowrap;  
 }
 
 /* LOGIN */
@@ -542,16 +564,6 @@ a {
     color: #000;
 }
 
-.header {
-    width: 100%;
-    background: #fff;
-    padding: 15px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-}
-
 .order-header {
     background: #eef0ff;
     text-align: center;
@@ -626,135 +638,206 @@ a {
 }
 
 /* Pay */
-.pay-header h1{
-    width:100%;
-    background:#e6e7f2;
+.pay-header h1 {
+    width: 100%;
+    background: #e6e7f2;
     margin-top: 0px;
-    text-align:center;
-    font-size:26px;
+    text-align: center;
+    font-size: 26px;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-bottom: 50px;
 }
 
-.pay-wrapper{
-    width:90%;
-    margin:auto;
+.pay-wrapper {
+    width: 90%;
+    margin: auto;
 }
 
-.pay-container{
-    display:flex;
-    gap:40px;
+.pay-container {
+    display: flex;
+    gap: 40px;
 }
 
-.pay-left{
-    width:60%;
+.pay-left {
+    width: 60%;
 }
 
-.pay-right{
-    width:30%;
+.pay-right {
+    width: 30%;
 }
 
 /* Box */
 
-.pay-box{
-    border:1px solid #ccc;
-    background:#fff;
+.pay-box {
+    border: 1px solid #ccc;
+    background: #fff;
 }
 
-.pay-item{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    padding:15px;
-    border-bottom:1px solid #ccc;
+.pay-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
 }
 
-.pay-item:last-child{
-    border-bottom:none;
+.pay-item:last-child {
+    border-bottom: none;
 }
 
-.pay-item p{
-    margin-top:5px;
-    color:#555;
+.pay-item p {
+    margin-top: 5px;
+    color: #555;
 }
 
-.pay-item input{
-    margin-top:4px;
+.pay-item input {
+    margin-top: 4px;
 }
 
 /* Bank */
 
-.pay-bank{
-    display:flex;
-    gap:15px;
-    margin-top:10px;
+.pay-bank {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
 }
 
-.pay-bank img{
-    width:140px;
+.pay-bank img {
+    width: 140px;
 }
 
 /* Wallet */
-.pay-content{
-    flex:1;
+.pay-content {
+    flex: 1;
 }
 
-.pay-wallet{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    width:100%;
+.pay-wallet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
-.pay-icons{
-    display:flex;
-    gap:6px;
+.pay-icons {
+    display: flex;
+    gap: 6px;
 }
 
-.pay-icons img{
-    max-height:25px;
-    max-width:60px;
-    object-fit:contain;
+.pay-icons img {
+    max-height: 25px;
+    max-width: 60px;
+    object-fit: contain;
 }
 
 /* Invoice */
 
-.pay-invoice{
-    border:1px solid #ccc;
+.pay-invoice {
+    border: 1px solid #ccc;
 }
 
-.pay-invoice-title{
-    background:#ddd;
-    padding:15px;
-    text-align:center;
-    font-weight:bold;
+.pay-invoice-title {
+    background: #ddd;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
     font-size: 20px;
 }
 
-.pay-invoice-item{
-    padding:15px;
+.pay-invoice-item {
+    padding: 15px;
     font-weight: bold;
 }
 
-.pay-invoice-item.line{
-    border-bottom:1px solid #ccc;
+.pay-invoice-item.line {
+    border-bottom: 1px solid #ccc;
 }
 
-.pay-item:has(input:checked){
-    background:#f0f0f0;
+.pay-item:has(input:checked) {
+    background: #f0f0f0;
 }
 
-/* Button */
+/* Button pay */
 
-.pay-btn{
-    width:70%;
-    background:#7ffbff;
-    padding:15px;
-    border:none;
-    margin:20px auto;
-    display:block;
-    font-weight:bold;
-    font-size:20px;
-    cursor:pointer;
+.pay-btn {
+    width: 70%;
+    background: #7ffbff;
+    padding: 15px;
+    border: none;
+    margin: 20px auto;
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Update Info */
+
+.account-wrapper {
+    display: flex;
+    justify-content: center;    
+}
+
+.account-box {
+    width: 450px;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.account-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-group {
+    margin-bottom: 15px;
+}
+
+.info-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.info-group input {
+    width: 95%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.gender {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.gender label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+}
+
+.btn-update {
+    width: 100%;
+    padding: 10px;
+    background: #8f8f8f;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-update:hover {
+    background: #6f6f6f;
+}
+
+.account-box input {
+    width: 100%;
+    box-sizing: border-box;
 }
