@@ -13,6 +13,7 @@ Từ bản cập nhật mới, backend đã serve luôn frontend nên bạn có 
 - MySQL >= 8.0
 
 ---
+codex/fix-bugs-in-repository-d2y4lo
 
 ## 2) Cài đặt nhanh
 
@@ -76,7 +77,7 @@ Trong `backend/package.json`:
 - `npm start`: chạy production mode (`node server.js`)
 - `npm run dev`: chạy với nodemon
 
----
+Cách import:
 
 ## 6) Ghi chú
 - File `.env` và `node_modules` đã được ignore bằng `.gitignore`.
@@ -109,7 +110,7 @@ npm start
 ```
 
 
----
+Cách xử lý:
 
 ## 8) Lưu ý cho Windows PowerShell
 - Không chạy lệnh `bash` nếu máy bạn không cài Git Bash/WSL.
