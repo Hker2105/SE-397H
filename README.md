@@ -13,6 +13,7 @@ Từ bản cập nhật mới, backend đã serve luôn frontend nên bạn có 
 - MySQL >= 8.0
 
 ---
+codex/fix-bugs-in-repository-d2y4lo
 
 ## 2) Cài đặt nhanh
 
@@ -68,7 +69,10 @@ API vẫn ở namespace `/api/*`, ví dụ:
 - `POST /api/auth/login`
 - `GET /api/san-pham`
 
----
+```bash
+cd backend
+npm start
+```
 
 ## 5) Scripts
 
@@ -83,7 +87,7 @@ Trong `backend/package.json`:
 - Upload ảnh sản phẩm sẽ nằm trong thư mục `uploads/`.
 
 
----
+Cách import:
 
 ## 7) Troubleshooting nhanh
 
@@ -109,7 +113,6 @@ npm start
 ```
 
 
----
 
 ## 8) Lưu ý cho Windows PowerShell
 - Không chạy lệnh `bash` nếu máy bạn không cài Git Bash/WSL.
