@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Runtime artifacts
+uploads/
+backend/uploads/
+*.log
+npm-debug.log*
+
+# Env files
+.env
+backend/.env
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
