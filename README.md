@@ -1,134 +1,131 @@
-# 🖥️ Website Bán Laptop – G5 LAPTOP
+# G5 LAPTOP - Website bán laptop (Frontend + Backend)
+
+Repo này gồm:
+- **Frontend tĩnh**: HTML/CSS/JS ở root (`index.html`, `Owner/`, `Admin/`, `Asset/`, ...).
+- **Backend API**: Node.js/Express ở `backend/`.
+
+Từ bản cập nhật mới, backend đã serve luôn frontend nên bạn có thể mở toàn bộ web tại **http://localhost:5000**.
 
 ---
 
-## 1. Giới thiệu
-
-Dự án **Website bán laptop G5 LAPTOP** là một website bán hàng cơ bản bao gồm các chức năng:
-
-- Giao diện trang chủ  
-- Đăng nhập / Đăng ký tài khoản  
-- Trang giỏ hàng  
-- Trang đặt hàng  
-- Xử lý logic front-end bằng JavaScript  
-- Giao diện thiết kế bằng HTML/CSS hiện đại  
-
-Website sử dụng:
-
-- **HTML5**  
-- **CSS3** (style.css, login.css, styleoder.css)  
-- **JavaScript thuần**  
-- **Font Awesome 6.5**
+## 1) Yêu cầu môi trường
+- Node.js >= 18
+- MySQL >= 8.0
 
 ---
 
-## 2. Cấu trúc project
+## 2) Cài đặt nhanh
 
+```bash
+# tại thư mục repo
+cd backend
+npm install
 ```
 
-project/
-│── index.html
-│── login.html
-│── register.html
-│── cart.html
-│── oder.html
-│
-├── asset/
-│ └── css/
-│ ├── style.css
-│ ├── login.css
-│ └── styleoder.css
-│
-└── backend/
-├── login.js
-├── register.js
-├── cart.js
-└── order.js
+Tạo file env:
 
+```bash
+cp .env.example .env
 ```
 
----
-
-## 3. Hướng dẫn cài đặt
-
-### 🔹 **Bước 1: Clone hoặc tải project**
-
-Clone bằng Git: 
-git clone https://github.com/Hker2105/CS434AK-Nhom5.git
-
-Hoặc tải file `.zip` → giải nén.
+Chỉnh lại thông tin DB/JWT trong `backend/.env`.
 
 ---
 
-### 🔹 **Bước 2: Mở dự án**
+## 3) Tạo database schema
 
-Bạn có thể mở bằng:
+Schema đầy đủ nằm tại `backend/database/schema.sql`.
 
-- Visual Studio Code (khuyến nghị)  
-- Hoặc mở trực tiếp bằng trình duyệt
+Cách import:
 
----
+**macOS/Linux (bash):**
+```bash
+mysql -u root -p < backend/database/schema.sql
+```
 
-### 🔹 **Bước 3: Chạy website**
+**Windows PowerShell:**
+```powershell
+Get-Content backend/database/schema.sql | mysql -u root -p g5_laptop
+```
 
-Không cần backend.
-
-Chỉ cần mở:
-index.html
-
----
-
-## 4. Chức năng các trang
+> PowerShell không hỗ trợ toán tử `<` như bash nên phải dùng `Get-Content ... | mysql ...`.
 
 ---
 
-### 🔵 Trang đăng nhập (login.html)
+## 4) Chạy backend + frontend cùng lúc
 
-- Nhập username, password  
-- Nhớ đăng nhập  
-- Captcha đơn giản  
+```bash
+cd backend
+npm start
+```
 
----
+Mở trình duyệt:
+- Home: `http://localhost:5000/`
+- Login owner: `http://localhost:5000/Owner/login.html`
+- Admin products: `http://localhost:5000/Admin/product_management.html`
 
-### 🔵 Trang đăng ký (register.html)
-
-- Nhập đầy đủ thông tin cá nhân  
-- Validate dữ liệu  
-- Chia nhóm input rõ ràng  
-
----
-
-### 🔵 Trang giỏ hàng (cart.html)
-
-- Hiển thị sản phẩm  
-- Đơn giá / số lượng / thành tiền  
-- Tính tổng đơn hàng  
-- Áp dụng mã giảm giá  
+API vẫn ở namespace `/api/*`, ví dụ:
+- `POST /api/auth/login`
+- `GET /api/san-pham`
 
 ---
 
-### 🔵 Trang đặt hàng (oder.html)
+## 5) Scripts
 
-- Nhập thông tin người mua  
-- Xem tổng hóa đơn  
-- Ghi chú đơn hàng  
-- Nút đặt hàng  
-
----
-
-## 5. Công nghệ sử dụng
-
-- **HTML5**  
-- **CSS3**  
-- **JavaScript thuần**  
-- **Font Awesome 6.5**
+Trong `backend/package.json`:
+- `npm start`: chạy production mode (`node server.js`)
+- `npm run dev`: chạy với nodemon
 
 ---
 
-## 6. Ghi chú
+## 6) Ghi chú
+- File `.env` và `node_modules` đã được ignore bằng `.gitignore`.
+- Upload ảnh sản phẩm sẽ nằm trong thư mục `uploads/`.
 
-Website hiện tại chỉ mới là **Front-end tĩnh**, chưa có cơ sở dữ liệu.  
 
 ---
 
+## 7) Troubleshooting nhanh
 
+### Lỗi `SyntaxError: Unexpected token 'in'` trong `backend/server.js`
+Nếu bạn thấy lỗi kiểu này và dòng lỗi chứa chữ lạ như tên branch (ví dụ `codex/fix-bugs-...`), file `backend/server.js` ở máy bạn đã bị chèn nhầm text.
+
+Cách xử lý:
+
+```bash
+git checkout -- backend/server.js   # nếu đang ở thư mục repo
+# HOẶC: git checkout -- server.js  # nếu bạn đang đứng trong thư mục backend
+cd backend
+npm start
+```
+
+Nếu vẫn lỗi, đồng bộ lại branch mới nhất rồi chạy lại:
+
+```bash
+git pull
+cd backend
+npm install
+npm start
+```
+
+
+---
+
+## 8) Lưu ý cho Windows PowerShell
+- Không chạy lệnh `bash` nếu máy bạn không cài Git Bash/WSL.
+- Dùng `Copy-Item .env.example .env` thay cho một số hướng dẫn shell khác nếu cần.
+- Nếu chạy `npm start` báo lỗi syntax ở `backend/server.js`, chạy:
+
+```powershell
+git checkout -- backend/server.js   # nếu đang ở thư mục repo
+# HOẶC: git checkout -- server.js  # nếu bạn đang đứng trong thư mục backend
+cd backend
+npm start
+```
+
+- Có thể tự kiểm tra nhanh file trước khi chạy bằng:
+
+```powershell
+cd backend
+npm run doctor
+```
