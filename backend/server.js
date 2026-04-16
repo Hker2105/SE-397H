@@ -40,7 +40,6 @@ app.use('/api/khuyen-mai', khuyenMaiRoutes);
 app.get('/', (req, res) => {
   res.sendFile(path.join(projectRoot, 'index.html'));
 codex/fix-bugs-in-repository-d2y4lo
-=======
 codex/fix-bugs-in-repository-b4ksor
 main
 });
@@ -48,8 +47,6 @@ main
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'API OK' });
 codex/fix-bugs-in-repository-d2y4lo
-=======
-=======
  main
 main
 });

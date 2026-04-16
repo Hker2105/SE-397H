@@ -31,6 +31,12 @@ cp .env.example .env
 Chỉnh lại thông tin DB/JWT trong `backend/.env`.
 
 ---
+
+## 3) Tạo database schema
+
+Schema đầy đủ nằm tại `backend/database/schema.sql`.
+
+---
 codex/fix-bugs-in-repository-d2y4lo
 
 ## 3) Tạo database schema
@@ -45,8 +51,19 @@ mysql -u root -p < backend/database/schema.sql
 
 > Nếu MySQL không ở mặc định, thêm `-h` và `-P` tương ứng.
 
----
+Cách import:
 
+**macOS/Linux (bash):**
+```bash
+mysql -u root -p < backend/database/schema.sql
+```
+
+**Windows PowerShell:**
+```powershell
+Get-Content backend/database/schema.sql | mysql -u root -p g5_laptop
+```
+
+> PowerShell không hỗ trợ toán tử `<` như bash nên phải dùng `Get-Content ... | mysql ...`.
 ## 4) Chạy backend + frontend cùng lúc
 
 ```bash
@@ -64,6 +81,40 @@ API vẫn ở namespace `/api/*`, ví dụ:
 - `GET /api/san-pham`
 =======
 
+## 4) Chạy backend + frontend cùng lúc
+
+```bash
+cd backend
+npm start
+```
+
+Mở trình duyệt:
+- Home: `http://localhost:5000/`
+- Login owner: `http://localhost:5000/Owner/login.html`
+- Admin products: `http://localhost:5000/Admin/product_management.html`
+
+API vẫn ở namespace `/api/*`, ví dụ:
+- `POST /api/auth/login`
+- `GET /api/san-pham`
+
+---
+
+## 5) Scripts
+
+Trong `backend/package.json`:
+- `npm start`: chạy production mode (`node server.js`)
+- `npm run dev`: chạy với nodemon
+
+---
+
+## 6) Ghi chú
+- File `.env` và `node_modules` đã được ignore bằng `.gitignore`.
+- Upload ảnh sản phẩm sẽ nằm trong thư mục `uploads/`.
+
+
+---
+
+## 7) Troubleshooting nhanh
 ## 3) Tạo database schema
 
 Schema đầy đủ nằm tại `backend/database/schema.sql`.
@@ -93,15 +144,41 @@ Trong `backend/package.json`:
 Nếu bạn thấy lỗi kiểu này và dòng lỗi chứa chữ lạ như tên branch (ví dụ `codex/fix-bugs-...`), file `backend/server.js` ở máy bạn đã bị chèn nhầm text.
 
 Cách xử lý:
-=======
 ```bash
 mysql -u root -p < backend/database/schema.sql
 ```
 
 > Nếu MySQL không ở mặc định, thêm `-h` và `-P` tương ứng.
 
+### Lỗi `SyntaxError: Unexpected token 'in'` trong `backend/server.js`
+Nếu bạn thấy lỗi kiểu này và dòng lỗi chứa chữ lạ như tên branch (ví dụ `codex/fix-bugs-...`), file `backend/server.js` ở máy bạn đã bị chèn nhầm text.
+
+Cách xử lý:
+
+```bash
+git checkout -- backend/server.js
+cd backend
+npm start
+```
+
+Nếu vẫn lỗi, đồng bộ lại branch mới nhất rồi chạy lại:
+
+```bash
+git pull
+cd backend
+npm install
+npm start
+```
+
+
 ---
 
+## 8) Lưu ý cho Windows PowerShell
+- Không chạy lệnh `bash` nếu máy bạn không cài Git Bash/WSL.
+- Dùng `Copy-Item .env.example .env` thay cho một số hướng dẫn shell khác nếu cần.
+- Nếu chạy `npm start` báo lỗi syntax ở `backend/server.js`, chạy:
+
+```powershell
 ## 4) Chạy backend + frontend cùng lúc
 
 ```bash
@@ -133,6 +210,12 @@ cd backend
 npm start
 ```
 
+- Có thể tự kiểm tra nhanh file trước khi chạy bằng:
+
+```powershell
+cd backend
+npm run doctor
+```
 codex/fix-bugs-in-repository-d2y4lo
 Nếu vẫn lỗi, đồng bộ lại branch mới nhất rồi chạy lại:
 
@@ -142,7 +225,6 @@ cd backend
 npm install
 npm start
 ```
-=======
 ## 6) Ghi chú
 - File `.env` và `node_modules` đã được ignore bằng `.gitignore`.
 - Upload ảnh sản phẩm sẽ nằm trong thư mục `uploads/`.
