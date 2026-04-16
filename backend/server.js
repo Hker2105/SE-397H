@@ -39,10 +39,19 @@ app.use('/api/khuyen-mai', khuyenMaiRoutes);
 // Root route now renders homepage instead of JSON
 app.get('/', (req, res) => {
   res.sendFile(path.join(projectRoot, 'index.html'));
+codex/fix-bugs-in-repository-d2y4lo
+=======
+codex/fix-bugs-in-repository-b4ksor
+main
 });
 
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'API OK' });
+codex/fix-bugs-in-repository-d2y4lo
+=======
+=======
+ main
+main
 });
 
 // 404 Handler
