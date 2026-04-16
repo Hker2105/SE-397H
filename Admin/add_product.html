@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Asset/Css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Admin - Thêm mới sản phẩm</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header_left">
+            <div class="header-logo">
+                <img src="/Asset/img/logo_admin.jpg" alt="">
+            </div>
+            <div class="header-text">
+                <h1>Welcome Admin</h1>
+                <span>SHOP LAPTOP</span>
+            </div>
+        </div>
+        <div class="header_right">
+            <div class="avatar">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <span>Hello Admin</span>
+            <span class="divider">|</span>
+            <div class="header_right-logout">
+                <a href="#">
+                    Logout
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </header>  
+
+<nav class="navbar">
+    <ul>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-chart-area"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-circle-user"></i>
+                User Profile
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-lock"></i>
+                Change Password
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-inbox"></i>
+                Inbox
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/index.html">
+                <i class="fa-brands fa-elementor"></i>
+                Visit Website
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- MAIN -->
+<div class="main">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+    <ul>
+        <li class="menu-item"><a href="#">Quản lý danh mục</a></li>
+        <li class="menu-item" id="btn-product">
+            <a href="#">Quản lý sản phẩm</a>
+            <ul class="submenu" id="submenu-product">
+                <li class="submenu-item"><a href="/Admin/product_management.html">Xem sản phẩm</a></li>
+                <li class="submenu-item"><a href="#">Thêm mới sản phẩm</a></li>
+            </ul>
+        </li>
+        <li class="menu-item"><a href="#">Quản lý đánh giá</a></li>
+        <li class="menu-item"><a href="#">Quản lý đơn hàng</a></li>
+        <li class="menu-item"><a href="#">Thống kê</a></li>
+        <li class="menu-item"><a href="/Admin/customer_management.html">Quản lý tài khoản</a></li>
+        <li class="menu-item"><a href="#">Quản lý voucher</a></li>
+    </ul>
+</div>
+
+    <!-- CONTENT -->
+    <div class="content">
+        <div class="content-header">Add New Product</div>
+
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <label>Tên sản phẩm</label>
+                    <input type="text" placeholder="Tên Sản Phẩm...">
+                </div>
+
+                <div class="form-group">
+                    <label>Đơn giá</label>
+                    <input type="text" placeholder="Đơn Giá...">
+                </div>
+
+                <div class="form-group">
+                    <label>Hình ảnh</label>
+                    <input type="file">
+                </div>
+
+                <div class="form-group">
+                    <label>Danh mục</label>
+                    <select>
+                        <option>Chọn Danh Mục</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="status" checked> Mở</label>
+                        <label><input type="radio" name="status"> Khóa</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Mô tả</label>
+                    <textarea id="editor"></textarea>
+                </div>
+
+                <button class="btn-save">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor', {
+        height: 300
+    });
+</script>
+</body>
+<script src="/Asset/Js/admin.js"></script>
+</html>
