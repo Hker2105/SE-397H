@@ -79,7 +79,6 @@ Mở trình duyệt:
 API vẫn ở namespace `/api/*`, ví dụ:
 - `POST /api/auth/login`
 - `GET /api/san-pham`
-=======
 
 ## 4) Chạy backend + frontend cùng lúc
 
@@ -105,7 +104,10 @@ Trong `backend/package.json`:
 - `npm start`: chạy production mode (`node server.js`)
 - `npm run dev`: chạy với nodemon
 
----
+Mở trình duyệt:
+- Home: `http://localhost:5000/`
+- Login owner: `http://localhost:5000/Owner/login.html`
+- Admin products: `http://localhost:5000/Admin/product_management.html`
 
 ## 6) Ghi chú
 - File `.env` và `node_modules` đã được ignore bằng `.gitignore`.
@@ -136,7 +138,8 @@ Trong `backend/package.json`:
 - Upload ảnh sản phẩm sẽ nằm trong thư mục `uploads/`.
 
 
----
+### Lỗi `SyntaxError: Unexpected token 'in'` trong `backend/server.js`
+Nếu bạn thấy lỗi kiểu này và dòng lỗi chứa chữ lạ như tên branch (ví dụ `codex/fix-bugs-...`), file `backend/server.js` ở máy bạn đã bị chèn nhầm text.
 
 ## 7) Troubleshooting nhanh
 
@@ -195,7 +198,12 @@ API vẫn ở namespace `/api/*`, ví dụ:
 - `POST /api/auth/login`
 - `GET /api/san-pham`
 
----
+```powershell
+git checkout -- backend/server.js   # nếu đang ở thư mục repo
+# HOẶC: git checkout -- server.js  # nếu bạn đang đứng trong thư mục backend
+cd backend
+npm start
+```
 
 ## 5) Scripts
 
