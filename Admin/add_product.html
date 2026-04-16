@@ -73,17 +73,37 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
     <ul>
-        <li class="menu-item"><a href="#">Quản lý danh mục</a></li>
-        <li class="menu-item" id="btn-product">
+        <li class="menu-item has-submenu">
+            <a href="#">Quản lý danh mục</a>
+            <ul class="submenu">
+                <li class="submenu-item"><a href="">Xem danh mục</a></li>
+                <li class="submenu-item"><a href="">Thêm mới danh mục</a></li>
+            </ul>
+        </li>
+        <li class="menu-item has-submenu">
             <a href="#">Quản lý sản phẩm</a>
-            <ul class="submenu" id="submenu-product">
+            <ul class="submenu">
                 <li class="submenu-item"><a href="/Admin/product_management.html">Xem sản phẩm</a></li>
-                <li class="submenu-item"><a href="#">Thêm mới sản phẩm</a></li>
+                <li class="submenu-item"><a href="/Admin/add_product.html">Thêm mới sản phẩm</a></li>
             </ul>
         </li>
         <li class="menu-item"><a href="#">Quản lý đánh giá</a></li>
-        <li class="menu-item"><a href="#">Quản lý đơn hàng</a></li>
-        <li class="menu-item"><a href="#">Thống kê</a></li>
+        <li class="menu-item has-submenu">
+            <a href="#">Quản lý đơn hàng</a>
+            <ul class="submenu">
+                <li class="submenu-item"><a href="">Đơn chờ xét duyệt</a></li>
+                <li class="submenu-item"><a href="">Đơn đang giao</a></li>
+                <li class="submenu-item"><a href="">Đơn đã thanh toán</a></li>
+                <li class="submenu-item"><a href="">Đơn đã huỷ</a></li>
+            </ul>
+        </li>
+        <li class="menu-item" id="btn-product">
+            <a href="#">Thống kê</a>
+            <ul class="submenu has-submenu">
+                <li class="submenu-item"><a href="">Thống kê doanh thu</a></li>
+                <li class="submenu-item"><a href="">Khách hàng thân thiết</a></li>
+            </ul>
+        </li>
         <li class="menu-item"><a href="/Admin/customer_management.html">Quản lý tài khoản</a></li>
         <li class="menu-item"><a href="#">Quản lý voucher</a></li>
     </ul>
