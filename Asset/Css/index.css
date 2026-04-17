@@ -64,6 +64,14 @@ a {
     z-index: 100;
 }
 
+.home-page .navbar .dropdown {
+    display: none;
+}
+
+.home-page .navbar > ul:first-of-type {
+    margin-left: 0;
+}
+
 .nav-inner {
     display: flex;
     align-items: center;
@@ -193,6 +201,10 @@ a {
 .section-title {
     text-align: center;
     margin-bottom: 30px;
+}
+
+.new-products {
+    grid-column: 1 / -1;
 }
 
 .section-title h2 {
