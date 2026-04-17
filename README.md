@@ -13,6 +13,7 @@ Từ bản cập nhật mới, backend đã serve luôn frontend nên bạn có 
 - MySQL >= 8.0
 
 ---
+codex/fix-bugs-in-repository-d2y4lo
 
 ## 2) Cài đặt nhanh
 
@@ -50,7 +51,7 @@ Get-Content backend/database/schema.sql | mysql -u root -p g5_laptop
 
 > PowerShell không hỗ trợ toán tử `<` như bash nên phải dùng `Get-Content ... | mysql ...`.
 
----
+Cách import:
 
 ## 4) Chạy backend + frontend cùng lúc
 
@@ -68,7 +69,10 @@ API vẫn ở namespace `/api/*`, ví dụ:
 - `POST /api/auth/login`
 - `GET /api/san-pham`
 
----
+```bash
+cd backend
+npm start
+```
 
 ## 5) Scripts
 
@@ -76,14 +80,20 @@ Trong `backend/package.json`:
 - `npm start`: chạy production mode (`node server.js`)
 - `npm run dev`: chạy với nodemon
 
----
+```bash
+cd backend
+npm start
+```
 
 ## 6) Ghi chú
 - File `.env` và `node_modules` đã được ignore bằng `.gitignore`.
 - Upload ảnh sản phẩm sẽ nằm trong thư mục `uploads/`.
 
 
----
+```bash
+cd backend
+npm start
+```
 
 ## 7) Troubleshooting nhanh
 
@@ -109,7 +119,6 @@ npm start
 ```
 
 
----
 
 ## 8) Lưu ý cho Windows PowerShell
 - Không chạy lệnh `bash` nếu máy bạn không cài Git Bash/WSL.
