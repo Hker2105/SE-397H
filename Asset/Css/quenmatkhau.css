@@ -1,0 +1,92 @@
+/* Reset CSS cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Đặt background màu xám nhạt cho body để làm nổi bật form màu trắng */
+body {
+    background-color: #f5f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container chính (Cái thẻ form trắng) */
+.password-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ nhàng */
+}
+
+/* Tiêu đề */
+.card-title {
+    text-align: center;
+    color: #222;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+/* Nhóm các ô nhập liệu */
+.input-group {
+    margin-bottom: 20px;
+}
+
+/* Nhãn (Label) */
+.input-group label {
+    display: block;
+    color: #616e79; /* Màu xám đậm */
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Ô nhập liệu (Input) */
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #dcdfe3;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Chữ gợi ý mờ (Placeholder) */
+.input-group input::placeholder {
+    color: #9ba4ae;
+}
+
+/* Khi click vào ô nhập liệu */
+.input-group input:focus {
+    outline: none;
+    border-color: #4caf50; /* Viền xanh lá */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+}
+
+/* Nút Submit */
+.btn-submit {
+    width: 100%;
+    background-color: #52a955; /* Màu xanh lá như trong hình */
+    color: #ffffff;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Khi di chuột vào nút */
+.btn-submit:hover {
+    background-color: #428e45;
+}
