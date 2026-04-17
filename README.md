@@ -51,7 +51,7 @@ Get-Content backend/database/schema.sql | mysql -u root -p g5_laptop
 
 > PowerShell không hỗ trợ toán tử `<` như bash nên phải dùng `Get-Content ... | mysql ...`.
 
-Cách import:
+---
 
 ## 4) Chạy backend + frontend cùng lúc
 
@@ -69,10 +69,7 @@ API vẫn ở namespace `/api/*`, ví dụ:
 - `POST /api/auth/login`
 - `GET /api/san-pham`
 
-```bash
-cd backend
-npm start
-```
+---
 
 ## 5) Scripts
 
@@ -80,20 +77,14 @@ Trong `backend/package.json`:
 - `npm start`: chạy production mode (`node server.js`)
 - `npm run dev`: chạy với nodemon
 
-```bash
-cd backend
-npm start
-```
+Cách import:
 
 ## 6) Ghi chú
 - File `.env` và `node_modules` đã được ignore bằng `.gitignore`.
 - Upload ảnh sản phẩm sẽ nằm trong thư mục `uploads/`.
 
 
-```bash
-cd backend
-npm start
-```
+---
 
 ## 7) Troubleshooting nhanh
 
@@ -119,6 +110,7 @@ npm start
 ```
 
 
+Cách xử lý:
 
 ## 8) Lưu ý cho Windows PowerShell
 - Không chạy lệnh `bash` nếu máy bạn không cài Git Bash/WSL.

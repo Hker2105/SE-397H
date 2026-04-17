@@ -3,38 +3,49 @@
     <a href="/index.html" class="logo">G5 LAPTOP</a>
 
     <div class="search-box">
-        <input type="text" placeholder="Tìm kiếm laptop theo tên, hãng...">
+        <input type="text" placeholder="Tìm Kiếm Sản Phẩm">
         <button><i class="fa fa-search"></i></button>
     </div>
 
     <div class="header-icons">
-        <div class="icon icon-heart"><i class="fa fa-heart"></i> <span>0</span></div>
-        <div class="icon icon-cart"><a href="/Owner/cart.html"><i class="fa fa-shopping-cart"></i></a> <span>0</span></div>
+        <div class="icon"><i class="fa fa-heart"></i> <span>0</span></div>
+        <div class="icon"><a href="../Owner/cart.html"><i class="fa fa-shopping-cart"></i></a></i> <span>0</span></div>
     </div>
 </header>
 
 <!-- NAV BAR -->
 <nav class="navbar">
-    <div class="dropdown product-dropdown">
+    <div class="dropdown">
         <button class="dropbtn">
             Danh mục sản phẩm
             <i class="fa fa-caret-down"></i>
         </button>
-        <ul class="dropdown-menu category-menu" id="categoryMenu">
-            <li><a href="#" data-category="Tất cả">Tất cả</a></li>
-            <li><a href="#" data-category="Gaming">Gaming</a></li>
-            <li><a href="#" data-category="Macbook">Macbook</a></li>
-            <li><a href="#" data-category="Văn phòng">Văn phòng</a></li>
-            <li><a href="#" data-category="Đồ họa">Đồ họa</a></li>
-            <li><a href="#" data-category="Cao cấp">Cao cấp</a></li>
-        </ul>
     </div>
 
-    <ul class="menu-center">
+    <ul>
         <li><a href="/index.html">Trang chủ</a></li>
-        <li><a href="/index.html#products">Sản phẩm</a></li>
-        <li><a href="/Owner/cart.html">Giỏ hàng</a></li>
-        <li><a href="#">Lịch sử đơn hàng</a></li>
+        <li><a href="#">Sản phẩm</a></li>
+        <li><a href="../Owner/cart.html">Giỏ hàng</a></li>
+
+        <li class="dropdown-account">
+            <a href="#">
+                Tài khoản
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="/Owner/update_info.html">
+                        Thông tin tài khoản
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#">
+                Quản lí lịch sử đơn hàng
+            </a>
+        </li>
     </ul>
 
     <ul class="menu-right">
