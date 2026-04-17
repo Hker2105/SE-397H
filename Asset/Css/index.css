@@ -64,6 +64,14 @@ a {
     z-index: 100;
 }
 
+.home-page .navbar .dropdown {
+    display: none;
+}
+
+.home-page .navbar > ul:first-of-type {
+    margin-left: 0;
+}
+
 .nav-inner {
     display: flex;
     align-items: center;
@@ -75,6 +83,10 @@ a {
 .category-wrapper {
     position: static;
     width: 100%;
+}
+
+.category-title i {
+    font-size: 14px;
 }
 
 .category-list {
