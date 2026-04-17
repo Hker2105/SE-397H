@@ -1032,3 +1032,146 @@ a {
     width: 100%;
     box-sizing: border-box;
 }
+/* ===== Header/Nav polished overrides ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+}
+
+.logo {
+  text-decoration: none;
+  letter-spacing: .4px;
+}
+
+.header-icons .icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f5f8ff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #1d2b4f;
+}
+
+.header-icons .icon span {
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 16px;
+  text-align: center;
+}
+
+.navbar {
+  border-top: 1px solid #eef2ff;
+  border-bottom: 1px solid #eef2ff;
+  gap: 16px;
+}
+
+.menu-center {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.menu-center a,
+.menu-right a {
+  position: relative;
+}
+
+.menu-center a:hover,
+.menu-right a:hover,
+.active-link {
+  color: #0db9c8 !important;
+}
+
+.active-link::after,
+.menu-center a:hover::after,
+.menu-right a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #0db9c8;
+}
+
+.product-dropdown {
+  position: relative;
+}
+
+.product-dropdown .dropbtn {
+  border-radius: 10px;
+}
+
+.dropdown-menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  position: absolute;
+  top: 52px;
+  left: 0;
+  min-width: 220px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e2e8ff;
+  box-shadow: 0 12px 24px rgba(23, 40, 85, 0.14);
+  z-index: 60;
+}
+
+.product-dropdown:hover .dropdown-menu,
+.product-dropdown:focus-within .dropdown-menu,
+.account-panel:hover .dropdown-menu,
+.account-panel:focus-within .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  display: block;
+  text-decoration: none;
+  color: #1d2b4f;
+  padding: 9px 10px;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.dropdown-menu li a:hover {
+  background: #eef6ff;
+  color: #0db9c8;
+}
+
+.account-panel {
+  position: relative;
+}
+
+.account-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f8ff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #1d2b4f;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.account-trigger i { color: #4f8cff; }
+
+@media (max-width: 960px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .menu-center {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+}

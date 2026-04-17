@@ -90,7 +90,10 @@ npm start
 - Upload ảnh sản phẩm sẽ nằm trong thư mục `uploads/`.
 
 
----
+```bash
+cd backend
+npm start
+```
 
 ## 7) Troubleshooting nhanh
 
@@ -116,12 +119,6 @@ npm start
 ```
 
 
-```bash
-git pull
-cd backend
-npm install
-npm start
-```
 
 ## 8) Lưu ý cho Windows PowerShell
 - Không chạy lệnh `bash` nếu máy bạn không cài Git Bash/WSL.

@@ -4,7 +4,8 @@
 
   function readJson(key, fallback) {
     try {
-      return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
     } catch {
       return fallback;
     }
@@ -16,7 +17,6 @@
 
   function updateCartBadge() {
     const totalQty = getCartItems().reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
-
     const iconWrap = document.querySelector('.header .fa-shopping-cart')?.closest('.icon');
     const badge = iconWrap?.querySelector('span');
     if (badge) badge.textContent = String(totalQty);
@@ -31,9 +31,7 @@
 
   function markActiveMenu() {
     const path = window.location.pathname.toLowerCase();
-    const links = document.querySelectorAll('.navbar a[href]');
-
-    links.forEach((link) => {
+    document.querySelectorAll('.navbar a[href]').forEach((link) => {
       const href = (link.getAttribute('href') || '').toLowerCase();
       if (!href || href === '#') return;
 
@@ -56,15 +54,29 @@
       const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
       if (isHome) {
         window.dispatchEvent(new CustomEvent('g5-search', { detail: keyword }));
-        return;
+      } else {
+        window.location.href = `/index.html?search=${encodeURIComponent(keyword)}`;
       }
-
-      window.location.href = `/index.html?search=${encodeURIComponent(keyword)}`;
     };
 
     button.addEventListener('click', submitSearch);
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') submitSearch();
+    input.addEventListener('keydown', (e) => e.key === 'Enter' && submitSearch());
+  }
+
+  function setupCategoryMenu() {
+    document.querySelectorAll('#categoryMenu [data-category]').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = item.dataset.category;
+
+        const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+        if (isHome) {
+          window.dispatchEvent(new CustomEvent('g5-category', { detail: category }));
+          document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.location.href = `/index.html?category=${encodeURIComponent(category)}#products`;
+        }
+      });
     });
   }
 
@@ -76,8 +88,13 @@
     if (!currentUser || !currentUser.username) return;
 
     menuRight.innerHTML = `
-      <li><a href="/Owner/update_info.html">Xin chào, ${currentUser.username}</a></li>
-      <li><a href="#" id="logoutBtn">Đăng xuất</a></li>
+      <li class="account-panel">
+        <a href="#" class="account-trigger"><i class="fa fa-user-circle"></i>${currentUser.username}</a>
+        <ul class="dropdown-menu">
+          <li><a href="/Owner/update_info.html">Thông tin tài khoản</a></li>
+          <li><a href="#" id="logoutBtn">Đăng xuất</a></li>
+        </ul>
+      </li>
     `;
 
     document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
@@ -97,6 +114,7 @@
       host.innerHTML = await res.text();
 
       setupSearch();
+      setupCategoryMenu();
       setupAuthMenu();
       markActiveMenu();
       updateCartBadge();
@@ -107,6 +125,5 @@
   }
 
   window.updateCartBadge = updateCartBadge;
-
   document.addEventListener('DOMContentLoaded', loadHeader);
 })();
