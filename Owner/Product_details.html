@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi Tiết Sản Phẩm - G5 Laptop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="/Asset/Css/style.css" />
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <div id="header"></div>
+
+    <script src="../Asset/Js/header.js"></script>
+
+    <!-- ===== PAGE BANNER ===== -->
+    <div class="page-banner">
+        <h1>Chi tiết sản phẩm</h1>
+        <p><a href="/index.html">Home</a> - Chi tiết sản phẩm</p>
+    </div>
+    <!-- ===== PRODUCT DETAIL ===== -->
+    <div class="product-wrapper">
+        <div class="product-top">
+
+            <!-- Hình ảnh sản phẩm -->
+            <div class="product-image-box">
+                <!--
+        [DATA] Thay src bằng đường dẫn ảnh từ database
+        PHP: src="img/<?= $product['hinh_anh'] ?>"
+      -->
+                <img src="img/macbook.jpg" alt="Ảnh sản phẩm" class="product-main-img" />
+            </div>
+
+            <!-- Thông tin sản phẩm -->
+            <div class="product-info">
+
+                <!-- [DATA] Tên sản phẩm: <?= $product['ten_sp'] ?> -->
+                <h1 class="product-name">Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core</h1>
+
+                <!-- Đánh giá sao -->
+                <div class="product-stars">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <!-- [DATA] Số đánh giá: (<?= $so_danh_gia ?> đánh giá) -->
+                    <span>(0 đánh giá)</span>
+                </div>
+
+                <!-- [DATA] Giá: <?= number_format($product['gia']) ?> vnd -->
+                <div class="product-price">27.490.000 vnd</div>
+
+                <!-- [DATA] Mô tả ngắn: <?= $product['mo_ta_ngan'] ?> -->
+                <div class="product-short-desc">
+                    <p><strong>Mô tả:</strong></p>
+                    <p>Laptop <strong>Apple MacBook Air M1 2020</strong> thuộc dòng laptop cao cấp sang trọng có cấu
+                        hình mạnh mẽ, chinh phục được các tính năng văn phòng lẫn đồ họa mà bạn mong muốn, thời lượng
+                        pin dài, thiết kế mỏng nhẹ sẽ đáp ứng tốt các nhu cầu làm việc của bạn.</p>
+                    <p><strong>Chip Apple M1 tốc độ xử lý nhanh gấp 3.5 lần thế hệ trước</strong></p>
+                    <p>Chiếc MacBook này được trang bị con chip Apple M1 được sản xuất độc quyền bởi Nhà Táo trên tiến
+                        trình 5 nm, 8 lõi bao gồm 4 lõi tiết kiệm điện và 4 lõi hiệu suất cao, mang đến một hiệu năng
+                        kinh ngạc, xử lý mọi tác vụ văn phòng một cách mượt mà như Word, Excel, Powerpoint,... thực hiện
+                        tốt các nhiệm vụ chỉnh sửa hình ảnh, kết xuất 2D trên các phần mềm Photoshop, AI,... máy còn hỗ
+                        trợ tiết kiệm được điện năng cao.</p>
+                    <p><strong>Thiết kế sang trọng, tinh tế</strong></p>
+                    <p>MacBook Air M1 256GB 2020 không những thừa hưởng thiết kế mỏng nhẹ, hiện đại của các thế hệ trước
+                        mà còn học hỏi thêm phong cách hiện đại của các dòng Macbook Pro. Khối lượng máy chỉ vỏn vẹn
+                        1.29 kg và mỏng của thân máy là 16.1 mm có tính cơ động cao, dễ đem theo xử lý công việc.</p>
+                </div>
+
+                <!-- Số lượng + Thêm giỏ hàng -->
+                <div class="product-actions">
+                    <div class="qty-box">
+                        <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                        <input type="number" id="qty" value="1" min="1" readonly />
+                        <button class="qty-btn" onclick="changeQty(1)">+</button>
+                    </div>
+                    <!--
+          [DATA] Form thêm vào giỏ hàng
+          PHP: action="addcart.php" + input hidden id_sp
+        -->
+                    <form action="addcart.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="id_sp" value="1" /> <!-- [DATA] <?= $product['id_sp'] ?> -->
+                        <input type="hidden" name="so_luong" id="sl_hidden" value="1" />
+                        <button type="submit" class="btn-addcart">
+                            <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Share -->
+                <div class="product-share">
+                    <span>Share on:</span>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== TABS: MÔ TẢ / ĐÁNH GIÁ ===== -->
+        <div class="product-tabs">
+            <button class="tab-btn active" onclick="switchTab('motа', this)">Mô tả</button>
+            <!-- [DATA] Số đánh giá: <?= $so_danh_gia ?> -->
+            <button class="tab-btn" onclick="switchTab('danhgia', this)">Đánh giá (0)</button>
+        </div>
+
+        <!-- Tab Mô tả -->
+        <div class="tab-content" id="tab-mota">
+            <h3>Mô tả sản phẩm</h3>
+            <!--
+      [DATA] Nội dung mô tả đầy đủ từ database
+      PHP: <?= $product['mo_ta'] ?>
+    -->
+            <p>Laptop <strong>Apple MacBook Air M1 2020</strong> thuộc dòng laptop cao cấp sang trọng có cấu hình mạnh
+                mẽ, chinh phục được các tính năng văn phòng lẫn đồ họa mà bạn mong muốn, thời lượng pin dài, thiết kế
+                mỏng nhẹ sẽ đáp ứng tốt các nhu cầu làm việc của bạn.</p>
+            <p><strong>Chip Apple M1 tốc độ xử lý nhanh gấp 3.5 lần thế hệ trước</strong></p>
+            <p>Chiếc MacBook này được trang bị con chip Apple M1 được sản xuất độc quyền bởi Nhà Táo trên tiến trình 5
+                nm, 8 lõi bao gồm 4 lõi tiết kiệm điện và 4 lõi hiệu suất cao, mang đến một hiệu năng kinh ngạc, xử lý
+                mọi tác vụ văn phòng một cách mượt mà như Word, Excel, Powerpoint,... thực hiện tốt các nhiệm vụ chỉnh
+                sửa hình ảnh, kết xuất 2D trên các phần mềm Photoshop, AI,... máy còn hỗ trợ tiết kiệm được điện năng
+                cao.</p>
+            <p><strong>Thiết kế sang trọng, tinh tế</strong></p>
+            <p>MacBook Air M1 256GB 2020 không những thừa hưởng thiết kế mỏng nhẹ, hiện đại của các thế hệ trước mà còn
+                học hỏi thêm phong cách hiện đại của các dòng Macbook Pro. Khối lượng máy chỉ vỏn vẹn 1.29 kg và mỏng
+                của thân máy là 16.1 mm có tính cơ động cao, dễ đem theo xử lý công việc.</p>
+            <p>Vỏ máy được thiết kế nguyên khối từ nguyên liệu nhôm tái chế 100% vừa góp phần bảo vệ môi trường vừa cho
+                độ bền cao, chịu va đập tốt bảo vệ các linh kiện bên trong an toàn nếu có xảy ra va chạm mạnh.</p>
+        </div>
+
+        <!-- Tab Đánh giá -->
+        <div class="tab-content" id="tab-danhgia" style="display:none;">
+            <div class="review-wrapper">
+
+                <!-- Bên trái: danh sách đánh giá -->
+                <div class="review-list">
+                    <!--
+          [DATA] Tên sản phẩm + số đánh giá
+          PHP: <?= $so_danh_gia ?> đánh giá cho <?= $product['ten_sp'] ?>
+        -->
+                    <h3>0 đánh giá cho Laptop Apple MacBook Air M1 2020 8GB/256GB</h3>
+                    <p class="no-review">Chưa có đánh giá nào cho sản phẩm này.</p>
+                    <!--
+          [DATA] Vòng lặp hiển thị đánh giá từ database
+          PHP foreach ($danh_gia as $dg):
+          <div class="review-item">
+            <strong><?= $dg['ten_nguoi'] ?></strong>
+            <span><?= $dg['ngay'] ?></span>
+            <p><?= $dg['noi_dung'] ?></p>
+          </div>
+          PHP endforeach;
+        -->
+                </div>
+
+                <!-- Bên phải: form đánh giá -->
+                <div class="review-form-box">
+                    <h3>Đánh giá</h3>
+                    <p class="review-note">Your email address will not be published. Required fields are marked *</p>
+                    <!--
+          [DATA] Form gửi đánh giá
+          PHP: action="danhgia.php" method="POST"
+               input hidden id_sp: <?= $product['id_sp'] ?>
+        -->
+                    <form action="danhgia.php" method="POST">
+                        <input type="hidden" name="id_sp" value="1" /> <!-- [DATA] <?= $product['id_sp'] ?> -->
+
+                        <div class="review-field">
+                            <label>Số sao * :</label>
+                            <select name="so_sao">
+                                <option value="1">1 Sao</option>
+                                <option value="2">2 Sao</option>
+                                <option value="3">3 Sao</option>
+                                <option value="4">4 Sao</option>
+                                <option value="5">5 Sao</option>
+                            </select>
+                        </div>
+
+                        <div class="review-field">
+                            <label>Nội dung đánh giá *</label>
+                            <textarea name="noi_dung" rows="6" required></textarea>
+                        </div>
+
+                        <p class="review-login-note">
+                            Bạn cần đăng nhập để đánh giá sản phẩm.
+                            <a href="/Owner/login.html"><strong>Đăng nhập</strong></a>
+                        </p>
+
+                        <button type="submit" class="btn-review">Gửi đánh giá</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer"></div>
+
+    <script src="/Asset/Js/footer.js"></script>
+
+    <script>
+        // Đổi số lượng
+        function changeQty(delta) {
+            const input = document.getElementById('qty');
+            const hidden = document.getElementById('sl_hidden');
+            let val = parseInt(input.value) + delta;
+            if (val < 1) val = 1;
+            input.value = val;
+            hidden.value = val;
+        }
+
+        // Chuyển tab
+        function switchTab(tab, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + tab).style.display = 'block';
+            btn.classList.add('active');
+        }
+    </script>
+
+</body>
+
+</html>
