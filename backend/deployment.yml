@@ -1,0 +1,10 @@
+services:
+  mysql:
+    image: arm64v8/mysql:9.6.0
+    container_name: mysql_container
+    restart: always
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: SE397H
+      MYSQL_DATABASE: "shop_latop"
