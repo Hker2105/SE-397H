@@ -8,5 +8,6 @@ export function AppRoute(app) {
     router.post('/sanphams', sanPhamController.insertsanPham)
     router.put('/sanphams', sanPhamController.updatesanPham)
     router.delete('/sanphams/:id', sanPhamController.deletesanPham)
+    
     app.use('/api/', router)
 }
