@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const TaiKhoan = require('../models/TaiKhoan');
+const { KHACHHANG } = require('../models');
 
 // ĐĂNG KÝ
 exports.register = async (req, res) => {
