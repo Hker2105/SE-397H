@@ -1,4 +1,4 @@
-const TaiKhoan = require('../models/TaiKhoan');
+const TaiKhoan = require("../models/index").KHACHHANG;
 
 // LẤY THÔNG TIN CÁ NHÂN
 exports.getProfile = async (req, res) => {
