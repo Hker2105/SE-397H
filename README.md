@@ -37,6 +37,8 @@ Chỉnh lại thông tin DB/JWT trong `backend/.env`.
 
 Schema đầy đủ nằm tại `backend/database/schema.sql`.
 
+Web tạo database: **https://dbdiagram.io/d/Shop_Laptop-69e3a0130aa78f6bc106ea8d**
+
 Cách import:
 
 **macOS/Linux (bash):**
