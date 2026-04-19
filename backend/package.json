@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Backend for CDIO 3 E-Commerce Project",
   "main": "index.js",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
-    "start": "nodemon --inspect ./index.js",
+    "start": "nodemon --inspect --exec babel-node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "doctor": "node scripts/doctor.js"
   },
@@ -22,6 +26,9 @@
     "validator": "^13.9.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/node": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
     "nodemon": "^3.1.14"
   }
 }
