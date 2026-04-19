@@ -1,0 +1,147 @@
+Table KHACHHANG {
+  MaKhachHang char(10) [pk]
+  HoTen varchar(100) [not null]
+  Email varchar(100) [not null, unique]
+  MatKhau varchar(255) [not null]
+  SoDienThoai varchar(20)
+  DiaChi varchar(255)
+  LoaiTaiKhoan varchar(50) [not null]
+  NgayTao date [not null]
+}
+
+Table DANHMUC {
+  MaDanhMuc char(10) [pk]
+  TenDanhMuc varchar(100) [not null]
+  MoTa varchar(255)
+}
+
+Table HANGSANXUAT {
+  MaHang char(10) [pk]
+  TenHang varchar(100) [not null]
+  MoTa varchar(255)
+}
+
+Table NHACUNGCAP {
+  MaNCC varchar(10) [pk]
+  TenNCC varchar(255) [not null]
+  SoDienThoai varchar(20)
+  DiaChi varchar(255)
+  Email varchar(100)
+}
+
+Table VOUCHER {
+  MaVC varchar(10) [pk]
+  MaVoucher varchar(50) [not null]
+  GiaTri int [not null]
+  NgayBD date [not null]
+  NgayKT date [not null]
+  SoLuong int [not null]
+}
+
+Table SANPHAM {
+  MaSP char(10) [pk]
+  TenSP varchar(255) [not null]
+  MaDM char(10)
+  MaHang char(10)
+  MaNCC varchar(10)
+  MoTa text
+  Gia int [not null]
+  SoLuongTon int [not null]
+  HinhAnh text
+  UuDaiSV bool
+  NgayThem date [not null]
+}
+
+Table GIOHANG {
+  MaGH char(10) [pk]
+  MaKhachHang char(10) [not null]
+  MaSP char(10) [not null]
+  NgayTao date [not null]
+  SoLuong int [not null]
+}
+
+Table DONHANG {
+  MaDH char(10) [pk]
+  MaKhachHang char(10) [not null]
+  MaVC varchar(10)
+  SoLuong int [not null]
+  DonGia int [not null]
+  NgayDat date [not null]
+  TongTien int [not null]
+  TinhTrang varchar(50) [not null]
+  GhiChu text
+}
+
+Table THANHTOAN {
+  MaTT char(10) [pk]
+  MaDH char(10) [not null]
+  HinhThuc varchar(50) [not null]
+  NgayThanhToan date [not null]
+  TrangThai varchar(50) [not null]
+}
+
+Table DANHGIA {
+  MaDG char(10) [pk]
+  MaKhachHang char(10) [not null]
+  MaSP char(10) [not null]
+  NoiDung text
+  Diem int [not null]
+  NgayDG date [not null]
+}
+
+Table THUCUDOIMOI {
+  MaThu varchar(10) [pk]
+  MaKhachHang varchar(10) [not null]
+  TenSPCu varchar(255) [not null]
+  MoTaTinhTrang text
+  GiaDinhGia int [not null]
+  MaSP varchar(10)
+  NgayGui date [not null]
+  TrangThai varchar(50) [not null]
+}
+
+Table LIENHEHOTRO {
+  MaLH varchar(10) [pk]
+  MaKhachHang varchar(10)
+  TieuDe varchar(255) [not null]
+  NoiDung text [not null]
+  NgayGui date [not null]
+  TrangThai varchar(50) [not null]
+}
+
+Table THONGKE {
+  MaTK varchar(10) [pk]
+  ThangNam varchar(7) [not null]
+  MaSP varchar(10) [not null]
+  TenSP varchar(255) [not null]
+  SoLuongBan int [not null]
+  GiaBan int [not null]
+  TongTienSP int [not null]
+  DoanhThuThang int [not null]
+  ChiPhiThang int
+  LoiNhuanThang int
+  NgayThongKe date [not null]
+  GhiChu varchar(255)
+}
+
+Ref: SANPHAM.MaDM > DANHMUC.MaDanhMuc
+Ref: SANPHAM.MaHang > HANGSANXUAT.MaHang
+Ref: SANPHAM.MaNCC > NHACUNGCAP.MaNCC
+
+Ref: GIOHANG.MaKhachHang > KHACHHANG.MaKhachHang
+Ref: GIOHANG.MaSP > SANPHAM.MaSP
+
+Ref: DONHANG.MaKhachHang > KHACHHANG.MaKhachHang
+Ref: DONHANG.MaVC > VOUCHER.MaVC
+
+Ref: THANHTOAN.MaDH > DONHANG.MaDH
+
+Ref: DANHGIA.MaKhachHang > KHACHHANG.MaKhachHang
+Ref: DANHGIA.MaSP > SANPHAM.MaSP
+
+Ref: THUCUDOIMOI.MaKhachHang > KHACHHANG.MaKhachHang
+Ref: THUCUDOIMOI.MaSP > SANPHAM.MaSP
+
+Ref: LIENHEHOTRO.MaKhachHang > KHACHHANG.MaKhachHang
+
+Ref: THONGKE.MaSP > SANPHAM.MaSP
