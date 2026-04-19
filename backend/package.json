@@ -2,10 +2,10 @@
   "name": "cdio3-backend",
   "version": "1.0.0",
   "description": "Backend for CDIO 3 E-Commerce Project",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "nodemon --inspect ./index.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon index.js",
     "doctor": "node scripts/doctor.js"
   },
   "dependencies": {
