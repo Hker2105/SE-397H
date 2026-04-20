@@ -194,7 +194,8 @@
 //         });
 //     }
 // };
-
+import { Sequelize } from "sequelize"
+import db from "../models"
 export async function getsanPham(req, res){
     res.status(200).json({
         message: 'Lấy danh sách sản phẩm thành công'
@@ -208,9 +209,14 @@ export async function getsanPhamById(req, res){
 }
 
 export async function insertsanPham(req, res){
-    res.status(200).json({
-        message: 'Thêm mới sản phẩm thành công'
-    })
+    try {
+        console.log(req.params)
+        res.status(200).json({
+            message: 'Thêm mới sản phẩm thành công'
+        })
+    } catch {
+        
+    }
 }
 
 export async function deletesanPham(req, res){
@@ -224,3 +230,4 @@ export async function updatesanPham(req, res){
         message: 'Update sản phẩm thành công'
     })
 }
+
