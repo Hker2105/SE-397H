@@ -4,6 +4,7 @@ import * as hangSanXuatController from './controllers/hangSanXuatController'
 import * as nhaCungCapController from './controllers/nhaCungCapController'
 import * as donHangController from './controllers/donHangController'
 import * as voucherController from './controllers/voucherController'
+import * as danhMucController from './controllers/danhMucController'
 const router = express.Router()
 export function AppRoute(app) {
     //http:localhost:3000/sanphams
@@ -36,6 +37,12 @@ export function AppRoute(app) {
     router.post('/vouchers', voucherController.insertVoucher)
     router.put('/vouchers/:id', voucherController.updateVoucher)
     router.delete('/vouchers/:id', voucherController.deleteVoucher)
+
+    router.get('/danhmucs', danhMucController.getDanhMucs)
+    router.get('/danhmucs/:id', danhMucController.getDanhMucById)
+    router.post('/danhmucs', danhMucController.insertDanhMuc)
+    router.put('/danhmucs/:id', danhMucController.updateDanhMuc)
+    router.delete('/danhmucs/:id', danhMucController.deleteDanhMuc)
 
     app.use('/api/', router)
 }
