@@ -210,12 +210,17 @@ export async function getsanPhamById(req, res){
 
 export async function insertsanPham(req, res){
     try {
-        console.log(req.params)
-        res.status(200).json({
-            message: 'Thêm mới sản phẩm thành công'
+        // console.log(JSON.stringify(req.body))
+        const sanPham = await db.SANPHAM.create(req.body)
+        res.status(201).json({
+            message: 'Thêm mới sản phẩm thành công',
+            data: sanPham
         })
-    } catch {
-        
+    } catch (error) {
+        res.status(500).json({
+            message: 'Xảy ra lỗi khi thêm sản phẩm',
+            error: error.message
+        })
     }
 }
 
