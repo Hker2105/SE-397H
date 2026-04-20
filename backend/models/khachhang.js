@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   KHACHHANG.init({
+    MaKhachHang: {
+        type: DataTypes.STRING,
+        primaryKey: true
+    },
     HoTen: DataTypes.STRING,
     Email: DataTypes.STRING,
     MatKhau: DataTypes.STRING,
