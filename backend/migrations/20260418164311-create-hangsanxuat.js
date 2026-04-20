@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('hangsanxuats', {
-      id: {
+      MaHang: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING
@@ -11,7 +11,7 @@ module.exports = {
       TenHang: {
         type: Sequelize.STRING
       },
-      Mota: {
+      MoTa: {
         type: Sequelize.STRING
       },
       createdAt: {

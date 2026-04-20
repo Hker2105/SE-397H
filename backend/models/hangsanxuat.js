@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   HANGSANXUAT.init({
+    MaHang: {
+        primaryKey: true,
+        type: DataTypes.STRING
+      },
     TenHang: DataTypes.STRING,
     Mota: DataTypes.STRING
   }, {

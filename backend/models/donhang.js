@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   DONHANG.init({
+    MaDH: {
+        primaryKey: true,
+        type: DataTypes.STRING
+    },
     MaKhachHang: DataTypes.STRING,
     MaVC: DataTypes.STRING,
     SoLuong: DataTypes.INTEGER,

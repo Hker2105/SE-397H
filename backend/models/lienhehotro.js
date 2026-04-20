@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   LIENHEHOTRO.init({
+    MaLH: {
+        primaryKey: true,
+        type: DataTypes.STRING
+    },
     MaKhachHang: DataTypes.STRING,
     TieuDe: DataTypes.STRING,
     Noidung: DataTypes.TEXT,
