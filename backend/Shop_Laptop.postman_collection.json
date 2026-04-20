@@ -16,12 +16,8 @@
             "header": [],
             "url": {
               "raw": "{{API_PREXFIX}}/sanphams",
-              "host": [
-                "{{API_PREXFIX}}"
-              ],
-              "path": [
-                "sanphams"
-              ]
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["sanphams"]
             }
           },
           "response": []
@@ -33,13 +29,8 @@
             "header": [],
             "url": {
               "raw": "{{API_PREXFIX}}/sanphams/2",
-              "host": [
-                "{{API_PREXFIX}}"
-              ],
-              "path": [
-                "sanphams",
-                "2"
-              ]
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["sanphams", "2"]
             }
           },
           "response": []
@@ -51,13 +42,8 @@
             "header": [],
             "url": {
               "raw": "{{API_PREXFIX}}/sanphams/2",
-              "host": [
-                "{{API_PREXFIX}}"
-              ],
-              "path": [
-                "sanphams",
-                "2"
-              ]
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["sanphams", "2"]
             }
           },
           "response": []
@@ -69,12 +55,8 @@
             "header": [],
             "url": {
               "raw": "{{API_PREXFIX}}/sanphams",
-              "host": [
-                "{{API_PREXFIX}}"
-              ],
-              "path": [
-                "sanphams"
-              ]
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["sanphams"]
             }
           },
           "response": []
@@ -86,12 +68,288 @@
             "header": [],
             "url": {
               "raw": "{{API_PREXFIX}}/sanphams",
-              "host": [
-                "{{API_PREXFIX}}"
-              ],
-              "path": [
-                "sanphams"
-              ]
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["sanphams"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "vouchers",
+      "item": [
+        {
+          "name": "api/vouchers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/vouchers",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["vouchers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/vouchers/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/vouchers/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["vouchers", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/vouchers/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/vouchers/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["vouchers", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/vouchers",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/vouchers",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["vouchers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/vouchers",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/vouchers",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["vouchers"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "nhacungcaps",
+      "item": [
+        {
+          "name": "api/nhacungcaps",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/nhacungcaps",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["nhacungcaps"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/nhacungcaps/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/nhacungcaps/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["nhacungcaps", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/nhacungcaps/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/nhacungcaps/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["nhacungcaps", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/nhacungcaps",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/nhacungcaps",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["nhacungcaps"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/nhacungcaps",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/nhacungcaps",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["nhacungcaps"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "hangsanxuats",
+      "item": [
+        {
+          "name": "api/hangsanxuats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/hangsanxuats",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["hangsanxuats"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/hangsanxuats/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/hangsanxuats/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["hangsanxuats", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/hangsanxuats/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/hangsanxuats/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["hangsanxuats", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/hangsanxuats",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/hangsanxuats",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["hangsanxuats"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/hangsanxuats",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/hangsanxuats",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["hangsanxuats"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "donhangs",
+      "item": [
+        {
+          "name": "api/donhangs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/donhangs",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["donhangs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/donhangs/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/donhangs/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["donhangs", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/donhangs/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/donhangs/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["donhangs", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/donhangs",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/donhangs",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["donhangs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/donhangs",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/donhangs",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["donhangs"]
             }
           },
           "response": []
