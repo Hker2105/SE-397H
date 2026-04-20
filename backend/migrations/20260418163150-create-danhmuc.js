@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('danhmucs', {
-      id: {
+      MaDM: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING

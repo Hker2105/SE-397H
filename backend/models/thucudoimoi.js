@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   THUCUDOIMOI.init({
+    MaThu: {
+        primaryKey: true,
+        type: DataTypes.STRING
+      },
     MaKhachHang: DataTypes.STRING,
     TenSPCu: DataTypes.STRING,
     MoTaTinhTrang: DataTypes.TEXT,

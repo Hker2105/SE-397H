@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   NHACUNGCAP.init({
+    MaNCC: {
+        primaryKey: true,
+        type: DataTypes.STRING
+      },
     TenNCC: DataTypes.STRING,
     SoDienThoai: DataTypes.STRING,
     DiaChi: DataTypes.STRING,

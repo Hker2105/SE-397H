@@ -15,10 +15,10 @@ export async function getHangSanXuatById(req, res){
 export async function insertHangSanXuat(req, res){
     try {
         // console.log(JSON.stringify(req.body))
-        const nhaCungCap = await db.NHACUNGCAP.create(req.body)
+        const hangSanXuat = await db.HANGSANXUAT.create(req.body)
         res.status(201).json({
             message: 'Thêm mới nhà cung cấp thành công',
-            data: nhaCungCap
+            data: hangSanXuat
         })
     } catch (error) {
         res.status(500).json({

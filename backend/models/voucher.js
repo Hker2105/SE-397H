@@ -17,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   VOUCHER.init({
+    MaVC: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.STRING
+      },
     MaVoucher: DataTypes.STRING,
     GiaTri: DataTypes.INTEGER,
     NgayBD: DataTypes.DATE,

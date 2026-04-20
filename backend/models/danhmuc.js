@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   DANHMUC.init({
+    MaDM: {
+        type: DataTypes.STRING,
+        primaryKey: true
+      },
     TenDanhMuc: DataTypes.STRING,
     MoTa: DataTypes.STRING
   }, {

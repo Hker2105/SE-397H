@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   THONGKE.init({
+    MaTK: {
+        primaryKey: true,
+        type: DataTypes.STRING
+    },
     ThangNam: DataTypes.STRING,
     MaSP: DataTypes.STRING,
     TenSP: DataTypes.STRING,

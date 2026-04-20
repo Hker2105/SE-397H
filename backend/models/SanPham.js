@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   SANPHAM.init({
+    MaSP: {
+        primaryKey: true,
+        type: DataTypes.STRING
+    },
     TenSP: DataTypes.STRING,
     MaDM: DataTypes.STRING,
     MaHang: DataTypes.STRING,

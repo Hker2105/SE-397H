@@ -14,7 +14,7 @@ export async function getNhaCungCapById(req, res){
 
 export async function insertNhaCungCap(req, res){
     try {
-        // console.log(JSON.stringify(req.body))
+        //console.log(JSON.stringify(req.body))
         const nhaCungCap = await db.NHACUNGCAP.create(req.body)
         res.status(201).json({
             message: 'Thêm mới nhà cung cấp thành công',

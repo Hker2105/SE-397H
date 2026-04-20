@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   GIOHANG.init({
+    MaGH: {
+        primaryKey: true,
+        type: DataTypes.STRING
+      },
     MaKhachHang: DataTypes.STRING,
     MaSP: DataTypes.STRING,
     NgayTao: DataTypes.DATE,

@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('thongkes', {
-      id: {
+      MaTK: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING
@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING,
         references: {
           model: 'sanphams',
-          key: 'id',
+          key: 'MaSP',
         },
       },
       TenSP: {
