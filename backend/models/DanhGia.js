@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   DANHGIA.init({
+    MaDG: {
+        primaryKey: true,
+        type: DataTypes.STRING
+    },
     MaKhachHang: DataTypes.STRING,
     MaSP: DataTypes.STRING,
     NoiDung: DataTypes.TEXT,
