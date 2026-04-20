@@ -77,6 +77,76 @@
       ]
     },
     {
+      "name": "danhmucs",
+      "item": [
+        {
+          "name": "api/danhmucs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/danhmucs",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["danhmucs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/danhmucs/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/danhmucs/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["danhmucs", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/danhmucs/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/danhmucs/2",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["danhmucs", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/danhmucs",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/danhmucs",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["danhmucs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/danhmucs",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/danhmucs",
+              "host": ["{{API_PREXFIX}}"],
+              "path": ["danhmucs"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "name": "vouchers",
       "item": [
         {

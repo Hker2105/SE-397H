@@ -43,5 +43,11 @@ db.Sequelize = Sequelize;
 module.exports = db;
 
 
+/**
+ docker exec -it mysql_container bash
+
+ mysql -u root -p
+ */
+
 
 

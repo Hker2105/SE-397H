@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.STRING
       },
-      TenCungCap: {
+      TenNCC: {
         type: Sequelize.STRING
       },
       SoDienThoai: {
