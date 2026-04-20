@@ -6,7 +6,7 @@ const { Model } = require('sequelize');
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('sanphams', {
-      id: {
+      MaSP: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING
@@ -18,21 +18,21 @@ module.exports = {
         type: Sequelize.STRING,
         references: {
           model: 'danhmucs',
-          key: 'id',
+          key: 'MaDM',
         },
       },
       MaHang: {
         type: Sequelize.STRING,
         references: {
           model: 'hangsanxuats',
-          key: 'id',
+          key: 'MaHang',
         },
       },
       MaNCC: {
         type: Sequelize.STRING,
         references: {
           model: 'nhacungcaps',
-          key: 'id',
+          key: 'MaNCC',
         },
       },
       MoTa: {
