@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   THANHTOAN.init({
+    MaTT: {
+        primaryKey: true,
+        type: DataTypes.STRING
+    },
     MaDH: DataTypes.STRING,
     HinhThuc: DataTypes.STRING,
     NgayThanhToan: DataTypes.DATE,
