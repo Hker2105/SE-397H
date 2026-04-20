@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('donhangs', {
-      id: {
+      MaDH: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING
@@ -12,14 +12,14 @@ module.exports = {
         type: Sequelize.STRING,
         references: {
           model: 'khachhangs',
-          key: 'id',
+          key: 'MaKhachHang',
         },
       },
       MaVC: {
         type: Sequelize.STRING,
         references: {
           model: 'vouchers',
-          key: 'id',
+          key: 'MaVC',
         },
       },
       SoLuong: {
