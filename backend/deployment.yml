@@ -8,3 +8,28 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: SE397H
       MYSQL_DATABASE: "shop_latop"
+    networks:
+      - shop_latop
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_container
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 500M
+    networks:
+      - shop_latop
+
+networks:
+  shop_latop:
+    name: shop_latop
+    driver: bridge
+# docker-compose -f ./deployment.yml up -d phpmyadmin
+# docker-compose -f ./deployment.yml up -d
+# docker-compose -f ./deployment.yml down
