@@ -1,105 +1,105 @@
--- G5 LAPTOP - Minimal schema for current backend models/controllers
-CREATE DATABASE IF NOT EXISTS g5_laptop
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
+-- -- G5 LAPTOP - Minimal schema for current backend models/controllers
+-- CREATE DATABASE IF NOT EXISTS g5_laptop
+--   CHARACTER SET utf8mb4
+--   COLLATE utf8mb4_unicode_ci;
 
-USE g5_laptop;
+-- USE g5_laptop;
 
-CREATE TABLE IF NOT EXISTS tai_khoan (
-  TenDangNhap VARCHAR(50) PRIMARY KEY,
-  MatKhau VARCHAR(255) NOT NULL,
-  HoTen VARCHAR(120) NOT NULL,
-  Email VARCHAR(120) NOT NULL UNIQUE,
-  GioiTinh TINYINT NULL,
-  SDT VARCHAR(20) NULL,
-  DiaChi VARCHAR(255) NULL,
-  MaLoai TINYINT NOT NULL DEFAULT 2 COMMENT '1: admin, 2: customer',
-  NgayTao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  INDEX idx_taikhoan_maloai (MaLoai)
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS tai_khoan (
+--   TenDangNhap VARCHAR(50) PRIMARY KEY,
+--   MatKhau VARCHAR(255) NOT NULL,
+--   HoTen VARCHAR(120) NOT NULL,
+--   Email VARCHAR(120) NOT NULL UNIQUE,
+--   GioiTinh TINYINT NULL,
+--   SDT VARCHAR(20) NULL,
+--   DiaChi VARCHAR(255) NULL,
+--   MaLoai TINYINT NOT NULL DEFAULT 2 COMMENT '1: admin, 2: customer',
+--   NgayTao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--   INDEX idx_taikhoan_maloai (MaLoai)
+-- ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS san_pham (
-  MaSP INT AUTO_INCREMENT PRIMARY KEY,
-  TenSP VARCHAR(255) NOT NULL,
-  DonGia DECIMAL(15,2) NOT NULL,
-  HinhAnh VARCHAR(255) NULL,
-  MaDM INT NOT NULL,
-  MaThue INT NOT NULL,
-  MoTa TEXT NULL,
-  TrangThai TINYINT NOT NULL DEFAULT 1,
-  NgayTao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  INDEX idx_sanpham_tensp (TenSP),
-  INDEX idx_sanpham_trangthai (TrangThai)
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS san_pham (
+--   MaSP INT AUTO_INCREMENT PRIMARY KEY,
+--   TenSP VARCHAR(255) NOT NULL,
+--   DonGia DECIMAL(15,2) NOT NULL,
+--   HinhAnh VARCHAR(255) NULL,
+--   MaDM INT NOT NULL,
+--   MaThue INT NOT NULL,
+--   MoTa TEXT NULL,
+--   TrangThai TINYINT NOT NULL DEFAULT 1,
+--   NgayTao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--   INDEX idx_sanpham_tensp (TenSP),
+--   INDEX idx_sanpham_trangthai (TrangThai)
+-- ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS hoa_don (
-  MaHD INT AUTO_INCREMENT PRIMARY KEY,
-  TenDangNhap VARCHAR(50) NOT NULL,
-  SDT VARCHAR(20) NULL,
-  DiaChi VARCHAR(255) NOT NULL,
-  HoTenNV VARCHAR(120) NULL,
-  GhiChu TEXT NULL,
-  TongTien DECIMAL(15,2) NOT NULL DEFAULT 0,
-  TrangThai ENUM('pending','confirmed','shipped','delivered','cancelled') NOT NULL DEFAULT 'pending',
-  NgayHD TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  CONSTRAINT fk_hoadon_taikhoan
-    FOREIGN KEY (TenDangNhap) REFERENCES tai_khoan(TenDangNhap)
-    ON UPDATE CASCADE ON DELETE RESTRICT,
-  INDEX idx_hoadon_user_date (TenDangNhap, NgayHD)
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS hoa_don (
+--   MaHD INT AUTO_INCREMENT PRIMARY KEY,
+--   TenDangNhap VARCHAR(50) NOT NULL,
+--   SDT VARCHAR(20) NULL,
+--   DiaChi VARCHAR(255) NOT NULL,
+--   HoTenNV VARCHAR(120) NULL,
+--   GhiChu TEXT NULL,
+--   TongTien DECIMAL(15,2) NOT NULL DEFAULT 0,
+--   TrangThai ENUM('pending','confirmed','shipped','delivered','cancelled') NOT NULL DEFAULT 'pending',
+--   NgayHD TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--   CONSTRAINT fk_hoadon_taikhoan
+--     FOREIGN KEY (TenDangNhap) REFERENCES tai_khoan(TenDangNhap)
+--     ON UPDATE CASCADE ON DELETE RESTRICT,
+--   INDEX idx_hoadon_user_date (TenDangNhap, NgayHD)
+-- ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS ct_hoa_don (
-  MaHD INT NOT NULL,
-  MaSP INT NOT NULL,
-  TenKH VARCHAR(120) NOT NULL,
-  GiaGoc DECIMAL(15,2) NOT NULL,
-  TyLeKM DECIMAL(5,2) NOT NULL DEFAULT 0,
-  SoLuongMua INT NOT NULL,
-  PRIMARY KEY (MaHD, MaSP),
-  CONSTRAINT fk_cthd_hoadon
-    FOREIGN KEY (MaHD) REFERENCES hoa_don(MaHD)
-    ON UPDATE CASCADE ON DELETE CASCADE,
-  CONSTRAINT fk_cthd_sanpham
-    FOREIGN KEY (MaSP) REFERENCES san_pham(MaSP)
-    ON UPDATE CASCADE ON DELETE RESTRICT
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS ct_hoa_don (
+--   MaHD INT NOT NULL,
+--   MaSP INT NOT NULL,
+--   TenKH VARCHAR(120) NOT NULL,
+--   GiaGoc DECIMAL(15,2) NOT NULL,
+--   TyLeKM DECIMAL(5,2) NOT NULL DEFAULT 0,
+--   SoLuongMua INT NOT NULL,
+--   PRIMARY KEY (MaHD, MaSP),
+--   CONSTRAINT fk_cthd_hoadon
+--     FOREIGN KEY (MaHD) REFERENCES hoa_don(MaHD)
+--     ON UPDATE CASCADE ON DELETE CASCADE,
+--   CONSTRAINT fk_cthd_sanpham
+--     FOREIGN KEY (MaSP) REFERENCES san_pham(MaSP)
+--     ON UPDATE CASCADE ON DELETE RESTRICT
+-- ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS danhgia (
-  MaDG INT AUTO_INCREMENT PRIMARY KEY,
-  MaSP INT NOT NULL,
-  TenDangNhap VARCHAR(50) NOT NULL,
-  SoSao TINYINT NOT NULL,
-  NoiDung TEXT NULL,
-  TrangThai TINYINT NOT NULL DEFAULT 1,
-  NgayDG TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  CONSTRAINT fk_danhgia_sanpham
-    FOREIGN KEY (MaSP) REFERENCES san_pham(MaSP)
-    ON UPDATE CASCADE ON DELETE CASCADE,
-  CONSTRAINT fk_danhgia_taikhoan
-    FOREIGN KEY (TenDangNhap) REFERENCES tai_khoan(TenDangNhap)
-    ON UPDATE CASCADE ON DELETE CASCADE,
-  INDEX idx_danhgia_masp_ngay (MaSP, NgayDG)
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS danhgia (
+--   MaDG INT AUTO_INCREMENT PRIMARY KEY,
+--   MaSP INT NOT NULL,
+--   TenDangNhap VARCHAR(50) NOT NULL,
+--   SoSao TINYINT NOT NULL,
+--   NoiDung TEXT NULL,
+--   TrangThai TINYINT NOT NULL DEFAULT 1,
+--   NgayDG TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--   CONSTRAINT fk_danhgia_sanpham
+--     FOREIGN KEY (MaSP) REFERENCES san_pham(MaSP)
+--     ON UPDATE CASCADE ON DELETE CASCADE,
+--   CONSTRAINT fk_danhgia_taikhoan
+--     FOREIGN KEY (TenDangNhap) REFERENCES tai_khoan(TenDangNhap)
+--     ON UPDATE CASCADE ON DELETE CASCADE,
+--   INDEX idx_danhgia_masp_ngay (MaSP, NgayDG)
+-- ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS khuyen_mai (
-  MaKM INT AUTO_INCREMENT PRIMARY KEY,
-  TenKM VARCHAR(255) NOT NULL,
-  TuNgay DATE NOT NULL,
-  DenNgay DATE NOT NULL,
-  MucGiam DECIMAL(10,2) NOT NULL,
-  DonViGiam VARCHAR(10) NOT NULL DEFAULT '%',
-  TrangThai TINYINT NOT NULL DEFAULT 1,
-  INDEX idx_km_trangthai_tungay (TrangThai, TuNgay)
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS khuyen_mai (
+--   MaKM INT AUTO_INCREMENT PRIMARY KEY,
+--   TenKM VARCHAR(255) NOT NULL,
+--   TuNgay DATE NOT NULL,
+--   DenNgay DATE NOT NULL,
+--   MucGiam DECIMAL(10,2) NOT NULL,
+--   DonViGiam VARCHAR(10) NOT NULL DEFAULT '%',
+--   TrangThai TINYINT NOT NULL DEFAULT 1,
+--   INDEX idx_km_trangthai_tungay (TrangThai, TuNgay)
+-- ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS ct_khuyen_mai (
-  MaKM INT NOT NULL,
-  MaSP INT NOT NULL,
-  PRIMARY KEY (MaKM, MaSP),
-  CONSTRAINT fk_ctkm_km
-    FOREIGN KEY (MaKM) REFERENCES khuyen_mai(MaKM)
-    ON UPDATE CASCADE ON DELETE CASCADE,
-  CONSTRAINT fk_ctkm_sp
-    FOREIGN KEY (MaSP) REFERENCES san_pham(MaSP)
-    ON UPDATE CASCADE ON DELETE CASCADE
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS ct_khuyen_mai (
+--   MaKM INT NOT NULL,
+--   MaSP INT NOT NULL,
+--   PRIMARY KEY (MaKM, MaSP),
+--   CONSTRAINT fk_ctkm_km
+--     FOREIGN KEY (MaKM) REFERENCES khuyen_mai(MaKM)
+--     ON UPDATE CASCADE ON DELETE CASCADE,
+--   CONSTRAINT fk_ctkm_sp
+--     FOREIGN KEY (MaSP) REFERENCES san_pham(MaSP)
+--     ON UPDATE CASCADE ON DELETE CASCADE
+-- ) ENGINE=InnoDB;
