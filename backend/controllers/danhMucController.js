@@ -2,31 +2,35 @@ import { Sequelize } from "../models"
 import db from "../models"
 
 export async function getDanhMucs(req, res){
+    const danhMucs = await db.DANHMUC.findAll();
     res.status(200).json({
-        message: 'Lấy danh sách danh mục thành công'
-    })
+        message: 'Lấy danh sách danh mục thành công',
+        data: danhMucs
+    });
 }
 
 export async function getDanhMucById(req, res){
+     const {id} = req.params.id;
+        const danhMucs = await db.DANHMUC.findById(id);
+    
+        if(!danhMucs) {
+            return res.status(404).json({
+                message: 'Không tìm thấy nhà cung cấp này'
+            })
+        }
     res.status(200).json({
-        message: 'Lấy thông tin danh mục thành công'
-    })
+        message: 'Lấy thông tin danh mục thành công',
+        data: danhMucs
+    });
 }
 
 export async function insertDanhMuc(req, res){
-    try {
             // console.log(JSON.stringify(req.body))
             const danhMuc = await db.DANHMUC.create(req.body)
             res.status(201).json({
                 message: 'Thêm mới danh mục thành công',
                 data: danhMuc
             })
-        } catch (error) {
-            res.status(500).json({
-                message: 'Xảy ra lỗi khi thêm danh mục',
-                error: error.message
-            })
-        }
 }
 
 export async function deleteDanhMuc(req, res){
