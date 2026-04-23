@@ -26,11 +26,30 @@ export async function getNhaCungCapById(req, res){
 export async function insertNhaCungCap(req, res){
    
         //console.log(JSON.stringify(req.body))
-        const nhaCungCap = await db.NHACUNGCAP.create(req.body)
+         try {
+        const data = Array.isArray(req.body) ? req.body : [req.body]
+        
+        for (const item of data) {
+            const { MaNCC, TenNCC, SoDienThoai, DiaChi, Email } = item
+            await db.sequelize.query(
+                `INSERT INTO nhacungcaps (MaNCC, TenNCC, SoDienThoai, DiaChi, Email, createdAt, updatedAt) 
+                 VALUES (?, ?, ?, ?, ?, NOW(), NOW())`,
+                {
+                    replacements: [MaNCC, TenNCC, SoDienThoai, DiaChi, Email],
+                    type: db.Sequelize.QueryTypes.INSERT
+                }
+            )
+        }
+
         res.status(201).json({
-            message: 'Thêm mới nhà cung cấp thành công',
-            data: nhaCungCap
+            message: 'Thêm mới nhà cung cấp thành công'
         })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Xảy ra lỗi khi thêm nhà cung cấp',
+            error: error.message
+        })
+    }
 }
 
 export async function deleteNhaCungCap(req, res){
