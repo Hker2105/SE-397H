@@ -26,11 +26,30 @@ export async function getHangSanXuatById(req, res){
 
 export async function insertHangSanXuat(req, res){
         // console.log(JSON.stringify(req.body))
-        const hangSanXuat = await db.HANGSANXUAT.create(req.body)
+        try {
+        const data = Array.isArray(req.body) ? req.body : [req.body]
+        
+        for (const item of data) {
+            const { MaHang, TenHang, Mota } = item
+            await db.sequelize.query(
+                `INSERT INTO hangsanxuats (MaHang, TenHang, Mota, createdAt, updatedAt) 
+                 VALUES (?, ?, ?, NOW(), NOW())`,
+                {
+                    replacements: [MaHang, TenHang, Mota],
+                    type: db.Sequelize.QueryTypes.INSERT
+                }
+            )
+        }
+
         res.status(201).json({
-            message: 'Thêm mới nhà cung cấp thành công',
-            data: hangSanXuat
+            message: 'Thêm mới hãng sản xuất thành công'
         })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Xảy ra lỗi khi thêm hãng sản xuất',
+            error: error.message
+        })
+    }
 }
 
 export async function deleteHangSanXuat(req, res){
