@@ -8,6 +8,7 @@ import * as danhMucController from './controllers/danhMucController'
 import asyncHandler from './middlewares/asyncHandler'
 import validate from './middlewares/validate'
 import insertsanPhamRequest from './dtos/requests/sanPham/insertsanPhamRequests'
+import updatesanPhamRequest from './dtos/requests/sanPham/updatesanPhamReqests'
 const router = express.Router()
 
 
@@ -16,7 +17,7 @@ export function AppRoute(app) {
     router.get('/sanphams', asyncHandler(sanPhamController.getsanPham))
     router.get('/sanphams/:id', asyncHandler(sanPhamController.getsanPhamById))
     router.post('/sanphams', validate(insertsanPhamRequest),asyncHandler(sanPhamController.insertsanPham))
-    router.put('/sanphams', asyncHandler(sanPhamController.updatesanPham))
+    router.put('/sanphams/:id', validate(updatesanPhamRequest), asyncHandler(sanPhamController.updatesanPham))
     router.delete('/sanphams/:id', asyncHandler(sanPhamController.deletesanPham))
 
     router.get('/hangsanxuats', asyncHandler(hangSanXuatController.getHangSanXuats))
