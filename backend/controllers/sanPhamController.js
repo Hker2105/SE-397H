@@ -1,7 +1,8 @@
 import { Sequelize, where } from "sequelize"
 const {Op} = Sequelize;
 import db from "../models"
-import insertsanPhamRequest from '../dtos/requests/sanPham/insertsanPhamRequests'
+import insertsanPhamRequest from "../dtos/requests/sanPham/insertsanPhamRequests";
+import updatesanPhamRequest from "../dtos/requests/sanPham/updatesanPhamReqests";
 
 export async function getsanPham(req, res){
     //const sanPhams = await db.SANPHAM.findAll()
@@ -52,24 +53,25 @@ export async function getsanPhamById(req, res){
 }
 
 export async function insertsanPham(req, res){
-    // const {error} = insertsanPhamRequest.validate(req.body)
-    // if(error) {
-    //     res.status(400).json({
-    //         message: 'Xảy ra lỗi khi thêm sản phẩm',
-    //         error: error.details[0]?.message 
-    //     });
-    // }
-    // console.log(JSON.stringify(req.body))
     try {
+        const { error } = insertsanPhamRequest.validate(req.body)
+        if(error) {
+            return res.status(400).json({
+                message: 'Dữ liệu không hợp lệ',
+                error: error.details[0].message
+            })
+        }
+
         const data = Array.isArray(req.body) ? req.body : [req.body]
         
         for (const item of data) {
             const { MaSP, TenSP, MaDM, MaHang, MaNCC, MoTa, Gia, SoLuongTon, HinhAnh, UuDaiSV, NgayThem } = item
+            const ngayThemFormatted = new Date(NgayThem).toISOString().split('T')[0] // ✅ convert sang YYYY-MM-DD
             await db.sequelize.query(
                 `INSERT INTO sanphams (MaSP, TenSP, MaDM, MaHang, MaNCC, MoTa, Gia, SoLuongTon, HinhAnh, UuDaiSV, NgayThem, createdAt, updatedAt) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
                 {
-                    replacements: [MaSP, TenSP, MaDM, MaHang, MaNCC, MoTa, Gia, SoLuongTon, HinhAnh, UuDaiSV, NgayThem],
+                    replacements: [MaSP, TenSP, MaDM, MaHang, MaNCC, MoTa, Gia, SoLuongTon, HinhAnh, UuDaiSV, ngayThemFormatted],
                     type: db.Sequelize.QueryTypes.INSERT
                 }
             )
@@ -87,26 +89,37 @@ export async function insertsanPham(req, res){
 }
 
 export async function deletesanPham(req, res){
-    const { id } = req.params;
-        const deleted = await db.SANPHAM.destroy({ where: { id } });
+    try {
+        const { id } = req.params;
+        const deleted = await db.SANPHAM.destroy({ where: { MaSP: id } });
         if(deleted) {
-           return res.status(200).json({ message: 'Xoá Sản phẩm thành công' })
+            return res.status(200).json({ message: 'Xoá sản phẩm thành công' })
         } else {
-            return res.status(404).json({
-                message: 'Sản phẩm không tìm thấy'
-            })
+            return res.status(404).json({ message: 'Sản phẩm không tìm thấy' })
         }
+    } catch (error) {
+        res.status(500).json({ message: 'Xảy ra lỗi', error: error.message })
+    }
 }
 
 export async function updatesanPham(req, res){
-    const { id } = req.params;
-        const updatedsanPham = await db.SANPHAM.destroy({ where: { id } });
-        if(updatedsanPham[0] > 0) {
-           return res.status(200).json({ message: 'Update Sản phẩm thành công' })
-        } else {
-            return res.status(404).json({
-                message: 'Sản phẩm không tìm thấy'
+    try {
+        const { error } = updatesanPhamRequest.validate(req.body)
+        if(error) {
+            return res.status(400).json({
+                message: 'Dữ liệu không hợp lệ',
+                error: error.details[0].message
             })
         }
+        const id = req.params.id
+        const updated = await db.SANPHAM.update(req.body, { where: { MaSP: id } });
+        if(updated[0] > 0) {
+            return res.status(200).json({ message: 'Update sản phẩm thành công' })
+        } else {
+            return res.status(404).json({ message: 'Sản phẩm không tìm thấy' })
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Xảy ra lỗi', error: error.message })
+    }
 }
 
