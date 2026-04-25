@@ -7,7 +7,7 @@ import * as voucherController from './controllers/voucherController'
 import * as danhMucController from './controllers/danhMucController'
 import asyncHandler from './middlewares/asyncHandler'
 import validate from './middlewares/validate'
-import insertsanPhamRequest from './dtos/requests/insertsanPhamRequests'
+import insertsanPhamRequest from './dtos/requests/sanPham/insertsanPhamRequests'
 const router = express.Router()
 
 
