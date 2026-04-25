@@ -53,13 +53,29 @@ export async function insertHangSanXuat(req, res){
 }
 
 export async function deleteHangSanXuat(req, res){
-    res.status(200).json({
-        message: 'Xoá hãng sản xuất thành công'
-    })
+    try {
+        const { id } = req.params;
+        const deleted = await db.HANGSANXUAT.destroy({ where: { MaHang: id } });
+        if(deleted) {
+            return res.status(200).json({ message: 'Xoá hãng sản xuất thành công' })
+        } else {
+            return res.status(404).json({ message: 'Hãng sản xuất không tìm thấy' })
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Xảy ra lỗi', error: error.message })
+    }
 }
 
 export async function updateHangSanXuat(req, res){
-    res.status(200).json({
-        message: 'Update hãng sản xuất thành công'
-    })
+    try {
+        const { id } = req.params;
+        const updated = await db.HANGSANXUAT.update(req.body, { where: { MaHang: id } });
+        if(updated[0] > 0) {
+            return res.status(200).json({ message: 'Update hãng sản xuất thành công' })
+        } else {
+            return res.status(404).json({ message: 'Hãng sản xuất không tìm thấy' })
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Xảy ra lỗi', error: error.message })
+    }
 }
