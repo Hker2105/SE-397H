@@ -1,7 +1,6 @@
 import Joi from 'joi'
 
 const updateSanPhamSchema = Joi.object({
-    MaSP: Joi.string().optional(),
     TenSP: Joi.string().optional(),
     MaDM: Joi.string().optional(),
     MaHang: Joi.string().optional(),
@@ -18,7 +17,6 @@ const updateSanPhamSchema = Joi.object({
 
 class updatesanPhamRequest{
     constructor(data) {
-        this.MaSP = data.MaSP
         this.TenSP = data.TenSP
         this.MaDM = data.MaDM
         this.MaHang = data.MaHang
