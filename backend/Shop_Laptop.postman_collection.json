@@ -666,6 +666,33 @@
       ]
     },
     {
+      "name": "images",
+      "item": [
+        {
+          "name": "api/images/uploads",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{API_PREXFIX}}/images/uploads",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "images",
+                "uploads"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "name": "api/healthcheck",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
