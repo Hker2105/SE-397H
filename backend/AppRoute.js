@@ -5,15 +5,30 @@ import * as nhaCungCapController from './controllers/nhaCungCapController'
 import * as donHangController from './controllers/donHangController'
 import * as voucherController from './controllers/voucherController'
 import * as danhMucController from './controllers/danhMucController'
+import * as khachHangController from './controllers/khachHangController'
+import * as imageController from './controllers/imageController'
 import asyncHandler from './middlewares/asyncHandler'
 import validate from './middlewares/validate'
 import insertsanPhamRequest from './dtos/requests/sanPham/insertsanPhamRequests'
 import updatesanPhamRequest from './dtos/requests/sanPham/updatesanPhamReqests'
+import insertDonHangRequest from './dtos/requests/donHang/insertDonHangRequests'
+import updateVoucherRequest from './dtos/requests/voucher/updateVoucherRequests'
+import insertVoucherRequest from './dtos/requests/voucher/insertVoucherRequests'
+import updateDonHangRequest from './dtos/requests/donHang/updatedonHang'
+import insertKhachHangRequest from './dtos/requests/khachHang/insertkhachHangRequests'
+import updatekhachHangRequest from './dtos/requests/khachHang/updatekhachHangRequests'
+import upload from './middlewares/imageUpload'
 const router = express.Router()
 
 
 export function AppRoute(app) {
     //http:localhost:3000/sanphams
+    router.get('/khachhangs', asyncHandler(khachHangController.getKhachHangs))
+    router.get('/khachhangs/:id', asyncHandler(khachHangController.getKhachHangById))
+    router.post('/khachhangs', validate(insertKhachHangRequest),asyncHandler(khachHangController.insertKhachHang))
+    router.put('/sanphams/:id', validate(updatekhachHangRequest), asyncHandler(khachHangController.updateKhachHang))
+    router.delete('/sanphams/:id', asyncHandler(khachHangController.deleteKhachHang))
+
     router.get('/sanphams', asyncHandler(sanPhamController.getsanPham))
     router.get('/sanphams/:id', asyncHandler(sanPhamController.getsanPhamById))
     router.post('/sanphams', validate(insertsanPhamRequest),asyncHandler(sanPhamController.insertsanPham))
@@ -34,14 +49,14 @@ export function AppRoute(app) {
 
     router.get('/donhangs', asyncHandler(donHangController.getDonHangs))
     router.get('/donhangs/:id', asyncHandler(donHangController.getDonHangById))
-    router.post('/donhangs', asyncHandler(donHangController.insertDonHang))
-    router.put('/donhangs/:id', asyncHandler(donHangController.updateDonHang))
+    router.post('/donhangs', validate(insertDonHangRequest),asyncHandler(donHangController.insertDonHang))
+    router.put('/donhangs/:id', validate(updateDonHangRequest),asyncHandler(donHangController.updateDonHang))
     router.delete('/donhangs/:id', asyncHandler(donHangController.deleteDonHang))
 
     router.get('/vouchers', asyncHandler(voucherController.getVouchers))
     router.get('/vouchers/:id', asyncHandler(voucherController.getVoucherById))
-    router.post('/vouchers', asyncHandler(voucherController.insertVoucher))
-    router.put('/vouchers/:id', asyncHandler(voucherController.updateVoucher))
+    router.post('/vouchers', validate(insertVoucherRequest),asyncHandler(voucherController.insertVoucher))
+    router.put('/vouchers/:id', validate(updateVoucherRequest),asyncHandler(voucherController.updateVoucher))
     router.delete('/vouchers/:id', asyncHandler(voucherController.deleteVoucher))
 
     router.get('/danhmucs', asyncHandler(danhMucController.getDanhMucs))
@@ -49,6 +64,8 @@ export function AppRoute(app) {
     router.post('/danhmucs', asyncHandler(danhMucController.insertDanhMuc))
     router.put('/danhmucs/:id', asyncHandler(danhMucController.updateDanhMuc))
     router.delete('/danhmucs/:id', asyncHandler(danhMucController.deleteDanhMuc))
+
+    router.post('/images/uploads', upload.array('image', 5), asyncHandler(imageController.uploadImages))
 
     app.use('/api/', router)
 }
