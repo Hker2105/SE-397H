@@ -675,7 +675,30 @@
             "header": [],
             "body": {
               "mode": "formdata",
-              "formdata": []
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "e529130c-b007-4813-8283-a7cb9face8e4",
+                  "src": [
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/acer-aspire-5-a515.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/acer-swift-3-sf314.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/asus-rog-strix-g16-2024.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/asus-zenbook-14-ux425.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/dell-inspiron-15-3520.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/dell-xps-15-9530.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/hp-elitebook-840-g10.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/hp-spectre-x360-14.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/lenovo-ideapad-gaming-3.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/lenovo-thinkpad-x1-carbon.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/macbook-air-15-m2.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/macbook-pro-14-m3-pro.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/msi-modern-15-b12m.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/msi-titan-gt77.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/samsung-galaxy-book3-pro.jpg"
+                  ]
+                }
+              ]
             },
             "url": {
               "raw": "{{API_PREXFIX}}/images/uploads",
@@ -685,6 +708,31 @@
               "path": [
                 "images",
                 "uploads"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/images/:fileName",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{API_PREXFIX}}/images/asus-rog-strix-g16-2024.jpg",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "images",
+                "asus-rog-strix-g16-2024.jpg"
               ]
             }
           },
