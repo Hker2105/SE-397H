@@ -1,92 +1,97 @@
-/* Reset CSS cơ bản */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
-/* Đặt background màu xám nhạt cho body để làm nổi bật form màu trắng */
 body {
-    background-color: #f5f6f8;
+    background-color: #f4f5f7; 
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 
-/* Container chính (Cái thẻ form trắng) */
-.password-card {
+.auth-container {
     background-color: #ffffff;
-    width: 100%;
-    max-width: 450px;
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ nhàng */
-}
-
-/* Tiêu đề */
-.card-title {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 420px;
     text-align: center;
-    color: #222;
-    font-size: 26px;
-    font-weight: 500;
-    margin-bottom: 30px;
 }
 
-/* Nhóm các ô nhập liệu */
-.input-group {
-    margin-bottom: 20px;
-}
-
-/* Nhãn (Label) */
-.input-group label {
-    display: block;
-    color: #616e79; /* Màu xám đậm */
-    font-size: 15px;
+.auth-title {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
     font-weight: 600;
-    margin-bottom: 8px;
 }
 
-/* Ô nhập liệu (Input) */
-.input-group input {
+.auth-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #dcdfe3;
-    border-radius: 6px;
-    font-size: 15px;
-    color: #333;
-    transition: all 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
 }
 
-/* Chữ gợi ý mờ (Placeholder) */
-.input-group input::placeholder {
-    color: #9ba4ae;
-}
-
-/* Khi click vào ô nhập liệu */
-.input-group input:focus {
+.form-group input:focus {
+    border-color: #5cb85c; 
     outline: none;
-    border-color: #4caf50; /* Viền xanh lá */
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
 }
 
-/* Nút Submit */
 .btn-submit {
     width: 100%;
-    background-color: #52a955; /* Màu xanh lá như trong hình */
-    color: #ffffff;
     padding: 14px;
+    background-color: #4cae4c; 
+    color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-/* Khi di chuột vào nút */
 .btn-submit:hover {
-    background-color: #428e45;
+    background-color: #449d44;
+}
+
+.auth-links {
+    margin-top: 25px;
+}
+
+.auth-links a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
 }
