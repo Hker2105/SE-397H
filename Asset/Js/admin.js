@@ -1,17 +1,15 @@
-const menuItems = document.querySelectorAll('.menu-item');
-const btnProduct = document.getElementById('btn-product');
-const submenuProduct = document.getElementById('submenu-product');
+function toggleMenu(e, element){
+    e.preventDefault();
 
-menuItems.forEach(item => {
-    item.addEventListener('click', function() {
-        menuItems.forEach(i => i.classList.remove('active'));
-        this.classList.add('active');
+    const parent = element.parentElement;
 
-        if (this === btnProduct) {
-            const isOpen = submenuProduct.style.display === 'block';
-            submenuProduct.style.display = isOpen ? 'none' : 'block';
-        } else {
-            submenuProduct.style.display = 'none';
+    // đóng menu khác
+    document.querySelectorAll(".has-sub").forEach(item => {
+        if(item !== parent){
+            item.classList.remove("active");
         }
     });
-});
+
+    // mở / đóng menu hiện tại
+    parent.classList.toggle("active");
+}
