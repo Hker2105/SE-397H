@@ -65,7 +65,8 @@ export function AppRoute(app) {
     router.put('/danhmucs/:id', asyncHandler(danhMucController.updateDanhMuc))
     router.delete('/danhmucs/:id', asyncHandler(danhMucController.deleteDanhMuc))
 
-    router.post('/images/uploads', upload.array('image', 5), asyncHandler(imageController.uploadImages))
+    router.post('/images/uploads', upload.any(), asyncHandler(imageController.uploadImages))
+    router.get('/images/:fileName', asyncHandler(imageController.viewImage))
 
     app.use('/api/', router)
 }
