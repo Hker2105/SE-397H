@@ -72,22 +72,52 @@
 
     <!-- SIDEBAR -->
     <div class="sidebar">
-    <ul>
-        <li class="menu-item"><a href="#">Quản lý danh mục</a></li>
-        <li class="menu-item" id="btn-product">
-            <a href="#">Quản lý sản phẩm</a>
-            <ul class="submenu" id="submenu-product">
-                <li class="submenu-item"><a href="/Admin/product_management.html">Xem sản phẩm</a></li>
-                <li class="submenu-item"><a href="/Admin/add_product.html">Thêm mới sản phẩm</a></li>
-            </ul>
-        </li>
-        <li class="menu-item"><a href="#">Quản lý đánh giá</a></li>
-        <li class="menu-item"><a href="#">Quản lý đơn hàng</a></li>
-        <li class="menu-item"><a href="#">Thống kê</a></li>
-        <li class="menu-item"><a href="/Admin/customer_management.html">Quản lý tài khoản</a></li>
-        <li class="menu-item"><a href="#">Quản lý voucher</a></li>
-    </ul>
-</div>
+        <ul class="menu">
+
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">
+                    Quản lý danh mục
+                </a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/category.html">Xem danh mục</a></li>
+                    <li><a href="/Admin/add_category.html">Thêm mới danh mục</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Quản lý sản phẩm</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/product_management.html">Xem sản phẩm</a></li>
+                    <li><a href="/Admin/add_product.html">Thêm mới sản phẩm</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Quản lý đánh giá</a></li>
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Quản lý đơn hàng</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/order_await.html">Đơn chờ xét duyệt</a></li>
+                    <li><a href="/Admin/order_deliver.html">Đơn đang giao</a></li>
+                    <li><a href="/Admin/order_paid.html">Đơn đã thanh toán</a></li>
+                    <li><a href="/Admin/order_cancelled.html">Đơn đã huỷ</a></li>
+                </ul>
+            </li>
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Thống kê</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/statis_sales.html">Thống kê doanh thu</a></li>
+                    <li><a href="/Admin/statis_customer.html">khách hàng thân thiết</a></li>
+                </ul>
+            </li>
+            <li><a href="/Admin/customer_management.html">Quản lý tài khoản</a></li>
+            <li><a href="#">Quản lý voucher</a></li>
+
+        </ul>
+    </div>
+
 
     <!-- CONTENT -->
     <div class="content">
@@ -132,6 +162,6 @@
 
 
 </div>
-</body>
 <script src="/Asset/Js/admin.js"></script>
+</body>
 </html>
