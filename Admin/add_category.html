@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Asset/Css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Admin - Thêm mới danh mục</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header_left">
+            <div class="header-logo">
+                <img src="/Asset/img/logo_admin.jpg" alt="">
+            </div>
+            <div class="header-text">
+                <h1>Welcome Admin</h1>
+                <span>SHOP LAPTOP</span>
+            </div>
+        </div>
+        <div class="header_right">
+            <div class="avatar">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <span>Hello Admin</span>
+            <span class="divider">|</span>
+            <div class="header_right-logout">
+                <a href="#">
+                    Logout
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </header>  
+
+<nav class="navbar">
+    <ul>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-chart-area"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-circle-user"></i>
+                User Profile
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-lock"></i>
+                Change Password
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-inbox"></i>
+                Inbox
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/index.html">
+                <i class="fa-brands fa-elementor"></i>
+                Visit Website
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- MAIN -->
+<div class="main">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <ul class="menu">
+
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">
+                    Quản lý danh mục
+                </a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/category.html">Xem danh mục</a></li>
+                    <li><a href="/Admin/add_category.html">Thêm mới danh mục</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Quản lý sản phẩm</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/product_management.html">Xem sản phẩm</a></li>
+                    <li><a href="/Admin/add_product.html">Thêm mới sản phẩm</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Quản lý đánh giá</a></li>
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Quản lý đơn hàng</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/order_await.html">Đơn chờ xét duyệt</a></li>
+                    <li><a href="/Admin/order_deliver.html">Đơn đang giao</a></li>
+                    <li><a href="/Admin/order_paid.html">Đơn đã thanh toán</a></li>
+                    <li><a href="/Admin/order_cancelled.html">Đơn đã huỷ</a></li>
+                </ul>
+            </li>
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Thống kê</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/statis_sales.html">Thống kê doanh thu</a></li>
+                    <li><a href="/Admin/statis_customer.html">khách hàng thân thiết</a></li>
+                </ul>
+            </li>
+            <li><a href="/Admin/customer_management.html">Quản lý tài khoản</a></li>
+            <li><a href="#">Quản lý voucher</a></li>
+
+        </ul>
+    </div>
+
+
+    <!-- CONTENT -->
+    <div class="content page-category-add">
+        <div class="content-header">THÊM MỚI DANH MỤC</div>
+
+        <div class="form-wrapper">
+            <form class="category-form">
+
+                <div class="form-group">
+                    <label>Tên Danh Mục :</label>
+                    <input type="text" placeholder="Nhập Tên Danh Mục...">
+                </div>
+
+                <div class="form-group radio-group">
+                    <input type="radio" name="status" checked>
+                    <span>Mở</span>
+
+                    <input type="radio" name="status">
+                    <span>Khóa</span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn-save">Lưu</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+<script src="/Asset/Js/admin.js"></script>
+</body>
+</html>
