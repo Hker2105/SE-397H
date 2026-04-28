@@ -13,3 +13,4 @@ function toggleMenu(e, element){
     // mở / đóng menu hiện tại
     parent.classList.toggle("active");
 }
+
