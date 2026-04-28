@@ -30,12 +30,12 @@ export async function insertHangSanXuat(req, res){
         const data = Array.isArray(req.body) ? req.body : [req.body]
         
         for (const item of data) {
-            const { MaHang, TenHang, Mota } = item
+            const { MaHang, TenHang, MoTa } = item
             await db.sequelize.query(
-                `INSERT INTO hangsanxuats (MaHang, TenHang, Mota, createdAt, updatedAt) 
+                `INSERT INTO hangsanxuats (MaHang, TenHang, MoTa, createdAt, updatedAt) 
                  VALUES (?, ?, ?, NOW(), NOW())`,
                 {
-                    replacements: [MaHang, TenHang, Mota],
+                    replacements: [MaHang, TenHang, MoTa],
                     type: db.Sequelize.QueryTypes.INSERT
                 }
             )
