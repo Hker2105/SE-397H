@@ -4,7 +4,10 @@ import db from "../models";
 import insertDonHangRequest from '../dtos/requests/donHang/insertDonHangRequests';
 export async function getDonHangs(req, res){
     try {
-        const donHangs = await db.DONHANG.findAll();
+        const {page = 1, limit} = req.query;
+        const pageSize = limit ? parseInt(limit) : 10;
+        const offset = (page - 1) * pageSize;
+        const donHangs = await db.DONHANG.findAll({ limit: pageSize, offset });
         res.status(200).json({
             message: 'Lấy danh sách đơn hàng thành công',
             data: donHangs
