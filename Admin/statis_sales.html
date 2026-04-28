@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Asset/Css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Admin - Quản lý sản phẩm</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header_left">
+            <div class="header-logo">
+                <img src="/Asset/img/logo_admin.jpg" alt="">
+            </div>
+            <div class="header-text">
+                <h1>Welcome Admin</h1>
+                <span>SHOP LAPTOP</span>
+            </div>
+        </div>
+        <div class="header_right">
+            <div class="avatar">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <span>Hello Admin</span>
+            <span class="divider">|</span>
+            <div class="header_right-logout">
+                <a href="#">
+                    Logout
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </header>  
+
+<nav class="navbar">
+    <ul>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-chart-area"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-circle-user"></i>
+                User Profile
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-lock"></i>
+                Change Password
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-inbox"></i>
+                Inbox
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/index.html">
+                <i class="fa-brands fa-elementor"></i>
+                Visit Website
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- MAIN -->
+<div class="main">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <ul class="menu">
+
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">
+                    Quản lý danh mục
+                </a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/category.html">Xem danh mục</a></li>
+                    <li><a href="/Admin/add_category.html">Thêm mới danh mục</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Quản lý sản phẩm</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/product_management.html">Xem sản phẩm</a></li>
+                    <li><a href="/Admin/add_product.html">Thêm mới sản phẩm</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Quản lý đánh giá</a></li>
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Quản lý đơn hàng</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/order_await.html">Đơn chờ xét duyệt</a></li>
+                    <li><a href="/Admin/order_deliver.html">Đơn đang giao</a></li>
+                    <li><a href="/Admin/order_paid.html">Đơn đã thanh toán</a></li>
+                    <li><a href="/Admin/order_cancelled.html">Đơn đã huỷ</a></li>
+                </ul>
+            </li>
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Thống kê</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/statis_sales.html">Thống kê doanh thu</a></li>
+                    <li><a href="/Admin/statis_customer.html">khách hàng thân thiết</a></li>
+                </ul>
+            </li>
+            <li><a href="/Admin/customer_management.html">Quản lý tài khoản</a></li>
+            <li><a href="#">Quản lý voucher</a></li>
+
+        </ul>
+    </div>
+
+
+    <!-- CONTENT -->
+    <div class="content">
+        <div class="content-header">Thống kê sản phẩm</div>
+
+        <!-- BỘ LỌC -->
+        <div class="controls" style="align-items: center; padding: 15px;">
+            <div style="display: flex; align-items: center; gap: 10px; font-size: 16px;">
+                <label><b>Chọn loại bộ lọc:</b></label>
+                <select id="filterSelect" style="padding: 6px 10px; font-size: 16px;">
+                    <option value="all">Tất cả</option>
+                    <option value="gaming">Laptop Gaming</option>
+                    <option value="vanphong">Laptop Văn Phòng</option>
+                    <option value="sinhvien">Laptop Sinh Viên</option>
+                </select>
+                <button onclick="filter()" style="padding: 7px 20px; background: #4caf50; color: white; border: none; font-size: 16px; cursor: pointer;">Lọc</button>
+            </div>
+        </div>
+
+        <!-- THỐNG KÊ TỔNG -->
+        <div style="display: flex; gap: 20px; padding: 15px;">
+            <div style="flex: 1; background: white; border: 1px solid #ddd; border-radius: 4px; padding: 30px; text-align: center;">
+                <div style="font-size: 36px; font-weight: bold;" id="totalQty">0</div>
+                <div style="font-size: 16px; color: #666; margin-top: 8px;">Tổng số lượng đã bán</div>
+            </div>
+            <div style="flex: 1; background: white; border: 1px solid #ddd; border-radius: 4px; padding: 30px; text-align: center;">
+                <div style="font-size: 36px; font-weight: bold;" id="totalRevenue">0 VND</div>
+                <div style="font-size: 16px; color: #666; margin-top: 8px;">Tổng doanh thu</div>
+            </div>
+        </div>
+
+        <!-- BIỂU ĐỒ -->
+        <div style="padding: 15px;">
+            <div style="background: white; border: 1px solid #ddd; padding: 20px;">
+                <div style="text-align: center; font-size: 16px; color: #444; margin-bottom: 10px;">
+                    Các sản phẩm bán chạy nhất
+                </div>
+                <div style="display: none; gap: 20px; justify-content: center; margin-bottom: 15px;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <div style="width: 30px; height: 14px; background: #e74c3c;"></div>
+                        <span style="font-size: 14px;">Số lượng đã bán</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <div style="width: 30px; height: 14px; background: #2ecc71;"></div>
+                        <span style="font-size: 14px;">Doanh thu</span>
+                    </div>
+                </div>
+                <canvas id="chart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/Asset/Js/admin.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const data = {
+    labels: ['ASUS ROG', 'Dell XPS', 'Acer Aspire', 'MacBook Pro', 'Lenovo ThinkPad'],
+    sold: [30, 20, 50, 15, 25],
+    revenue: [52990000, 45990000, 12990000, 49990000, 38990000]
+};
+
+const ctx = document.getElementById('chart').getContext('2d');
+const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: data.labels,
+        datasets: [
+            {
+                label: 'Số lượng đã bán',
+                data: data.sold,
+                backgroundColor: '#e74c3c',
+                yAxisID: 'y'
+            },
+            {
+                label: 'Doanh thu (VND)',
+                data: data.revenue,
+                backgroundColor: '#2ecc71',
+                yAxisID: 'y1'
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: { position: 'left', title: { display: true, text: 'Số lượng' } },
+            y1: { position: 'right', title: { display: true, text: 'Doanh thu (VND)' }, grid: { drawOnChartArea: false } }
+        }
+    }
+});
+
+function filter() {
+    const total = data.sold.reduce((a, b) => a + b, 0);
+    const revenue = data.revenue.reduce((a, b) => a + b, 0);
+    document.getElementById('totalQty').textContent = total;
+    document.getElementById('totalRevenue').textContent = revenue.toLocaleString('vi-VN') + ' VND';
+}
+
+filter();
+</script>
+</body>
+</html>
