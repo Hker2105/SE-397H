@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Asset/Css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Admin - Quản lý sản phẩm</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header_left">
+            <div class="header-logo">
+                <img src="/Asset/img/logo_admin.jpg" alt="">
+            </div>
+            <div class="header-text">
+                <h1>Welcome Admin</h1>
+                <span>SHOP LAPTOP</span>
+            </div>
+        </div>
+        <div class="header_right">
+            <div class="avatar">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <span>Hello Admin</span>
+            <span class="divider">|</span>
+            <div class="header_right-logout">
+                <a href="#">
+                    Logout
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </header>  
+
+<nav class="navbar">
+    <ul>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-chart-area"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-circle-user"></i>
+                User Profile
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-lock"></i>
+                Change Password
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <i class="fa-solid fa-inbox"></i>
+                Inbox
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/index.html">
+                <i class="fa-brands fa-elementor"></i>
+                Visit Website
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- MAIN -->
+<div class="main">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <ul class="menu">
+
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">
+                    Quản lý danh mục
+                </a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/category.html">Xem danh mục</a></li>
+                    <li><a href="/Admin/add_category.html">Thêm mới danh mục</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Quản lý sản phẩm</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/product_management.html">Xem sản phẩm</a></li>
+                    <li><a href="/Admin/add_product.html">Thêm mới sản phẩm</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Quản lý đánh giá</a></li>
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Quản lý đơn hàng</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/order_await.html">Đơn chờ xét duyệt</a></li>
+                    <li><a href="/Admin/order_deliver.html">Đơn đang giao</a></li>
+                    <li><a href="/Admin/order_paid.html">Đơn đã thanh toán</a></li>
+                    <li><a href="/Admin/order_cancelled.html">Đơn đã huỷ</a></li>
+                </ul>
+            </li>
+            <li class="has-sub">
+                <a href="#" onclick="toggleMenu(event, this)">Thống kê</a>
+
+                <ul class="submenu">
+                    <li><a href="/Admin/statis_sales.html">Thống kê doanh thu</a></li>
+                    <li><a href="/Admin/statis_customer.html">khách hàng thân thiết</a></li>
+                </ul>
+            </li>
+            <li><a href="/Admin/customer_management.html">Quản lý tài khoản</a></li>
+            <li><a href="#">Quản lý voucher</a></li>
+
+        </ul>
+    </div>
+
+
+   <!-- CONTENT -->
+<div class="content">
+    <div class="content-header">Thống kê khách hàng thân thiết</div>
+
+    <!-- THỐNG KÊ TỔNG -->
+    <div style="display: flex; gap: 20px; padding: 15px;">
+        <div style="flex: 1; background: white; border: 1px solid #ddd; border-radius: 4px; padding: 30px; text-align: center;">
+            <div style="font-size: 36px; font-weight: bold;" id="totalCustomers">0</div>
+            <div style="font-size: 16px; color: #666; margin-top: 8px;">Tổng khách hàng</div>
+        </div>
+        <div style="flex: 1; background: white; border: 1px solid #ddd; border-radius: 4px; padding: 30px; text-align: center;">
+            <div style="font-size: 36px; font-weight: bold;" id="totalOrders">0</div>
+            <div style="font-size: 16px; color: #666; margin-top: 8px;">Tổng đơn hàng</div>
+        </div>
+        <div style="flex: 1; background: white; border: 1px solid #ddd; border-radius: 4px; padding: 30px; text-align: center;">
+            <div style="font-size: 36px; font-weight: bold;" id="totalSpent">0 VND</div>
+            <div style="font-size: 16px; color: #666; margin-top: 8px;">Tổng chi tiêu</div>
+        </div>
+    </div>
+
+    <!-- BIỂU ĐỒ -->
+    <div style="padding: 15px;">
+        <div style="background: white; border: 1px solid #ddd; padding: 20px;">
+            <div style="text-align: center; font-size: 16px; color: #444; margin-bottom: 10px;">
+                Số lượng đơn hàng
+            </div>
+            <div style="display: none; gap: 20px; justify-content: center; margin-bottom: 15px;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <div style="width: 30px; height: 14px; background: #e74c3c;"></div>
+                    <span style="font-size: 14px;">Số đơn hàng</span>
+                </div>
+            </div>
+            <canvas id="customerChart" height="300"></canvas>
+        </div>
+    </div>
+
+    <!-- BẢNG KHÁCH HÀNG THÂN THIẾT -->
+    <div style="padding: 15px;">
+        <div style="background: white; border: 1px solid #ddd; padding: 20px;">
+            <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #2b4f6b;">Top khách hàng thân thiết</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Số đơn hàng</th>
+                        <th>Tổng chi tiêu</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTable">
+                    <tr>
+                        <td>1</td>
+                        <td>Nguyễn Văn An</td>
+                        <td>nguyenvanan@gmail.com</td>
+                        <td>5</td>
+                        <td>120,000,000 VND</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Trần Thị Bích</td>
+                        <td>tranthib@gmail.com</td>
+                        <td>4</td>
+                        <td>98,000,000 VND</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lê Hoàng Cường</td>
+                        <td>lehoangcuong@gmail.com</td>
+                        <td>3</td>
+                        <td>75,000,000 VND</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Phạm Thị Dung</td>
+                        <td>phamthidung@gmail.com</td>
+                        <td>3</td>
+                        <td>60,000,000 VND</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Hoàng Văn Em</td>
+                        <td>hoangvanem@gmail.com</td>
+                        <td>2</td>
+                        <td>45,000,000 VND</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<script src="/Asset/Js/admin.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const customers = {
+    labels: ['Nguyễn Văn An', 'Trần Thị Bích', 'Lê Hoàng Cường', 'Phạm Thị Dung', 'Hoàng Văn Em'],
+    orders: [5, 4, 3, 3, 2],
+    spent: [120000000, 98000000, 75000000, 60000000, 45000000]
+};
+
+document.getElementById('totalCustomers').textContent = customers.labels.length;
+document.getElementById('totalOrders').textContent = customers.orders.reduce((a, b) => a + b, 0);
+document.getElementById('totalSpent').textContent = customers.spent.reduce((a, b) => a + b, 0).toLocaleString('vi-VN') + ' VND';
+
+const ctx = document.getElementById('customerChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: customers.labels,
+        datasets: [{
+            label: 'Số đơn hàng',
+            data: customers.orders,
+            backgroundColor: '#e74c3c'
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: { title: { display: true, text: 'Số lượng đơn hàng' }, beginAtZero: true }
+        }
+    }
+});
+</script>
+</body>
+</html>
