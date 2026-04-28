@@ -8,8 +8,8 @@ import argon2 from 'argon2';
 
 export async function getKhachHangs(req, res){
     try {
-        const {search = '', page = 1} = req.query;
-        const pageSize = 10;
+        const {search = '', page = 1, limit} = req.query;
+        const pageSize = limit ? parseInt(limit) : 10;
         const offset = (page - 1) * pageSize;
         let whereClause = {};
         if (search.trim() !== '') {
