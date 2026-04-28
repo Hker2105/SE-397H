@@ -123,35 +123,46 @@
         <div class="content-header">Add New Product</div>
 
         <div class="form-container">
-            <form>
+            <form id="addProductForm">
                 <div class="form-group">
                     <label>Tên sản phẩm</label>
-                    <input type="text" placeholder="Tên Sản Phẩm...">
-                </div>
-
-                <div class="form-group">
-                    <label>Đơn giá</label>
-                    <input type="text" placeholder="Đơn Giá...">
-                </div>
-
-                <div class="form-group">
-                    <label>Hình ảnh</label>
-                    <input type="file">
+                    <input type="text" id="TenSP" placeholder="Tên Sản Phẩm...">
                 </div>
 
                 <div class="form-group">
                     <label>Danh mục</label>
-                    <select>
-                        <option>Chọn Danh Mục</option>
+                    <select id="MaDM">
+                        <option value="">Chọn Danh Mục</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Trạng thái</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="status" checked> Mở</label>
-                        <label><input type="radio" name="status"> Khóa</label>
-                    </div>
+                    <label>Nhà sản xuất</label>
+                    <select id="MaHang">
+                        <option value="">Chọn Nhà sản xuất</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Nhà cung cấp</label>
+                    <select id="MaNCC">
+                        <option value="">Chọn Nhà cung cấp</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Đơn giá</label>
+                    <input type="number" id="Gia" placeholder="Đơn Giá...">
+                </div>
+
+                <div class="form-group">
+                    <label>Hình ảnh</label>
+                    <input type="file" id="HinhAnh" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label>Số lượng nhập</label>
+                    <input type="number" id="SoLuongTon" placeholder="Số lượng nhập vào kho...">
                 </div>
 
                 <div class="form-group">
@@ -159,7 +170,7 @@
                     <textarea id="editor"></textarea>
                 </div>
 
-                <button class="btn-save">Save</button>
+                <button type="submit" class="btn-save">Save</button>
             </form>
         </div>
     </div>
@@ -171,5 +182,6 @@
     });
 </script>
 <script src="/Asset/Js/admin.js"></script>
+<script src="/Asset/Js/admin_add-product.js"></script>
 </body>
 </html>
