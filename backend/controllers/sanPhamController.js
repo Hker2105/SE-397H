@@ -6,8 +6,8 @@ import updatesanPhamRequest from "../dtos/requests/sanPham/updatesanPhamReqests"
 
 export async function getsanPham(req, res){
     //const sanPhams = await db.SANPHAM.findAll()
-    const {search ='', page = 1} = req.query;
-    const pageSize = 10;
+    const {search = '', page = 1, limit} = req.query; 
+    const pageSize = limit ? parseInt(limit) : 10; 
     const offset = (page - 1) * pageSize;
     let whereClause = {};
     if (search.trim() !== '') {
