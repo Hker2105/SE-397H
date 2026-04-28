@@ -7,6 +7,7 @@ const khachHangSchema = Joi.object({
     MatKhau: Joi.string().min(6).required(),
     SoDienThoai: Joi.string().optional().allow(""),
     DiaChi: Joi.string().optional().allow(""),
+    GioiTinh: Joi.string().optional().allow(""),
     LoaiTaiKhoan: Joi.string().required(),
     NgayTao: Joi.date().required()
 })
@@ -20,6 +21,7 @@ class insertKhachHangRequest{
         //this.MatKhau = this.encryptPassword(data.MatKhau)
         this.SoDienThoai = data.SoDienThoai
         this.DiaChi = data.DiaChi
+        this.GioiTinh = data.GioiTinh
         this.LoaiTaiKhoan = data.LoaiTaiKhoan
         this.NgayTao = data.NgayTao
     }
