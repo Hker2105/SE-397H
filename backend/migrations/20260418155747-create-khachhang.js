@@ -24,6 +24,9 @@ module.exports = {
       DiaChi: {
         type: Sequelize.STRING
       },
+      GioiTinh: {
+        type: Sequelize.STRING
+      },
       LoaiTaiKhoan: {
         type: Sequelize.STRING
       },
