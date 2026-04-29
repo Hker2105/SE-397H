@@ -72,6 +72,8 @@ async function uploadImage(file) {
 
 document.getElementById('editProductForm').addEventListener('submit', async function(e) {
     e.preventDefault();
+    console.log('submit clicked') 
+    console.log('MaSP:', MaSP)
 
     const TenSP = document.getElementById('TenSP').value.trim();
     const MaDM = document.getElementById('MaDM').value;
@@ -81,6 +83,8 @@ document.getElementById('editProductForm').addEventListener('submit', async func
     const SoLuongTon = parseInt(document.getElementById('SoLuongTon').value);
     const MoTa = CKEDITOR.instances.editor.getData();
     const fileInput = document.getElementById('HinhAnh');
+
+    console.log('body:', {TenSP, MaDM, MaHang, MaNCC, Gia, SoLuongTon, MoTa})
 
     if (!TenSP || !MaDM || !MaHang || !MaNCC || !Gia || !SoLuongTon) {
         alert('Vui lòng điền đầy đủ thông tin!');
@@ -103,6 +107,7 @@ document.getElementById('editProductForm').addEventListener('submit', async func
         });
 
         const json = await res.json();
+        console.log('response:', json)
 
         if (res.ok) {
             alert('Cập nhật sản phẩm thành công!');
