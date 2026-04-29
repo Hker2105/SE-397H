@@ -26,8 +26,8 @@ export function AppRoute(app) {
     router.get('/khachhangs', asyncHandler(khachHangController.getKhachHangs))
     router.get('/khachhangs/:id', asyncHandler(khachHangController.getKhachHangById))
     router.post('/khachhangs', validate(insertKhachHangRequest),asyncHandler(khachHangController.insertKhachHang))
-    router.put('/sanphams/:id', validate(updatekhachHangRequest), asyncHandler(khachHangController.updateKhachHang))
-    router.delete('/sanphams/:id', asyncHandler(khachHangController.deleteKhachHang))
+    router.put('/khachhangs/:id', validate(updatekhachHangRequest), asyncHandler(khachHangController.updateKhachHang))
+    router.delete('/khachhangs/:id', asyncHandler(khachHangController.deleteKhachHang))
 
     router.get('/sanphams', asyncHandler(sanPhamController.getsanPham))
     router.get('/sanphams/:id', asyncHandler(sanPhamController.getsanPhamById))
