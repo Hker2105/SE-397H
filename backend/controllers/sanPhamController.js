@@ -104,13 +104,15 @@ export async function deletesanPham(req, res){
 
 export async function updatesanPham(req, res){
     try {
-        const { error } = updatesanPhamRequest.validate(req.body)
-        if(error) {
-            return res.status(400).json({
-                message: 'Dữ liệu không hợp lệ',
-                error: error.details[0].message
-            })
-        }
+        // console.log('body:', req.body)
+        // const { error } = updatesanPhamRequest.validate(req.body)
+        // if(error) {
+        //     console.log('error:', error.details)
+        //     return res.status(400).json({
+        //         message: 'Dữ liệu không hợp lệ',
+        //         error: error.details[0].message
+        //     })
+        // }
         const id = req.params.id
         const updated = await db.SANPHAM.update(req.body, { where: { MaSP: id } });
         if(updated[0] > 0) {
