@@ -1,6 +1,7 @@
 const API = 'http://localhost:3000/api';
 let allData = [];
 let khachHangMap = {};
+let sanPhamMap = {};
 
 async function loadKhachHang() {
     const res = await fetch(`${API}/khachhangs?limit=100`);
@@ -10,9 +11,18 @@ async function loadKhachHang() {
     });
 }
 
+async function loadSanPham() {
+    const res = await fetch(`${API}/sanphams?limit=100`);
+    const json = await res.json();
+    (json.data || []).forEach(item => {
+        sanPhamMap[item.MaSP] = item;
+    });
+}
+
 async function loadDonHang() {
     try {
         await loadKhachHang();
+        await loadSanPham();
         const res = await fetch(`${API}/donhangs?limit=100`);
         const json = await res.json();
         allData = json.data || [];
@@ -27,23 +37,32 @@ function renderTable(data) {
     const tbody = document.getElementById('order-body');
     if (!tbody) return;
     if (data.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center">Không có dữ liệu</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="11" style="text-align:center">Không có dữ liệu</td></tr>';
         return;
     }
     tbody.innerHTML = data.map((item, i) => {
         const kh = khachHangMap[item.MaKhachHang] || {};
+        const sp = sanPhamMap[item.MaSP] || {};
+        const thaoTac = item.TinhTrang === 'Chờ xác nhận'
+            ? `<b><a href="#" onclick="xacNhanDonHang('${item.MaDH}')" style="color:green">Xác nhận</a></b>`
+            : `<b><a href="#" onclick="deleteDonHang('${item.MaDH}')" style="color:#000">Delete</a></b>`;
         return `
         <tr>
             <td>${i + 1}</td>
             <td>${kh.HoTen || item.MaKhachHang}</td>
+            <td>${sp.TenSP || item.MaSP || ''}</td>
+            <td>${item.DonGia ? item.DonGia.toLocaleString('vi-VN') + ' VND' : ''}</td>
+            <td>
+                <img src="http://localhost:3000/uploads/${sp.HinhAnh || ''}" 
+                     style="width:50px; height:50px; object-fit:cover;"
+                     onerror="this.src='/Asset/img/no-image.png'">
+            </td>
             <td>${item.NgayDat ? item.NgayDat.split('T')[0] : ''}</td>
             <td>${kh.DiaChi || ''}</td>
             <td>${kh.SoDienThoai || ''}</td>
             <td>${item.GhiChu || ''}</td>
             <td>${item.TinhTrang}</td>
-            <td>
-                <b><a href="#" onclick="deleteDonHang('${item.MaDH}')" style="color:#000">Delete</a></b>
-            </td>
+            <td>${thaoTac}</td>
         </tr>
         `
     }).join('');
@@ -55,7 +74,34 @@ function updateFooter(shown, total) {
     if (footer) footer.textContent = `Showing 1 to ${shown} of ${total} entries`;
 }
 
-// Filter theo tình trạng
+async function xacNhanDonHang(id) {
+    if (!confirm('Xác nhận đơn hàng này?')) return;
+    try {
+        const res = await fetch(`${API}/donhangs/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ TinhTrang: 'Đang giao' })
+        });
+        const json = await res.json();
+        alert(json.message);
+        loadDonHang();
+    } catch (err) {
+        alert('Xác nhận thất bại!');
+    }
+}
+
+async function deleteDonHang(id) {
+    if (!confirm('Bạn có chắc muốn xoá đơn hàng này?')) return;
+    try {
+        const res = await fetch(`${API}/donhangs/${id}`, { method: 'DELETE' });
+        const json = await res.json();
+        alert(json.message);
+        loadDonHang();
+    } catch (err) {
+        alert('Xoá thất bại!');
+    }
+}
+
 const selectFilter = document.getElementById('filterSelect');
 if (selectFilter) {
     selectFilter.addEventListener('change', function() {
@@ -77,31 +123,20 @@ if (selectFilter) {
     });
 }
 
-// Search
 const searchInput = document.querySelector('.controls input');
 if (searchInput) {
     searchInput.addEventListener('input', function() {
         const keyword = this.value.toLowerCase();
         const filtered = allData.filter(item => {
             const kh = khachHangMap[item.MaKhachHang] || {};
+            const sp = sanPhamMap[item.MaSP] || {};
             return (kh.HoTen && kh.HoTen.toLowerCase().includes(keyword)) ||
+                   (sp.TenSP && sp.TenSP.toLowerCase().includes(keyword)) ||
                    item.TinhTrang.toLowerCase().includes(keyword) ||
                    (item.GhiChu && item.GhiChu.toLowerCase().includes(keyword));
         });
         renderTable(filtered);
     });
-}
-
-async function deleteDonHang(id) {
-    if (!confirm('Bạn có chắc muốn xoá đơn hàng này?')) return;
-    try {
-        const res = await fetch(`${API}/donhangs/${id}`, { method: 'DELETE' });
-        const json = await res.json();
-        alert(json.message);
-        loadDonHang();
-    } catch (err) {
-        alert('Xoá thất bại!');
-    }
 }
 
 if (document.getElementById('order-body')) {
