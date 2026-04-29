@@ -30,7 +30,7 @@ class updatesanPhamRequest{
     }
 
     static validate(data){
-        return updateSanPhamSchema.validate(data)
+        return updateSanPhamSchema.validate(data, { allowUnknown: true })
     }
 }
 
