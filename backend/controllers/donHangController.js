@@ -79,14 +79,7 @@ export async function deleteDonHang(req, res){
 
 export async function updateDonHang(req, res){
     try {
-        const { error } = insertDonHangRequest.validate(req.body)
-        if(error) {
-            return res.status(400).json({
-                message: 'Dữ liệu không hợp lệ',
-                error: error.details[0].message
-            })
-        }
-        const id = req.params.id
+        const { id } = req.params;
         const updated = await db.DONHANG.update(req.body, { where: { MaDH: id } });
         if(updated[0] > 0) {
             return res.status(200).json({ message: 'Update đơn hàng thành công' })
