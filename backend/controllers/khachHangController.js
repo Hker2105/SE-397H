@@ -130,3 +130,29 @@ export async function updateKhachHang(req, res){
         res.status(500).json({ message: 'Xảy ra lỗi', error: error.message })
     }
 }
+
+import argon2 from 'argon2'
+
+export async function loginKhachHang(req, res){
+    try {
+        const { Email, MatKhau } = req.body
+
+        const khachHang = await db.KHACHHANG.findOne({ where: { Email } })
+        if (!khachHang) {
+            return res.status(401).json({ message: 'Email không tồn tại' })
+        }
+
+        const isValid = await argon2.verify(khachHang.MatKhau, MatKhau)
+        if (!isValid) {
+            return res.status(401).json({ message: 'Mật khẩu không đúng' })
+        }
+
+        const { MatKhau: _, ...data } = khachHang.toJSON()
+        res.status(200).json({
+            message: 'Đăng nhập thành công',
+            data
+        })
+    } catch (error) {
+        res.status(500).json({ message: 'Xảy ra lỗi', error: error.message })
+    }
+}
