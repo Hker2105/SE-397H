@@ -40,8 +40,8 @@ export async function insertThanhToan(req, res){
             const { MaTT, MaDH, HinhThuc, NgayThanhToan, TrangThai} = item
             
             await db.sequelize.query(
-                `INSERT INTO donhangs (MaTT, MaDH, HinhThuc, NgayThanhToan, createdAt, updatedAt) 
-                VALUES (?, ?, ?, ?, NOW(), NOW())`,
+                `INSERT INTO thanhtoans (MaTT, MaDH, HinhThuc, NgayThanhToan, TrangThai, createdAt, updatedAt) 
+                VALUES (?, ?, ?, ?, ?, NOW(), NOW())`,
                 {
                     replacements: [MaTT, MaDH, HinhThuc, NgayThanhToan, TrangThai],
                     type: db.Sequelize.QueryTypes.INSERT
