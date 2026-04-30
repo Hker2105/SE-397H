@@ -27,8 +27,6 @@ function renderTable(data) {
             <td>${item.TenDanhMuc}</td>
             <td>Mở</td>
             <td>
-                <b><a href="/Admin/edit_category.html?id=${item.MaDM}" style="color:#000">Edit</a></b>
-                ||
                 <b><a href="#" onclick="deleteDanhMuc('${item.MaDM}')" style="color:#000">Delete</a></b>
             </td>
         </tr>
