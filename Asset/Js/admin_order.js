@@ -83,8 +83,12 @@ async function xacNhanDonHang(id) {
             body: JSON.stringify({ TinhTrang: 'Đang giao' })
         });
         const json = await res.json();
-        alert(json.message);
-        loadDonHang();
+        if (res.ok) {
+            alert('Xác nhận đơn hàng thành công!');
+            loadDonHang(); 
+        } else {
+            alert('Lỗi: ' + json.message);
+        }
     } catch (err) {
         alert('Xác nhận thất bại!');
     }
