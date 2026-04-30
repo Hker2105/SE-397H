@@ -131,8 +131,6 @@ export async function updateKhachHang(req, res){
     }
 }
 
-import argon2 from 'argon2'
-
 export async function loginKhachHang(req, res){
     try {
         const { Email, MatKhau } = req.body
