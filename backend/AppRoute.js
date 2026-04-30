@@ -32,6 +32,7 @@ export function AppRoute(app) {
     router.post('/khachhangs', validate(insertKhachHangRequest),asyncHandler(khachHangController.insertKhachHang))
     router.put('/khachhangs/:id', validate(updatekhachHangRequest), asyncHandler(khachHangController.updateKhachHang))
     router.delete('/khachhangs/:id', asyncHandler(khachHangController.deleteKhachHang))
+    router.post('/khachhangs/login', asyncHandler(khachHangController.loginKhachHang))
 
     router.get('/sanphams', asyncHandler(sanPhamController.getsanPham))
     router.get('/sanphams/:id', asyncHandler(sanPhamController.getsanPhamById))
