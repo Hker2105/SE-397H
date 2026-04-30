@@ -10,6 +10,7 @@ import * as imageController from './controllers/imageController'
 import * as lienHeHoTroController from './controllers/lienHeHoTroController'
 import * as danhGiaController from './controllers/danhGiaController'
 import * as thanhToanController from './controllers/thanhToanController'
+import * as gioHangController from './controllers/gioHangController'
 import asyncHandler from './middlewares/asyncHandler'
 import validate from './middlewares/validate'
 import insertsanPhamRequest from './dtos/requests/sanPham/insertsanPhamRequests'
@@ -84,6 +85,10 @@ export function AppRoute(app) {
     router.get('/thanhtoans', asyncHandler(thanhToanController.getThanhToans))
     router.get('/thanhtoans/:id', asyncHandler(thanhToanController.getThanhToanById))
     router.post('/thanhtoans', asyncHandler(thanhToanController.insertThanhToan))
+
+    router.get('/giohangs', asyncHandler(gioHangController.getGioHangs))
+    router.post('/giohangs', asyncHandler(gioHangController.insertGioHang))
+    router.delete('/giohangs/:id', asyncHandler(gioHangController.deleteGioHang))
 
     app.use('/api/', router)
 }
