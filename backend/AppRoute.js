@@ -7,6 +7,9 @@ import * as voucherController from './controllers/voucherController'
 import * as danhMucController from './controllers/danhMucController'
 import * as khachHangController from './controllers/khachHangController'
 import * as imageController from './controllers/imageController'
+import * as lienHeHoTroController from './controllers/lienHeHoTroController'
+import * as danhGiaController from './controllers/danhGiaController'
+import * as thanhToanController from './controllers/thanhToanController'
 import asyncHandler from './middlewares/asyncHandler'
 import validate from './middlewares/validate'
 import insertsanPhamRequest from './dtos/requests/sanPham/insertsanPhamRequests'
@@ -67,6 +70,20 @@ export function AppRoute(app) {
 
     router.post('/images/uploads', upload.any(), asyncHandler(imageController.uploadImages))
     router.get('/images/:fileName', asyncHandler(imageController.viewImage))
+
+    router.get('/lienhehotros', asyncHandler(lienHeHoTroController.getLienHeHoTro))
+    router.get('/lienhehotros/:id', asyncHandler(lienHeHoTroController.getLienHeHoTroById))
+    router.post('/lienhehotros', asyncHandler(lienHeHoTroController.insertLienHeHoTro))
+    router.delete('/lienhehotros/:id', asyncHandler(lienHeHoTroController.deleteLienHeHoTro))
+
+    router.get('/danhgias', asyncHandler(danhGiaController.getDanhGias))
+    router.get('/danhgias/:id', asyncHandler(danhGiaController.getDanhGiaById))
+    router.post('/danhgias', asyncHandler(danhGiaController.insertDanhGia))
+    router.delete('/danhgias/:id', asyncHandler(danhGiaController.deleteDanhGia))
+
+    router.get('/thanhtoans', asyncHandler(thanhToanController.getThanhToans))
+    router.get('/thanhtoans/:id', asyncHandler(thanhToanController.getThanhToanById))
+    router.post('/thanhtoans', asyncHandler(thanhToanController.insertThanhToan))
 
     app.use('/api/', router)
 }
