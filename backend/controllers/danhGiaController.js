@@ -40,7 +40,7 @@ export async function insertDanhGia(req, res){
             const {MaDG, MaKhachHang, MaSP, NoiDung, Diem, NgayDG} = item
             
             await db.sequelize.query(
-                `INSERT INTO lienhehotros (MaDG, MaKhachHang, MaSP, NoiDung, Diem, NgayDG, createdAt, updatedAt) 
+                `INSERT INTO danhgias (MaDG, MaKhachHang, MaSP, NoiDung, Diem, NgayDG, createdAt, updatedAt) 
                 VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())`,
                 {
                     replacements: [MaDG, MaKhachHang, MaSP, NoiDung, Diem, NgayDG],
