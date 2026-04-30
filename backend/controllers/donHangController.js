@@ -40,7 +40,7 @@ export async function insertDonHang(req, res){
         for (const item of data) {
             const { MaDH, MaKhachHang, MaVC, SoLuong, DonGia, NgayDat, TongTien, TinhTrang, GhiChu } = item
             const ngayDatFormatted = new Date(NgayDat).toISOString().split('T')[0]
-            const maVCValue = MaVC && MaVC.trim() !== '' ? MaVC : null // ✅ convert "" thành null
+            const maVCValue = MaVC && MaVC.trim() !== '' ? MaVC : null 
             
             await db.sequelize.query(
                 `INSERT INTO donhangs (MaDH, MaKhachHang, MaVC, SoLuong, DonGia, NgayDat, TongTien, TinhTrang, GhiChu, createdAt, updatedAt) 
