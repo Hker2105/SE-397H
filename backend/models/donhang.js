@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       DONHANG.belongsTo(models.VOUCHER,{
         foreignKey: 'MaVC'
       })
+      DONHANG.belongsTo(models.SANPHAM, { 
+        foreignKey: 'MaSP' 
+      })
     }
   }
   DONHANG.init({
@@ -26,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     MaKhachHang: DataTypes.STRING,
     MaVC: DataTypes.STRING,
+    MaSP: DataTypes.STRING,
     SoLuong: DataTypes.INTEGER,
     DonGia: DataTypes.INTEGER,
     NgayDat: DataTypes.DATE,
