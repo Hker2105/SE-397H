@@ -1,7 +1,6 @@
-const API = 'http://localhost:3000/api';
+const API = 'http://127.0.0.1:3000/api';
 
 async function loadOptions() {
-    // Load danh mục
     const dmRes = await fetch(`${API}/danhmucs`);
     const dmJson = await dmRes.json();
     const dmSelect = document.getElementById('MaDM');
@@ -9,7 +8,6 @@ async function loadOptions() {
         dmSelect.innerHTML += `<option value="${item.MaDM}">${item.TenDanhMuc}</option>`
     });
 
-    // Load hãng sản xuất
     const hangRes = await fetch(`${API}/hangsanxuats`);
     const hangJson = await hangRes.json();
     const hangSelect = document.getElementById('MaHang');
@@ -17,7 +15,6 @@ async function loadOptions() {
         hangSelect.innerHTML += `<option value="${item.MaHang}">${item.TenHang}</option>`
     });
 
-    // Load nhà cung cấp
     const nccRes = await fetch(`${API}/nhacungcaps`);
     const nccJson = await nccRes.json();
     const nccSelect = document.getElementById('MaNCC');
@@ -46,7 +43,7 @@ async function uploadImage(file) {
         body: formData
     });
     const json = await res.json();
-    return json.files[0]; // tên file đã upload
+    return json.files[0]; 
 }
 
 document.getElementById('addProductForm').addEventListener('submit', async function(e) {
@@ -67,7 +64,6 @@ document.getElementById('addProductForm').addEventListener('submit', async funct
     }
 
     try {
-        // Upload ảnh trước
         let HinhAnh = '';
         if (fileInput.files.length > 0) {
             HinhAnh = await uploadImage(fileInput.files[0]);
