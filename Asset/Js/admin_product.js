@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api';
+const API = 'http://127.0.0.1:3000/api';
 let allData = [];
 let danhMucMap = {}; 
 
@@ -37,7 +37,7 @@ function renderTable(data) {
             <td>${item.TenSP}</td>
             <td>${item.Gia.toLocaleString('vi-VN')} VND</td>
             <td>
-                <img src="http://localhost:3000/uploads/${item.HinhAnh}" 
+                <img src="http://127.0.0.1:3000/uploads/${item.HinhAnh}" 
                      alt="${item.TenSP}" 
                      style="width:60px; height:60px; object-fit:cover;"
                      onerror="this.src='/Asset/img/no-image.png'">
