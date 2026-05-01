@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api';
+const API = 'http://127.0.0.1:3000/api';
 
 async function getNextMaKhachHang() {
     const res = await fetch(`${API}/khachhangs?limit=100`);
@@ -22,13 +22,11 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     const MatKhau = document.querySelector('input[name="password"]').value;
     const repassword = document.querySelector('input[name="repassword"]').value;
 
-    // Gộp địa chỉ
     const a1 = document.querySelector('input[name="address1"]').value.trim();
     const a2 = document.querySelector('input[name="address2"]').value.trim();
     const a3 = document.querySelector('input[name="address3"]').value.trim();
     const DiaChi = [a1, a2, a3].filter(a => a !== '').join(', ');
 
-    // Validate
     if (!HoTen || !Email || !MatKhau) {
         alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
         return;
