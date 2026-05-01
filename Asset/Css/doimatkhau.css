@@ -94,3 +94,25 @@ body {
 .back-index:hover {
     text-decoration: underline;
 }
+
+.password-box{
+    position: relative;
+}
+
+.password-box input{
+    width: 100%;
+    padding-right: 45px;
+}
+
+.password-box i{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+.password-box i:hover{
+    color: black;
+}
