@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thay đổi mật khẩu</title>
     <link rel="stylesheet" href="/Asset/Css/doimatkhau.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -14,17 +15,26 @@
         <form action="#">
             <div class="input-group">
                 <label for="old-password">Mật khẩu cũ</label>
-                <input type="password" id="old-password" placeholder="Nhập mật khẩu cũ...">
+                <div class="password-box">
+                    <input type="password" id="old-password" placeholder="Nhập mật khẩu cũ...">
+                    <i class="fa-solid fa-eye" id="eye-old"></i>
+                </div>
             </div>
 
             <div class="input-group">
                 <label for="new-password">Mật khẩu mới</label>
-                <input type="password" id="new-password" placeholder="Nhập mật khẩu mới...">
+               <div class="password-box">
+                    <input type="password" id="new-password" placeholder="Nhập mật khẩu mới...">
+                    <i class="fa-solid fa-eye" id="eye-new"></i>
+                </div>
             </div>
 
             <div class="input-group">
                 <label for="confirm-password">Nhập lại mật khẩu mới</label>
-                <input type="password" id="confirm-password" placeholder="Nhập lại mật khẩu mới...">
+                <div class="password-box">
+                    <input type="password" id="confirm-password" placeholder="Nhập lại mật khẩu mới...">
+                    <i class="fa-solid fa-eye" id="eye-confirm"></i>
+                </div>
             </div>
 
             <button type="submit" class="btn-submit">Thay đổi mật khẩu</button>
@@ -32,6 +42,6 @@
             <a href="/Owner/index.html" class="back-index">Quay lại trang chủ</a>
         </form>
     </div>
-
+<script src="/Asset/Js/owner_doimatkhau.js"></script>
 </body>
 </html>
