@@ -7,7 +7,10 @@ import cors from 'cors'
 dotenv.config()
 
 const app = express()
-app.use(cors())
+app.use(cors({
+    origin: '*',
+    credentials: true
+}))
 app.use(express.json())
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 app.use(express.urlencoded({extended: true})) 
