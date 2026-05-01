@@ -85,3 +85,19 @@ document.querySelector('.login-btn').addEventListener('click', async function() 
         console.error(err);
     }
 });
+
+const Password = document.getElementById("password");
+
+const eye = document.getElementById("eye");
+
+function togglePassword(input, icon) {
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        input.type = "password";
+        icon.classList.replace("fa-eye-slash", "fa-eye");
+    }
+}
+
+eye.onclick = () => togglePassword(Password, eye);
