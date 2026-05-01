@@ -326,6 +326,19 @@ body {
     color: #333;
 }
 
+.login-input-group i{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+.password-box i:hover{
+    color: black;
+}
+
 .login-input-group input::placeholder {
     color: #999;
 }
