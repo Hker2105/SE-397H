@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: mysql:3306
--- Thời gian đã tạo: Th4 29, 2026 lúc 10:43 AM
+-- Thời gian đã tạo: Th5 01, 2026 lúc 07:21 AM
 -- Phiên bản máy phục vụ: 9.6.0
 -- Phiên bản PHP: 8.3.26
 
@@ -37,6 +37,22 @@ CREATE TABLE `danhgias` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `danhgias`
+--
+
+INSERT INTO `danhgias` (`MaDG`, `MaKhachHang`, `MaSP`, `NoiDung`, `Diem`, `NgayDG`, `createdAt`, `updatedAt`) VALUES
+('DG001', 'KH0000001', 'SP001', 'Laptop chạy rất mượt, hiệu năng tốt cho công việc và học tập.', 5, '2026-04-21 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
+('DG002', 'KH0000002', 'SP002', 'Máy thiết kế đẹp, pin dùng khá lâu.', 5, '2026-04-22 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
+('DG003', 'KH0000003', 'SP003', 'Laptop hoạt động ổn định nhưng quạt hơi ồn khi chơi game.', 4, '2026-04-22 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
+('DG004', 'KH0000004', 'SP004', 'Màn hình sắc nét nhưng loa nghe ở mức trung bình.', 3, '2026-04-23 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
+('DG005', 'KH0000005', 'SP005', 'Bàn phím gõ rất êm, phù hợp dân văn phòng.', 5, '2026-04-24 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
+('DG006', 'KH0000006', 'SP006', 'Máy hơi nóng sau khi sử dụng liên tục nhiều giờ.', 2, '2026-04-25 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
+('DG007', 'KH0000007', 'SP007', 'Giá hợp lý, cấu hình tốt trong tầm giá.', 4, '2026-04-26 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
+('DG008', 'KH0000008', 'SP008', 'Laptop có lỗi nhỏ ở touchpad nhưng được hỗ trợ nhanh.', 4, '2026-04-27 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
+('DG009', 'KH0000009', 'SP009', 'Hiệu năng chưa như mong đợi, hơi lag khi mở nhiều ứng dụng.', 2, '2026-04-28 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
+('DG010', 'KH0000010', 'SP010', 'Rất hài lòng, máy đẹp và sử dụng ổn định.', 5, '2026-04-29 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03');
 
 -- --------------------------------------------------------
 
@@ -92,20 +108,20 @@ INSERT INTO `donhangs` (`MaDH`, `MaKhachHang`, `MaVC`, `MaSP`, `SoLuong`, `DonGi
 ('DH0000001', 'KH0000001', 'VC0000001', 'SP005', 1, 52990000, '2026-01-15 00:00:00', 52940000, 'Đã giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000002', 'KH0000002', NULL, 'SP004', 2, 45990000, '2026-01-20 00:00:00', 91980000, 'Đã giao', 'Giao nhanh', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000003', 'KH0000003', 'VC0000002', 'SP002', 1, 12990000, '2026-01-25 00:00:00', 12890000, 'Đã giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
-('DH0000004', 'KH0000004', NULL, 'SP005', 1, 49990000, '2026-02-01 00:00:00', 49990000, 'Đã giao', 'Gọi trước khi giao', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
+('DH0000004', 'KH0000004', NULL, 'SP005', 1, 49990000, '2026-02-01 00:00:00', 49990000, 'Chờ xác nhận', 'Gọi trước khi giao', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000005', 'KH0000005', 'VC0000003', 'SP003', 1, 38990000, '2026-02-05 00:00:00', 38790000, 'Đã giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000006', 'KH0000006', NULL, 'SP007', 1, 42990000, '2026-02-10 00:00:00', 42990000, 'Đã giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
-('DH0000007', 'KH0000007', 'VC0000004', 'SP008', 1, 89990000, '2026-02-15 00:00:00', 89490000, 'Đã giao', 'Hàng dễ vỡ', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
+('DH0000007', 'KH0000007', 'VC0000004', 'SP008', 1, 89990000, '2026-02-15 00:00:00', 89490000, 'Chờ xác nhận', 'Hàng dễ vỡ', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000008', 'KH0000008', NULL, 'SP009', 1, 32990000, '2026-02-20 00:00:00', 32990000, 'Đã giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000009', 'KH0000009', 'VC0000005', 'SP010', 2, 16990000, '2026-02-25 00:00:00', 33680000, 'Đã giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
-('DH0000010', 'KH0000010', NULL, 'SP011', 1, 28990000, '2026-03-01 00:00:00', 28990000, 'Đã giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
+('DH0000010', 'KH0000010', NULL, 'SP011', 1, 28990000, '2026-03-01 00:00:00', 28990000, 'Đang giao', '', '2026-04-28 20:26:57', '2026-04-30 13:09:05'),
 ('DH0000011', 'KH0000011', 'VC0000006', 'SP006', 1, 14990000, '2026-03-05 00:00:00', 14840000, 'Đã giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000012', 'KH0000012', NULL, 'SP009', 1, 32990000, '2026-03-10 00:00:00', 32990000, 'Đang giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000013', 'KH0000013', 'VC0000007', 'SP013', 1, 9990000, '2026-03-12 00:00:00', 8990000, 'Đang giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000014', 'KH0000014', NULL, 'SP014', 1, 22990000, '2026-03-15 00:00:00', 22990000, 'Đang giao', 'Giao buổi sáng', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000015', 'KH0000015', 'VC0000008', 'SP015', 1, 18990000, '2026-03-18 00:00:00', 18960000, 'Đang giao', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
 ('DH0000016', 'KH0000016', NULL, 'SP001', 2, 52990000, '2026-03-20 00:00:00', 105980000, 'Chờ xác nhận', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
-('DH0000017', 'KH0000017', 'VC0000009', 'SP004', 1, 45990000, '2026-03-22 00:00:00', 45490000, 'Chờ xác nhận', '', '2026-04-28 20:26:57', '2026-04-28 20:26:57'),
+('DH0000017', 'KH0000017', 'VC0000009', 'SP004', 1, 45990000, '2026-03-22 00:00:00', 45490000, 'Đang giao', '', '2026-04-28 20:26:57', '2026-04-30 03:15:55'),
 ('DH0000018', 'KH0000018', NULL, 'SP002', 1, 12990000, '2026-03-25 00:00:00', 12990000, 'Chờ xác nhận', 'Giao cuối tuần', '2026-04-28 20:26:57', '2026-04-28 20:26:57');
 
 -- --------------------------------------------------------
@@ -123,6 +139,32 @@ CREATE TABLE `giohangs` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `giohangs`
+--
+
+INSERT INTO `giohangs` (`MaGH`, `MaKhachHang`, `MaSP`, `NgayTao`, `SoLuong`, `createdAt`, `updatedAt`) VALUES
+('GH001', 'KH0000001', 'SP001', '2026-04-01 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH002', 'KH0000002', 'SP003', '2026-04-02 00:00:00', 2, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH003', 'KH0000003', 'SP005', '2026-04-03 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH004', 'KH0000004', 'SP002', '2026-04-04 00:00:00', 3, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH005', 'KH0000005', 'SP007', '2026-04-05 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH006', 'KH0000006', 'SP004', '2026-04-06 00:00:00', 2, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH007', 'KH0000007', 'SP006', '2026-04-07 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH008', 'KH0000008', 'SP008', '2026-04-08 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH009', 'KH0000009', 'SP010', '2026-04-09 00:00:00', 2, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH010', 'KH0000010', 'SP009', '2026-04-10 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH011', 'KH0000011', 'SP011', '2026-04-11 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH012', 'KH0000012', 'SP012', '2026-04-12 00:00:00', 4, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH013', 'KH0000013', 'SP013', '2026-04-13 00:00:00', 2, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH014', 'KH0000014', 'SP014', '2026-04-14 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH015', 'KH0000015', 'SP015', '2026-04-15 00:00:00', 3, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH016', 'KH0000016', 'SP016', '2026-04-16 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH017', 'KH0000017', 'SP017', '2026-04-17 00:00:00', 2, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH018', 'KH0000018', 'SP018', '2026-04-18 00:00:00', 1, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH019', 'KH0000019', 'SP019', '2026-04-19 00:00:00', 2, '2026-04-30 08:32:55', '2026-04-30 08:32:55'),
+('GH020', 'KH0000019', 'SP020', '2026-04-20 00:00:00', 1, '2026-04-30 08:36:03', '2026-04-30 08:36:03');
 
 -- --------------------------------------------------------
 
@@ -195,7 +237,8 @@ INSERT INTO `khachhangs` (`MaKhachHang`, `HoTen`, `Email`, `MatKhau`, `SoDienTho
 ('KH0000016', 'Mai Thị Quỳnh', 'maithiquynh@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$U9yrdmd7jxrVKGw9kTC3GQ$s/5A9ji2ccmt4JJQDQLJzbo79eSwiGvXufaisjGSthk', '0906666666', '77 Phan Đình Phùng, Đà Nẵng', 'Nữ', 'KhachHang', '2026-03-25 00:00:00', '2026-04-28 10:59:13', '2026-04-28 10:59:13'),
 ('KH0000017', 'Cao Văn Sơn', 'caovanson@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$fxLayIbUNAZUQDWMFDe6eQ$fzzZ0N+8tQLvjqkluhufr+cXqO1riwRcnRb0olmq89E', '0907777777', '88 Nguyễn Tri Phương, Đà Nẵng', 'Nam', 'KhachHang', '2026-04-01 00:00:00', '2026-04-28 10:59:14', '2026-04-28 10:59:14'),
 ('KH0000018', 'Lê Thị Thu', 'lethithu@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$AbPTK20f+z4gr9jJnFYVzg$xWXk6ru9JZka2LTS1G1M0HXr4XdXPflOdyGEoBImxM0', '0908888888', '99 Võ Thị Sáu, TP.HCM', 'Nữ', 'KhachHang', '2026-04-05 00:00:00', '2026-04-28 10:59:14', '2026-04-28 10:59:14'),
-('KH0000019', 'Nguyễn Trường Quốc', 'quoc93346@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$tqFTsK26K2LNqXefUljXGg$DTsZ1jmN9Rlq5gZnKNsgiU7Fphne8FHRjpPc8s+kFls', '0877335286', '78A Phan Văn Trị, TP.Đà Nẵng', 'Nam', 'Admin', '2026-04-06 00:00:00', '2026-04-29 04:29:57', '2026-04-29 04:29:57');
+('KH0000019', 'Nguyễn Trường Quốc', 'quoc93346@gmail.com', '12345678', '0877335286', '78A Phan Văn Trị, TP.Đà Nẵng', 'Nam', 'Admin', '2026-04-06 00:00:00', '2026-04-29 04:29:57', '2026-05-01 05:50:19'),
+('KH0000020', 'Vĩnh Bảo Quốc Trung', 'trung@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$eU4r8y8G8PeQKPHuHaowiA$+2tpnzE/xTNp4Qeyqk0IjMqTigrGUjaM7zqizwGEAAI', '0877335299', '286 Hùng Vương, An Khê, Đà Nẵng', NULL, 'KhachHang', '2026-05-01 00:00:00', '2026-05-01 06:16:36', '2026-05-01 06:16:36');
 
 -- --------------------------------------------------------
 
@@ -213,6 +256,20 @@ CREATE TABLE `lienhehotros` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `lienhehotros`
+--
+
+INSERT INTO `lienhehotros` (`MaLH`, `MaKhachHang`, `TieuDe`, `Noidung`, `NgayGui`, `TrangThai`, `createdAt`, `updatedAt`) VALUES
+('LH001', 'KH0000004', '', 'Giá quá cao', '2026-04-30 00:00:00', 'Chưa trả lời', '2026-04-30 03:43:45', '2026-04-30 03:43:45'),
+('LH002', 'KH0000001', 'Giao hàng chậm', 'Đơn hàng của tôi giao trễ hơn dự kiến 3 ngày.', '2026-04-29 00:00:00', 'Đã trả lời', '2026-04-30 03:45:46', '2026-04-30 03:45:46'),
+('LH003', 'KH0000002', 'Lỗi đăng nhập', 'Tôi không thể đăng nhập vào tài khoản.', '2026-04-28 00:00:00', 'Chưa trả lời', '2026-04-30 03:45:46', '2026-04-30 03:45:46'),
+('LH004', 'KH0000005', 'Yêu cầu đổi hàng', 'Sản phẩm nhận được không đúng màu đã đặt.', '2026-04-27 00:00:00', 'Đã trả lời', '2026-04-30 03:45:46', '2026-04-30 03:45:46'),
+('LH005', 'KH0000003', 'Hỏi về khuyến mãi', 'Shop còn chương trình giảm giá nào không?', '2026-04-26 00:00:00', 'Chưa trả lời', '2026-04-30 03:45:46', '2026-04-30 03:45:46'),
+('LH006', 'KH0000006', 'Sản phẩm lỗi', 'Áo bị rách đường may khi mới nhận hàng.', '2026-04-25 00:00:00', 'Đã trả lời', '2026-04-30 03:45:46', '2026-04-30 03:45:46'),
+('LH007', 'KH0000007', 'Hủy đơn hàng', 'Tôi muốn hủy đơn vì đặt nhầm size.', '2026-04-24 00:00:00', 'Chưa trả lời', '2026-04-30 03:45:46', '2026-04-30 03:45:46'),
+('LH008', 'KH0000008', 'Góp ý dịch vụ', 'Nhân viên hỗ trợ rất nhiệt tình, tôi rất hài lòng.', '2026-04-23 00:00:00', 'Đã trả lời', '2026-04-30 03:45:46', '2026-04-30 03:45:46');
 
 -- --------------------------------------------------------
 
@@ -268,7 +325,7 @@ CREATE TABLE `sanphams` (
 --
 
 INSERT INTO `sanphams` (`MaSP`, `TenSP`, `MaDM`, `MaHang`, `MaNCC`, `MoTa`, `Gia`, `SoLuongTon`, `HinhAnh`, `UuDaiSV`, `NgayThem`, `createdAt`, `updatedAt`) VALUES
-('SP001', 'ASUS ROG Strix G16 2024', 'DM001', 'H001', 'NCC001', 'ASUS ROG Strix G16 2024 là mẫu laptop gaming cao cấp được trang bị bộ vi xử lý Intel thế hệ mới kết hợp cùng card đồ họa rời mạnh mẽ, mang lại hiệu năng vượt trội cho các tựa game AAA và tác vụ nặng. Máy sở hữu màn hình kích thước lớn với tần số quét cao, hình ảnh mượt mà và màu sắc sống động. Hệ thống tản nhiệt tiên tiến giúp duy trì hiệu suất ổn định trong thời gian dài, phù hợp cho game thủ chuyên nghiệp, streamer và người dùng sáng tạo nội dung.', 38990000, 12, 'asus-rog-strix-g16-2024.jpg', 1, '2026-04-01 00:00:00', '2026-04-28 19:59:42', '2026-04-28 19:59:42'),
+('SP001', 'ASUS ROG Strix G16 2024', 'DM001', 'H001', 'NCC002', '<p>ASUS ROG Strix G16 2024 l&agrave; mẫu laptop gaming cao cấp được trang bị bộ vi xử l&yacute; Intel thế hệ mới kết hợp c&ugrave;ng card đồ họa rời mạnh mẽ, mang lại hiệu năng vượt trội cho c&aacute;c tựa game AAA v&agrave; t&aacute;c vụ nặng. M&aacute;y sở hữu m&agrave;n h&igrave;nh k&iacute;ch thước lớn với tần số qu&eacute;t cao, h&igrave;nh ảnh mượt m&agrave; v&agrave; m&agrave;u sắc sống động. Hệ thống tản nhiệt ti&ecirc;n tiến gi&uacute;p duy tr&igrave; hiệu suất ổn định trong thời gian d&agrave;i, ph&ugrave; hợp cho game thủ chuy&ecirc;n nghiệp, streamer v&agrave; người d&ugrave;ng s&aacute;ng tạo nội dung.</p>\n', 38990000, 12, 'asus-rog-strix-g16-2024.jpg', 1, '2026-04-01 00:00:00', '2026-04-28 19:59:42', '2026-04-30 03:08:22'),
 ('SP002', 'Acer Aspire 5 A515', 'DM002', 'H002', 'NCC002', '<p>Acer Aspire 5 A515 l&agrave; d&ograve;ng laptop văn ph&ograve;ng phổ th&ocirc;ng được thiết kế hiện đại, chắc chắn v&agrave; dễ d&agrave;ng mang theo khi di chuyển. Thiết bị đ&aacute;p ứng tốt nhu cầu học tập, l&agrave;m việc văn ph&ograve;ng, xử l&yacute; t&agrave;i liệu, lướt web v&agrave; giải tr&iacute; hằng ng&agrave;y. M&aacute;y c&oacute; b&agrave;n ph&iacute;m thoải m&aacute;i, m&agrave;n h&igrave;nh sắc n&eacute;t c&ugrave;ng thời lượng pin ổn định, ph&ugrave; hợp cho sinh vi&ecirc;n v&agrave; nh&acirc;n vi&ecirc;n văn ph&ograve;ng cần một chiếc laptop bền bỉ với mức gi&aacute; hợp l&yacute;.</p>\n', 14990000, 18, 'acer-aspire-5-a515.jpg', 1, '2026-04-02 00:00:00', '2026-04-28 19:59:42', '2026-04-29 10:06:59'),
 ('SP003', 'Lenovo ThinkPad X1 Carbon', 'DM003', 'H003', 'NCC003', 'Lenovo ThinkPad X1 Carbon là mẫu laptop doanh nhân cao cấp nổi tiếng với độ bền đạt chuẩn quân đội, thiết kế siêu nhẹ và bàn phím gõ tốt hàng đầu thị trường. Máy được tích hợp các tính năng bảo mật hiện đại như cảm biến vân tay, camera bảo mật và chip mã hóa dữ liệu. Thời lượng pin dài cùng hiệu năng mạnh mẽ giúp sản phẩm trở thành lựa chọn lý tưởng cho người thường xuyên di chuyển và làm việc chuyên nghiệp.', 42990000, 8, 'lenovo-thinkpad-x1-carbon.jpg', 0, '2026-04-03 00:00:00', '2026-04-28 19:59:42', '2026-04-28 19:59:42'),
 ('SP004', 'Dell XPS 15 9530', 'DM004', 'H004', 'NCC001', 'Dell XPS 15 9530 là mẫu laptop cao cấp dành cho người dùng sáng tạo nội dung với thiết kế sang trọng và viền màn hình siêu mỏng đặc trưng. Máy sở hữu màn hình độ phân giải cao, màu sắc chính xác, phù hợp cho chỉnh sửa ảnh, dựng video và thiết kế đồ họa chuyên nghiệp. Cấu hình mạnh mẽ cùng hệ thống âm thanh chất lượng cao mang đến trải nghiệm làm việc và giải trí toàn diện.', 45990000, 7, 'dell-xps-15-9530.jpg', 0, '2026-04-04 00:00:00', '2026-04-28 19:59:42', '2026-04-28 19:59:42'),
@@ -343,6 +400,30 @@ CREATE TABLE `thanhtoans` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `thanhtoans`
+--
+
+INSERT INTO `thanhtoans` (`MaTT`, `MaDH`, `HinhThuc`, `NgayThanhToan`, `TrangThai`, `createdAt`, `updatedAt`) VALUES
+('TT001', 'DH0000001', 'Chuyển khoản', '2026-04-01 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT002', 'DH0000002', 'Ví điện tử', '2026-04-02 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT003', 'DH0000003', 'Tiền mặt', '2026-04-03 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT004', 'DH0000004', 'Chuyển khoản', '2026-04-04 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT005', 'DH0000005', 'Ví điện tử', '2026-04-05 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT006', 'DH0000006', 'Tiền mặt', '2026-04-06 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT007', 'DH0000007', 'Chuyển khoản', '2026-04-07 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT008', 'DH0000008', 'Ví điện tử', '2026-04-08 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT009', 'DH0000009', 'Tiền mặt', '2026-04-09 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT010', 'DH0000010', 'Chuyển khoản', '2026-04-10 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT011', 'DH0000011', 'Ví điện tử', '2026-04-11 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT012', 'DH0000012', 'Tiền mặt', '2026-04-12 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT013', 'DH0000013', 'Chuyển khoản', '2026-04-13 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT014', 'DH0000014', 'Ví điện tử', '2026-04-14 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT015', 'DH0000015', 'Tiền mặt', '2026-04-15 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT016', 'DH0000016', 'Chuyển khoản', '2026-04-16 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT017', 'DH0000017', 'Ví điện tử', '2026-04-17 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28'),
+('TT018', 'DH0000018', 'Tiền mặt', '2026-04-18 00:00:00', NULL, '2026-04-30 08:09:28', '2026-04-30 08:09:28');
 
 -- --------------------------------------------------------
 
