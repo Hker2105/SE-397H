@@ -4,6 +4,7 @@ const updatekhachHangSchema = Joi.object({
     HoTen: Joi.string().optional(),
     Email: Joi.string().email().optional(),
     MatKhau: Joi.string().min(6).optional(),
+    GioiTinh: Joi.string().optional().allow(""),
     SoDienThoai: Joi.string().optional().allow(""),
     DiaChi: Joi.string().optional().allow(""),
     LoaiTaiKhoan: Joi.string().optional(),
@@ -15,6 +16,7 @@ class updatekhachHangRequest{
         this.HoTen = data.HoTen
         this.Email = data.Email
         this.MatKhau = data.MatKhau
+        this.GioiTinh = data.GioiTinh
         this.SoDienThoai = data.SoDienThoai
         this.DiaChi = data.DiaChi
         this.LoaiTaiKhoan = data.LoaiTaiKhoan
