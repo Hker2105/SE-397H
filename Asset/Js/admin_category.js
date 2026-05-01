@@ -1,7 +1,6 @@
-const API = 'http://localhost:3000/api';
+const API = 'http://127.0.0.1:3000/api';
 let allData = [];
 
-// ========== XEM DANH MỤC ==========
 async function loadDanhMuc() {
     try {
         const res = await fetch(`${API}/danhmucs`);
