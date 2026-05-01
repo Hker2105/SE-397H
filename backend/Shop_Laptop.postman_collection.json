@@ -44,13 +44,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{API_PREXFIX}}/sanphams/SP0000015",
+              "raw": "{{API_PREXFIX}}/sanphams/SP002",
               "host": [
                 "{{API_PREXFIX}}"
               ],
               "path": [
                 "sanphams",
-                "SP0000015"
+                "SP002"
               ]
             }
           },
@@ -81,7 +81,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n        \"MaSP\": \"SP0000016\",\n        \"TenSP\": \"MSI Modern 15 B12M\",\n        \"MaDM\": \"DM0000002\",\n        \"MaHang\": \"MH0000007\",\n        \"MaNCC\": \"NCC000003\",\n        \"MoTa\": \"CPU Intel Core i7-1255U, RAM 16GB, SSD 512GB, màn hình 15.6 inch FHD IPS\",\n        \"Gia\": 18990000,\n        \"SoLuongTon\": 20,\n        \"HinhAnh\": \"msi-modern-15-b12m.jpg\",\n        \"UuDaiSV\": true,\n        \"NgayThem\": \"2026-04-20T00:00:00.000Z\",\n        \"createdAt\": \"2026-04-23T05:46:08.000Z\",\n        \"updatedAt\": \"2026-04-23T05:46:08.000Z\"\n    }",
+              "raw": "[\n    {\n        \"MaSP\": \"SP016\",\n        \"TenSP\": \"ASUS VivoBook 15 X1502\",\n        \"MaDM\": \"DM002\",\n        \"MaHang\": \"H001\",\n        \"MaNCC\": \"NCC001\",\n        \"MoTa\": \"ASUS VivoBook 15 X1502 là mẫu laptop phổ thông với thiết kế hiện đại, màn hình Full HD 15.6 inch sắc nét và hiệu năng ổn định phục vụ tốt nhu cầu học tập, làm việc văn phòng hàng ngày. Máy được trang bị bộ vi xử lý Intel thế hệ mới, RAM đủ dùng cho đa nhiệm và ổ SSD giúp khởi động nhanh. Thiết kế mỏng nhẹ, bàn phím thoải mái cùng thời lượng pin ổn định giúp người dùng làm việc liên tục cả ngày mà không lo hết pin. Đây là lựa chọn lý tưởng cho sinh viên và nhân viên văn phòng tìm kiếm một chiếc laptop đáng tin cậy với mức giá phải chăng.\",\n        \"Gia\": 13990000,\n        \"SoLuongTon\": 25,\n        \"HinhAnh\": \"asus-vivobook-15-x1502.jpg\",\n        \"UuDaiSV\": true,\n        \"NgayThem\": \"2026-04-16\"\n    },\n    {\n        \"MaSP\": \"SP017\",\n        \"TenSP\": \"Acer Nitro 5 AN515\",\n        \"MaDM\": \"DM001\",\n        \"MaHang\": \"H002\",\n        \"MaNCC\": \"NCC002\",\n        \"MoTa\": \"Acer Nitro 5 AN515 là dòng laptop gaming tầm trung được đông đảo game thủ ưa chuộng nhờ hiệu năng mạnh mẽ với mức giá hợp lý. Máy được trang bị CPU và GPU đủ mạnh để xử lý các tựa game phổ biến ở cài đặt cao, màn hình tần số quét cao mang lại hình ảnh mượt mà và phản hồi nhanh. Hệ thống tản nhiệt kép hiệu quả giúp máy duy trì hiệu suất ổn định trong các phiên chơi game dài. Bàn phím LED đỏ đặc trưng, cổng kết nối đa dạng và thiết kế gaming trẻ trung tạo nên sức hút riêng cho sản phẩm này.\",\n        \"Gia\": 22990000,\n        \"SoLuongTon\": 16,\n        \"HinhAnh\": \"acer-nitro-5-an515.jpg\",\n        \"UuDaiSV\": true,\n        \"NgayThem\": \"2026-04-17\"\n    },\n    {\n        \"MaSP\": \"SP018\",\n        \"TenSP\": \"Lenovo Yoga 7i 14\",\n        \"MaDM\": \"DM004\",\n        \"MaHang\": \"H003\",\n        \"MaNCC\": \"NCC003\",\n        \"MoTa\": \"Lenovo Yoga 7i 14 là dòng laptop 2 trong 1 cao cấp với khả năng xoay gập 360 độ linh hoạt, cho phép sử dụng ở nhiều chế độ khác nhau như laptop, lều, giá đỡ và máy tính bảng. Màn hình cảm ứng IPS sắc nét với độ phân giải cao tái hiện màu sắc chính xác và góc nhìn rộng. Chip Intel Core thế hệ mới mang lại hiệu năng mạnh mẽ trong khi vẫn tiết kiệm điện năng đáng kể. Thiết kế kim loại sang trọng, bàn phím có đèn nền và thời lượng pin tốt giúp sản phẩm phù hợp cho người dùng sáng tạo và chuyên nghiệp.\",\n        \"Gia\": 29990000,\n        \"SoLuongTon\": 11,\n        \"HinhAnh\": \"lenovo-yoga-7i-14.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-18\"\n    },\n    {\n        \"MaSP\": \"SP019\",\n        \"TenSP\": \"Dell G15 Gaming 5530\",\n        \"MaDM\": \"DM001\",\n        \"MaHang\": \"H004\",\n        \"MaNCC\": \"NCC004\",\n        \"MoTa\": \"Dell G15 Gaming 5530 là laptop gaming với thiết kế chắc chắn và hiệu năng vượt trội trong phân khúc tầm trung. Máy được trang bị bộ vi xử lý Intel Core thế hệ 13 kết hợp card đồ họa NVIDIA GeForce RTX mạnh mẽ, cho phép chạy mượt các tựa game AAA phổ biến. Màn hình 15.6 inch Full HD với tần số quét 165Hz mang lại hình ảnh cực kỳ mượt mà. Hệ thống tản nhiệt Alienware-inspired giúp kiểm soát nhiệt độ hiệu quả. Bàn phím có đèn nền RGB 4 vùng độc lập giúp cá nhân hóa trải nghiệm gaming.\",\n        \"Gia\": 28990000,\n        \"SoLuongTon\": 14,\n        \"HinhAnh\": \"dell-g15-gaming-5530.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-19\"\n    },\n    {\n        \"MaSP\": \"SP020\",\n        \"TenSP\": \"Apple MacBook Pro 16 M3 Max\",\n        \"MaDM\": \"DM005\",\n        \"MaHang\": \"H005\",\n        \"MaNCC\": \"NCC005\",\n        \"MoTa\": \"MacBook Pro 16 M3 Max là đỉnh cao của dòng MacBook Pro với chip Apple M3 Max sở hữu CPU 16 nhân và GPU lên đến 40 nhân, mang lại hiệu năng xử lý và đồ họa vượt trội so với bất kỳ laptop nào trên thị trường. Màn hình Liquid Retina XDR 16 inch với độ sáng cực cao, ProMotion 120Hz và hỗ trợ HDR giúp hiển thị nội dung sáng tạo một cách hoàn hảo. Thời lượng pin lên đến 22 giờ làm việc liên tục là con số ấn tượng cho một laptop chuyên nghiệp. Hệ thống loa 6 lớp và micro array chất lượng cao giúp trải nghiệm âm thanh và gọi video tuyệt vời.\",\n        \"Gia\": 89990000,\n        \"SoLuongTon\": 6,\n        \"HinhAnh\": \"macbook-pro-16-m3-max.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-20\"\n    },\n    {\n        \"MaSP\": \"SP021\",\n        \"TenSP\": \"HP Pavilion 15\",\n        \"MaDM\": \"DM002\",\n        \"MaHang\": \"H006\",\n        \"MaNCC\": \"NCC001\",\n        \"MoTa\": \"HP Pavilion 15 là mẫu laptop phổ thông được thiết kế hướng đến người dùng phổ thông với nhu cầu học tập, làm việc văn phòng và giải trí hàng ngày. Màn hình Full HD 15.6 inch cho hình ảnh sắc nét, màu sắc trung thực phù hợp xem phim và làm việc với tài liệu. Cấu hình Intel Core thế hệ mới cùng RAM đủ dùng đảm bảo khả năng đa nhiệm tốt. Thiết kế hiện đại với viền màn hình mỏng, bàn phím thoải mái và loa âm thanh tốt tạo nên trải nghiệm sử dụng dễ chịu mỗi ngày.\",\n        \"Gia\": 15990000,\n        \"SoLuongTon\": 20,\n        \"HinhAnh\": \"hp-pavilion-15.jpg\",\n        \"UuDaiSV\": true,\n        \"NgayThem\": \"2026-04-21\"\n    },\n    {\n        \"MaSP\": \"SP022\",\n        \"TenSP\": \"MSI GF63 Thin\",\n        \"MaDM\": \"DM001\",\n        \"MaHang\": \"H007\",\n        \"MaNCC\": \"NCC002\",\n        \"MoTa\": \"MSI GF63 Thin là laptop gaming mỏng nhẹ với thiết kế thanh lịch, khác biệt so với các laptop gaming thông thường. Dù có ngoại hình gọn nhẹ nhưng máy vẫn sở hữu hiệu năng gaming đáng nể với CPU Intel Core và GPU NVIDIA GeForce đủ mạnh cho các tựa game phổ biến. Màn hình IPS Full HD 144Hz mang lại hình ảnh mượt mà và sắc nét. Bàn phím có đèn nền đỏ đặc trưng của MSI Gaming, cổng kết nối đầy đủ và thời lượng pin ổn định cho việc sử dụng hàng ngày.\",\n        \"Gia\": 20990000,\n        \"SoLuongTon\": 18,\n        \"HinhAnh\": \"msi-gf63-thin.jpg\",\n        \"UuDaiSV\": true,\n        \"NgayThem\": \"2026-04-22\"\n    },\n    {\n        \"MaSP\": \"SP023\",\n        \"TenSP\": \"Samsung Galaxy Book2 360\",\n        \"MaDM\": \"DM004\",\n        \"MaHang\": \"H008\",\n        \"MaNCC\": \"NCC003\",\n        \"MoTa\": \"Samsung Galaxy Book2 360 là laptop 2 trong 1 cao cấp nổi bật với màn hình AMOLED cảm ứng 13.3 inch rực rỡ, hiển thị màu sắc sống động và độ tương phản cực cao. Khả năng xoay gập 360 độ giúp sử dụng linh hoạt trong nhiều tình huống khác nhau. Hỗ trợ bút S Pen tích hợp giúp ghi chú, phác thảo và ký tài liệu trực tiếp trên màn hình. Máy tích hợp tốt với hệ sinh thái Samsung Galaxy, cho phép chia sẻ màn hình, file và thông báo liền mạch giữa các thiết bị Samsung.\",\n        \"Gia\": 26990000,\n        \"SoLuongTon\": 9,\n        \"HinhAnh\": \"samsung-galaxy-book2-360.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-23\"\n    },\n    {\n        \"MaSP\": \"SP024\",\n        \"TenSP\": \"ASUS ROG Zephyrus G14\",\n        \"MaDM\": \"DM001\",\n        \"MaHang\": \"H001\",\n        \"MaNCC\": \"NCC004\",\n        \"MoTa\": \"ASUS ROG Zephyrus G14 là laptop gaming cao cấp nhỏ gọn nhất trong dòng ROG, được trang bị chip AMD Ryzen 9 mạnh mẽ kết hợp GPU NVIDIA GeForce RTX cao cấp. Màn hình 14 inch QHD với tần số quét 165Hz cho hình ảnh cực kỳ sắc nét và mượt mà. Thiết kế AniMe Matrix LED độc đáo ở nắp máy cho phép hiển thị animation và thông tin tùy chỉnh. Hệ thống tản nhiệt ROG Intelligent Cooling hiệu quả giúp duy trì nhiệt độ thấp ngay cả khi tải nặng, trong khi thời lượng pin vẫn ấn tượng cho một gaming laptop.\",\n        \"Gia\": 44990000,\n        \"SoLuongTon\": 8,\n        \"HinhAnh\": \"asus-rog-zephyrus-g14.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-24\"\n    },\n    {\n        \"MaSP\": \"SP025\",\n        \"TenSP\": \"Acer Predator Helios 300\",\n        \"MaDM\": \"DM001\",\n        \"MaHang\": \"H002\",\n        \"MaNCC\": \"NCC005\",\n        \"MoTa\": \"Acer Predator Helios 300 là laptop gaming hiệu năng cao được thiết kế riêng cho game thủ nghiêm túc. Máy được trang bị bộ vi xử lý Intel Core i7 thế hệ mới kết hợp card đồ họa NVIDIA GeForce RTX mạnh mẽ, đảm bảo chạy mượt mọi tựa game AAA ở cài đặt ultra. Màn hình IPS Full HD 144Hz hay QHD 165Hz cho hình ảnh cực kỳ mượt mà. Hệ thống tản nhiệt AeroBlade 3D Fan và ống dẫn nhiệt kép giúp kiểm soát nhiệt độ tốt. Bàn phím có đèn nền RGB theo từng phím và thiết kế gaming mạnh mẽ tạo nên đẳng cấp riêng.\",\n        \"Gia\": 35990000,\n        \"SoLuongTon\": 10,\n        \"HinhAnh\": \"acer-predator-helios-300.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-25\"\n    },\n    {\n        \"MaSP\": \"SP026\",\n        \"TenSP\": \"Lenovo Legion 5 Pro\",\n        \"MaDM\": \"DM001\",\n        \"MaHang\": \"H003\",\n        \"MaNCC\": \"NCC001\",\n        \"MoTa\": \"Lenovo Legion 5 Pro là laptop gaming cao cấp nổi bật với màn hình QHD 16 inch tần số quét 165Hz cho trải nghiệm hình ảnh cực kỳ ấn tượng. Máy được trang bị AMD Ryzen 7 hay Intel Core i7 thế hệ mới kết hợp GPU NVIDIA GeForce RTX mạnh mẽ. Hệ thống tản nhiệt Legion Coldfront với 4 quạt và nhiều ống dẫn nhiệt giúp duy trì hiệu suất cao liên tục. Bàn phím TrueStrike có đèn nền RGB per-key và độ nảy phím tốt, cổng kết nối đầy đủ bao gồm USB-C, HDMI 2.1 và nhiều cổng USB-A tiện lợi.\",\n        \"Gia\": 41990000,\n        \"SoLuongTon\": 7,\n        \"HinhAnh\": \"lenovo-legion-5-pro.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-26\"\n    },\n    {\n        \"MaSP\": \"SP027\",\n        \"TenSP\": \"Dell Latitude 5540\",\n        \"MaDM\": \"DM003\",\n        \"MaHang\": \"H004\",\n        \"MaNCC\": \"NCC002\",\n        \"MoTa\": \"Dell Latitude 5540 là laptop doanh nghiệp cao cấp được xây dựng với tiêu chuẩn bảo mật và độ bền vượt trội. Máy đạt chứng nhận MIL-STD-810H về khả năng chịu đựng trong điều kiện khắc nghiệt. Tích hợp nhiều lớp bảo mật như TPM 2.0, camera bảo mật, cảm biến vân tay và tùy chọn đầu đọc thẻ thông minh. Bộ vi xử lý Intel Core vPro thế hệ 13 cho phép quản lý từ xa và bảo mật phần cứng cấp doanh nghiệp. Màn hình IPS chống chói, bàn phím kháng nước và pin dung lượng lớn giúp làm việc hiệu quả cả ngày.\",\n        \"Gia\": 33990000,\n        \"SoLuongTon\": 12,\n        \"HinhAnh\": \"dell-latitude-5540.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-27\"\n    },\n    {\n        \"MaSP\": \"SP028\",\n        \"TenSP\": \"HP Envy x360 15\",\n        \"MaDM\": \"DM004\",\n        \"MaHang\": \"H006\",\n        \"MaNCC\": \"NCC003\",\n        \"MoTa\": \"HP Envy x360 15 là laptop 2 trong 1 cao cấp với màn hình cảm ứng OLED 15.6 inch tuyệt đẹp, hiển thị màu sắc cực kỳ sống động với độ tương phản vô cực. Khả năng xoay gập 360 độ linh hoạt cho phép sử dụng ở nhiều tư thế khác nhau. Máy được trang bị AMD Ryzen hay Intel Core thế hệ mới với hiệu năng mạnh mẽ. Hỗ trợ bút cảm ứng MPP 2.0 để ghi chú và sáng tạo trực tiếp trên màn hình. Thiết kế kim loại cao cấp, loa Bang & Olufsen chất lượng cao và thời lượng pin ấn tượng hoàn thiện trải nghiệm cao cấp.\",\n        \"Gia\": 31990000,\n        \"SoLuongTon\": 11,\n        \"HinhAnh\": \"hp-envy-x360-15.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-28\"\n    },\n    {\n        \"MaSP\": \"SP029\",\n        \"TenSP\": \"MSI Prestige 14 Evo\",\n        \"MaDM\": \"DM003\",\n        \"MaHang\": \"H007\",\n        \"MaNCC\": \"NCC004\",\n        \"MoTa\": \"MSI Prestige 14 Evo là laptop doanh nhân siêu mỏng nhẹ đạt chứng nhận Intel Evo Platform, đảm bảo hiệu năng mạnh mẽ, kết nối nhanh và trải nghiệm người dùng tối ưu. Máy có trọng lượng chỉ khoảng 1.29kg và độ mỏng ấn tượng, dễ dàng mang theo khi di chuyển. Màn hình 14 inch với màu sắc chính xác đạt 100% sRGB phù hợp cho công việc sáng tạo. Hỗ trợ sạc nhanh USB-C, kết nối Thunderbolt 4 và Wi-Fi 6E tốc độ cao. Bàn phím thoải mái, cảm biến vân tay tích hợp và pin lâu giúp làm việc hiệu quả suốt ngày dài.\",\n        \"Gia\": 25990000,\n        \"SoLuongTon\": 13,\n        \"HinhAnh\": \"msi-prestige-14-evo.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-29\"\n    },\n    {\n        \"MaSP\": \"SP030\",\n        \"TenSP\": \"ASUS ExpertBook B9\",\n        \"MaDM\": \"DM003\",\n        \"MaHang\": \"H001\",\n        \"MaNCC\": \"NCC005\",\n        \"MoTa\": \"ASUS ExpertBook B9 là laptop doanh nghiệp siêu nhẹ hàng đầu thế giới với trọng lượng chỉ khoảng 880g, thuộc hàng nhẹ nhất trong phân khúc laptop 14 inch. Máy đạt chứng nhận độ bền MIL-STD-810H với khả năng chịu đựng va đập, nhiệt độ cực đoan và độ ẩm cao. Tích hợp bảo mật doanh nghiệp toàn diện gồm TPM 2.0, camera IR nhận diện khuôn mặt, cảm biến vân tay và khe khóa Kensington. Thời lượng pin lên đến 16 giờ cùng hỗ trợ sạc nhanh USB-C giúp làm việc liên tục khi di chuyển. Màn hình chống chói, bàn phím kháng nước và cổng kết nối đa dạng hoàn thiện laptop doanh nghiệp đỉnh cao này.\",\n        \"Gia\": 48990000,\n        \"SoLuongTon\": 6,\n        \"HinhAnh\": \"asus-expertbook-b9.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-29\"\n    }\n]",
               "options": {
                 "raw": {
                   "language": "json"
@@ -107,7 +107,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n        \"MaSP\": \"SP0000004\",\n        \"TenSP\": \"MacBook Pro 14 M3 Pro\",\n        \"MaDM\": \"DM0000004\",\n        \"MaHang\": \"MH0000004\",\n        \"MaNCC\": \"NCC000001\",\n        \"MoTa\": \"Chip M3 Pro, RAM 18GB, SSD 512GB, màn hình Liquid Retina XDR 14.2 inch\",\n        \"Gia\": 49990000,\n        \"SoLuongTon\": 15,\n        \"HinhAnh\": \"macbook-pro-14-m3-pro.jpg\",\n        \"UuDaiSV\": false,\n        \"NgayThem\": \"2026-04-20T00:00:00.000Z\",\n        \"createdAt\": \"2026-04-23T05:46:08.000Z\",\n        \"updatedAt\": \"2026-04-25T08:02:03.000Z\"\n    }",
+              "raw": "{\n        \"MaSP\": \"SP002\",\n        \"TenSP\": \"Acer Aspire 5 A515\",\n        \"MaDM\": \"DM002\",\n        \"MaHang\": \"H002\",\n        \"MaNCC\": \"NCC002\",\n        \"MoTa\": \"Acer Aspire 5 A515 là dòng laptop văn phòng phổ thông được thiết kế hiện đại, chắc chắn và dễ dàng mang theo khi di chuyển. Thiết bị đáp ứng tốt nhu cầu học tập, làm việc văn phòng, xử lý tài liệu, lướt web và giải trí hằng ngày. Máy có bàn phím thoải mái, màn hình sắc nét cùng thời lượng pin ổn định, phù hợp cho sinh viên và nhân viên văn phòng cần một chiếc laptop bền bỉ với mức giá hợp lý.\",\n        \"Gia\": 13990000,\n        \"SoLuongTon\": 20,\n        \"HinhAnh\": \"acer-aspire-5-a515.jpg\",\n        \"UuDaiSV\": true,\n        \"NgayThem\": \"2026-04-02T00:00:00.000Z\"\n    }",
               "options": {
                 "raw": {
                   "language": "json"
@@ -115,13 +115,12 @@
               }
             },
             "url": {
-              "raw": "{{API_PREXFIX}}/sanphams/SP0000004",
+              "raw": "{{API_PREXFIX}}/sanphams",
               "host": [
                 "{{API_PREXFIX}}"
               ],
               "path": [
-                "sanphams",
-                "SP0000004"
+                "sanphams"
               ]
             }
           },
@@ -134,9 +133,21 @@
       "item": [
         {
           "name": "api/danhmucs",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{API_PREXFIX}}/danhmucs",
               "host": [
@@ -192,7 +203,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "",
+              "raw": "[\n  {\n    \"MaDM\": \"DM001\",\n    \"TenDanhMuc\": \"Laptop Gaming\",\n    \"MoTa\": \"Danh mục chuyên dành cho các dòng laptop gaming hiệu năng cao, card đồ họa mạnh và thiết kế hầm hố.\"\n  },\n  {\n    \"MaDM\": \"DM002\",\n    \"TenDanhMuc\": \"Laptop Văn Phòng\",\n    \"MoTa\": \"Danh mục laptop phục vụ học tập, làm việc văn phòng, pin tốt và giá hợp lý.\"\n  },\n  {\n    \"MaDM\": \"DM003\",\n    \"TenDanhMuc\": \"Laptop Doanh Nhân\",\n    \"MoTa\": \"Laptop cao cấp dành cho doanh nhân với thiết kế sang trọng, bảo mật cao và độ bền tốt.\"\n  },\n  {\n    \"MaDM\": \"DM004\",\n    \"TenDanhMuc\": \"Laptop Đồ Họa\",\n    \"MoTa\": \"Laptop cấu hình mạnh, màn hình chuẩn màu dành cho thiết kế và dựng phim.\"\n  },\n  {\n    \"MaDM\": \"DM005\",\n    \"TenDanhMuc\": \"MacBook\",\n    \"MoTa\": \"Dòng laptop cao cấp của Apple chạy macOS với hiệu năng mạnh và pin lâu.\"\n  }\n]",
               "options": {
                 "raw": {
                   "language": "json"
@@ -216,6 +227,15 @@
           "request": {
             "method": "PUT",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{API_PREXFIX}}/danhmucs",
               "host": [
@@ -394,7 +414,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "",
+              "raw": "[\n  {\n    \"MaNCC\": \"NCC001\",\n    \"TenNCC\": \"Công ty Laptop Việt\",\n    \"SoDienThoai\": \"0901111111\",\n    \"DiaChi\": \"123 Nguyễn Văn Linh, Hải Châu, Đà Nẵng\",\n    \"Email\": \"laptopviet@gmail.com\"\n  },\n  {\n    \"MaNCC\": \"NCC002\",\n    \"TenNCC\": \"Tech World\",\n    \"SoDienThoai\": \"0902222222\",\n    \"DiaChi\": \"45 Trần Duy Hưng, Cầu Giấy, Hà Nội\",\n    \"Email\": \"techworld@gmail.com\"\n  },\n  {\n    \"MaNCC\": \"NCC003\",\n    \"TenNCC\": \"Hoàng Hà PC\",\n    \"SoDienThoai\": \"0903333333\",\n    \"DiaChi\": \"78 Nguyễn Thị Minh Khai, Quận 1, TP.HCM\",\n    \"Email\": \"hoanghapc@gmail.com\"\n  },\n  {\n    \"MaNCC\": \"NCC004\",\n    \"TenNCC\": \"Future Tech\",\n    \"SoDienThoai\": \"0904444444\",\n    \"DiaChi\": \"22 Nguyễn Văn Cừ, Ninh Kiều, Cần Thơ\",\n    \"Email\": \"futuretech@gmail.com\"\n  },\n  {\n    \"MaNCC\": \"NCC005\",\n    \"TenNCC\": \"Mega Store\",\n    \"SoDienThoai\": \"0905555555\",\n    \"DiaChi\": \"66 Lạch Tray, Ngô Quyền, Hải Phòng\",\n    \"Email\": \"megastore@gmail.com\"\n  }\n]",
               "options": {
                 "raw": {
                   "language": "json"
@@ -495,7 +515,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "",
+              "raw": "[\n  {\n    \"MaHang\": \"H001\",\n    \"TenHang\": \"ASUS\",\n    \"MoTa\": \"Laptop gaming và văn phòng.\"\n  },\n  {\n    \"MaHang\": \"H002\",\n    \"TenHang\": \"Acer\",\n    \"MoTa\": \"Laptop giá tốt, đa dạng mẫu.\"\n  },\n  {\n    \"MaHang\": \"H003\",\n    \"TenHang\": \"Lenovo\",\n    \"MoTa\": \"Laptop doanh nhân và gaming.\"\n  },\n  {\n    \"MaHang\": \"H004\",\n    \"TenHang\": \"Dell\",\n    \"MoTa\": \"Laptop bền, ổn định.\"\n  },\n  {\n    \"MaHang\": \"H005\",\n    \"TenHang\": \"Apple\",\n    \"MoTa\": \"MacBook cao cấp.\"\n  },\n  {\n    \"MaHang\": \"H006\",\n    \"TenHang\": \"HP\",\n    \"MoTa\": \"Laptop văn phòng cao cấp.\"\n  },\n  {\n    \"MaHang\": \"H007\",\n    \"TenHang\": \"MSI\",\n    \"MoTa\": \"Laptop gaming mạnh.\"\n  },\n  {\n    \"MaHang\": \"H008\",\n    \"TenHang\": \"Samsung\",\n    \"MoTa\": \"Laptop mỏng nhẹ.\"\n  }\n]",
               "options": {
                 "raw": {
                   "language": "json"
@@ -596,7 +616,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "[\n    {\n        \"MaDH\": \"DH0000001\", \"MaKhachHang\": \"KH0000001\", \"MaVC\": \"VC0000001\",\n        \"SoLuong\": 1, \"DonGia\": 52990000, \"NgayDat\": \"2026-01-15\",\n        \"TongTien\": 52940000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000002\", \"MaKhachHang\": \"KH0000002\", \"MaVC\": \"\",\n        \"SoLuong\": 2, \"DonGia\": 45990000, \"NgayDat\": \"2026-01-20\",\n        \"TongTien\": 91980000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"Giao nhanh\"\n    },\n    {\n        \"MaDH\": \"DH0000003\", \"MaKhachHang\": \"KH0000003\", \"MaVC\": \"VC0000002\",\n        \"SoLuong\": 1, \"DonGia\": 12990000, \"NgayDat\": \"2026-01-25\",\n        \"TongTien\": 12890000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000004\", \"MaKhachHang\": \"KH0000004\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 49990000, \"NgayDat\": \"2026-02-01\",\n        \"TongTien\": 49990000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"Gọi trước khi giao\"\n    },\n    {\n        \"MaDH\": \"DH0000005\", \"MaKhachHang\": \"KH0000005\", \"MaVC\": \"VC0000003\",\n        \"SoLuong\": 1, \"DonGia\": 38990000, \"NgayDat\": \"2026-02-05\",\n        \"TongTien\": 38790000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000006\", \"MaKhachHang\": \"KH0000006\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 42990000, \"NgayDat\": \"2026-02-10\",\n        \"TongTien\": 42990000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000007\", \"MaKhachHang\": \"KH0000007\", \"MaVC\": \"VC0000004\",\n        \"SoLuong\": 1, \"DonGia\": 89990000, \"NgayDat\": \"2026-02-15\",\n        \"TongTien\": 89490000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"Hàng dễ vỡ\"\n    },\n    {\n        \"MaDH\": \"DH0000008\", \"MaKhachHang\": \"KH0000008\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 32990000, \"NgayDat\": \"2026-02-20\",\n        \"TongTien\": 32990000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000009\", \"MaKhachHang\": \"KH0000009\", \"MaVC\": \"VC0000005\",\n        \"SoLuong\": 2, \"DonGia\": 16990000, \"NgayDat\": \"2026-02-25\",\n        \"TongTien\": 33680000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000010\", \"MaKhachHang\": \"KH0000010\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 28990000, \"NgayDat\": \"2026-03-01\",\n        \"TongTien\": 28990000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000011\", \"MaKhachHang\": \"KH0000011\", \"MaVC\": \"VC0000006\",\n        \"SoLuong\": 1, \"DonGia\": 14990000, \"NgayDat\": \"2026-03-05\",\n        \"TongTien\": 14840000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000012\", \"MaKhachHang\": \"KH0000012\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 32990000, \"NgayDat\": \"2026-03-10\",\n        \"TongTien\": 32990000, \"TinhTrang\": \"Đang giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000013\", \"MaKhachHang\": \"KH0000013\", \"MaVC\": \"VC0000007\",\n        \"SoLuong\": 1, \"DonGia\": 9990000, \"NgayDat\": \"2026-03-12\",\n        \"TongTien\": 8990000, \"TinhTrang\": \"Đang giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000014\", \"MaKhachHang\": \"KH0000014\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 22990000, \"NgayDat\": \"2026-03-15\",\n        \"TongTien\": 22990000, \"TinhTrang\": \"Đang giao\", \"GhiChu\": \"Giao buổi sáng\"\n    },\n    {\n        \"MaDH\": \"DH0000015\", \"MaKhachHang\": \"KH0000015\", \"MaVC\": \"VC0000008\",\n        \"SoLuong\": 1, \"DonGia\": 18990000, \"NgayDat\": \"2026-03-18\",\n        \"TongTien\": 18960000, \"TinhTrang\": \"Đang giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000016\", \"MaKhachHang\": \"KH0000016\", \"MaVC\": \"\",\n        \"SoLuong\": 2, \"DonGia\": 52990000, \"NgayDat\": \"2026-03-20\",\n        \"TongTien\": 105980000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000017\", \"MaKhachHang\": \"KH0000017\", \"MaVC\": \"VC0000009\",\n        \"SoLuong\": 1, \"DonGia\": 45990000, \"NgayDat\": \"2026-03-22\",\n        \"TongTien\": 45490000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000018\", \"MaKhachHang\": \"KH0000018\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 12990000, \"NgayDat\": \"2026-03-25\",\n        \"TongTien\": 12990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"Giao cuối tuần\"\n    },\n    {\n        \"MaDH\": \"DH0000019\", \"MaKhachHang\": \"KH0000019\", \"MaVC\": \"VC0000010\",\n        \"SoLuong\": 1, \"DonGia\": 49990000, \"NgayDat\": \"2026-03-28\",\n        \"TongTien\": 47990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000020\", \"MaKhachHang\": \"KH0000020\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 38990000, \"NgayDat\": \"2026-04-01\",\n        \"TongTien\": 38990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000021\", \"MaKhachHang\": \"KH0000001\", \"MaVC\": \"VC0000001\",\n        \"SoLuong\": 1, \"DonGia\": 42990000, \"NgayDat\": \"2026-04-05\",\n        \"TongTien\": 42940000, \"TinhTrang\": \"Đã hủy\", \"GhiChu\": \"Hủy do hết hàng\"\n    },\n    {\n        \"MaDH\": \"DH0000022\", \"MaKhachHang\": \"KH0000002\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 89990000, \"NgayDat\": \"2026-04-08\",\n        \"TongTien\": 89990000, \"TinhTrang\": \"Đã hủy\", \"GhiChu\": \"Khách hủy\"\n    },\n    {\n        \"MaDH\": \"DH0000023\", \"MaKhachHang\": \"KH0000003\", \"MaVC\": \"VC0000002\",\n        \"SoLuong\": 1, \"DonGia\": 32990000, \"NgayDat\": \"2026-04-10\",\n        \"TongTien\": 32890000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000024\", \"MaKhachHang\": \"KH0000004\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 16990000, \"NgayDat\": \"2026-04-12\",\n        \"TongTien\": 16990000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000025\", \"MaKhachHang\": \"KH0000005\", \"MaVC\": \"VC0000003\",\n        \"SoLuong\": 1, \"DonGia\": 28990000, \"NgayDat\": \"2026-04-14\",\n        \"TongTien\": 28790000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000026\", \"MaKhachHang\": \"KH0000006\", \"MaVC\": \"\",\n        \"SoLuong\": 2, \"DonGia\": 14990000, \"NgayDat\": \"2026-04-16\",\n        \"TongTien\": 29980000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000027\", \"MaKhachHang\": \"KH0000007\", \"MaVC\": \"VC0000004\",\n        \"SoLuong\": 1, \"DonGia\": 22990000, \"NgayDat\": \"2026-04-18\",\n        \"TongTien\": 22490000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000028\", \"MaKhachHang\": \"KH0000008\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 18990000, \"NgayDat\": \"2026-04-20\",\n        \"TongTien\": 18990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"Giao giờ hành chính\"\n    },\n    {\n        \"MaDH\": \"DH0000029\", \"MaKhachHang\": \"KH0000009\", \"MaVC\": \"VC0000005\",\n        \"SoLuong\": 1, \"DonGia\": 9990000, \"NgayDat\": \"2026-04-22\",\n        \"TongTien\": 9690000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000030\", \"MaKhachHang\": \"KH0000010\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 52990000, \"NgayDat\": \"2026-04-25\",\n        \"TongTien\": 52990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    }\n]",
+              "raw": "[\n    {\n        \"MaDH\": \"DH0000001\", \"MaKhachHang\": \"KH0000001\", \"MaVC\": \"VC0000001\",\n        \"SoLuong\": 1, \"DonGia\": 52990000, \"NgayDat\": \"2026-01-15\",\n        \"TongTien\": 52940000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000002\", \"MaKhachHang\": \"KH0000002\", \"MaVC\": \"\",\n        \"SoLuong\": 2, \"DonGia\": 45990000, \"NgayDat\": \"2026-01-20\",\n        \"TongTien\": 91980000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"Giao nhanh\"\n    },\n    {\n        \"MaDH\": \"DH0000003\", \"MaKhachHang\": \"KH0000003\", \"MaVC\": \"VC0000002\",\n        \"SoLuong\": 1, \"DonGia\": 12990000, \"NgayDat\": \"2026-01-25\",\n        \"TongTien\": 12890000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000004\", \"MaKhachHang\": \"KH0000004\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 49990000, \"NgayDat\": \"2026-02-01\",\n        \"TongTien\": 49990000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"Gọi trước khi giao\"\n    },\n    {\n        \"MaDH\": \"DH0000005\", \"MaKhachHang\": \"KH0000005\", \"MaVC\": \"VC0000003\",\n        \"SoLuong\": 1, \"DonGia\": 38990000, \"NgayDat\": \"2026-02-05\",\n        \"TongTien\": 38790000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000006\", \"MaKhachHang\": \"KH0000006\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 42990000, \"NgayDat\": \"2026-02-10\",\n        \"TongTien\": 42990000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000007\", \"MaKhachHang\": \"KH0000007\", \"MaVC\": \"VC0000004\",\n        \"SoLuong\": 1, \"DonGia\": 89990000, \"NgayDat\": \"2026-02-15\",\n        \"TongTien\": 89490000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"Hàng dễ vỡ\"\n    },\n    {\n        \"MaDH\": \"DH0000008\", \"MaKhachHang\": \"KH0000008\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 32990000, \"NgayDat\": \"2026-02-20\",\n        \"TongTien\": 32990000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000009\", \"MaKhachHang\": \"KH0000009\", \"MaVC\": \"VC0000005\",\n        \"SoLuong\": 2, \"DonGia\": 16990000, \"NgayDat\": \"2026-02-25\",\n        \"TongTien\": 33680000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000010\", \"MaKhachHang\": \"KH0000008\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 28990000, \"NgayDat\": \"2026-03-01\",\n        \"TongTien\": 28990000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000011\", \"MaKhachHang\": \"KH0000007\", \"MaVC\": \"VC0000006\",\n        \"SoLuong\": 1, \"DonGia\": 14990000, \"NgayDat\": \"2026-03-05\",\n        \"TongTien\": 14840000, \"TinhTrang\": \"Đã giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000012\", \"MaKhachHang\": \"KH0000002\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 32990000, \"NgayDat\": \"2026-03-10\",\n        \"TongTien\": 32990000, \"TinhTrang\": \"Đang giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000013\", \"MaKhachHang\": \"KH0000001\", \"MaVC\": \"VC0000007\",\n        \"SoLuong\": 1, \"DonGia\": 9990000, \"NgayDat\": \"2026-03-12\",\n        \"TongTien\": 8990000, \"TinhTrang\": \"Đang giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000014\", \"MaKhachHang\": \"KH0000006\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 22990000, \"NgayDat\": \"2026-03-15\",\n        \"TongTien\": 22990000, \"TinhTrang\": \"Đang giao\", \"GhiChu\": \"Giao buổi sáng\"\n    },\n    {\n        \"MaDH\": \"DH0000015\", \"MaKhachHang\": \"KH0000003\", \"MaVC\": \"VC0000008\",\n        \"SoLuong\": 1, \"DonGia\": 18990000, \"NgayDat\": \"2026-03-18\",\n        \"TongTien\": 18960000, \"TinhTrang\": \"Đang giao\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000016\", \"MaKhachHang\": \"KH000001\", \"MaVC\": \"\",\n        \"SoLuong\": 2, \"DonGia\": 52990000, \"NgayDat\": \"2026-03-20\",\n        \"TongTien\": 105980000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000017\", \"MaKhachHang\": \"KH0000004\", \"MaVC\": \"VC0000009\",\n        \"SoLuong\": 1, \"DonGia\": 45990000, \"NgayDat\": \"2026-03-22\",\n        \"TongTien\": 45490000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000018\", \"MaKhachHang\": \"KH000001\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 12990000, \"NgayDat\": \"2026-03-25\",\n        \"TongTien\": 12990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"Giao cuối tuần\"\n    },\n    {\n        \"MaDH\": \"DH0000019\", \"MaKhachHang\": \"KH000002\", \"MaVC\": \"VC0000010\",\n        \"SoLuong\": 1, \"DonGia\": 49990000, \"NgayDat\": \"2026-03-28\",\n        \"TongTien\": 47990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000020\", \"MaKhachHang\": \"KH000002\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 38990000, \"NgayDat\": \"2026-04-01\",\n        \"TongTien\": 38990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000021\", \"MaKhachHang\": \"KH0000001\", \"MaVC\": \"VC0000001\",\n        \"SoLuong\": 1, \"DonGia\": 42990000, \"NgayDat\": \"2026-04-05\",\n        \"TongTien\": 42940000, \"TinhTrang\": \"Đã hủy\", \"GhiChu\": \"Hủy do hết hàng\"\n    },\n    {\n        \"MaDH\": \"DH0000022\", \"MaKhachHang\": \"KH0000002\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 89990000, \"NgayDat\": \"2026-04-08\",\n        \"TongTien\": 89990000, \"TinhTrang\": \"Đã hủy\", \"GhiChu\": \"Khách hủy\"\n    },\n    {\n        \"MaDH\": \"DH0000023\", \"MaKhachHang\": \"KH0000003\", \"MaVC\": \"VC0000002\",\n        \"SoLuong\": 1, \"DonGia\": 32990000, \"NgayDat\": \"2026-04-10\",\n        \"TongTien\": 32890000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000024\", \"MaKhachHang\": \"KH0000004\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 16990000, \"NgayDat\": \"2026-04-12\",\n        \"TongTien\": 16990000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000025\", \"MaKhachHang\": \"KH0000005\", \"MaVC\": \"VC0000003\",\n        \"SoLuong\": 1, \"DonGia\": 28990000, \"NgayDat\": \"2026-04-14\",\n        \"TongTien\": 28790000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000026\", \"MaKhachHang\": \"KH0000006\", \"MaVC\": \"\",\n        \"SoLuong\": 2, \"DonGia\": 14990000, \"NgayDat\": \"2026-04-16\",\n        \"TongTien\": 29980000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000027\", \"MaKhachHang\": \"KH0000007\", \"MaVC\": \"VC0000004\",\n        \"SoLuong\": 1, \"DonGia\": 22990000, \"NgayDat\": \"2026-04-18\",\n        \"TongTien\": 22490000, \"TinhTrang\": \"Đang xử lý\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000028\", \"MaKhachHang\": \"KH0000008\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 18990000, \"NgayDat\": \"2026-04-20\",\n        \"TongTien\": 18990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"Giao giờ hành chính\"\n    },\n    {\n        \"MaDH\": \"DH0000029\", \"MaKhachHang\": \"KH0000009\", \"MaVC\": \"VC0000005\",\n        \"SoLuong\": 1, \"DonGia\": 9990000, \"NgayDat\": \"2026-04-22\",\n        \"TongTien\": 9690000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    },\n    {\n        \"MaDH\": \"DH0000030\", \"MaKhachHang\": \"KH0000010\", \"MaVC\": \"\",\n        \"SoLuong\": 1, \"DonGia\": 52990000, \"NgayDat\": \"2026-04-25\",\n        \"TongTien\": 52990000, \"TinhTrang\": \"Chờ xác nhận\", \"GhiChu\": \"\"\n    }\n]",
               "options": {
                 "raw": {
                   "language": "json"
@@ -644,7 +664,36 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "[\n    {\n        \"MaKhachHang\": \"KH0000002\",\n        \"HoTen\": \"Trần Thị Bích\",\n        \"Email\": \"trантhibich@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0912345678\",\n        \"DiaChi\": \"45 Nguyễn Văn Linh, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-01-15\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000003\",\n        \"HoTen\": \"Lê Hoàng Cường\",\n        \"Email\": \"lehoangcuong@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0923456789\",\n        \"DiaChi\": \"67 Trần Phú, Hội An\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-01-20\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000004\",\n        \"HoTen\": \"Phạm Thị Dung\",\n        \"Email\": \"phamthidung@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0934567890\",\n        \"DiaChi\": \"89 Hùng Vương, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-01-25\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000005\",\n        \"HoTen\": \"Hoàng Văn Em\",\n        \"Email\": \"hoangvanem@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0945678901\",\n        \"DiaChi\": \"12 Điện Biên Phủ, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-02-01\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000006\",\n        \"HoTen\": \"Võ Thị Phương\",\n        \"Email\": \"vothiphuong@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0956789012\",\n        \"DiaChi\": \"34 Phan Chu Trinh, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-02-05\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000007\",\n        \"HoTen\": \"Đặng Văn Giang\",\n        \"Email\": \"dangvangiang@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0967890123\",\n        \"DiaChi\": \"56 Lý Thường Kiệt, Huế\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-02-10\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000008\",\n        \"HoTen\": \"Bùi Thị Hoa\",\n        \"Email\": \"buithihoa@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0978901234\",\n        \"DiaChi\": \"78 Nguyễn Huệ, TP.HCM\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-02-15\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000009\",\n        \"HoTen\": \"Ngô Văn Hùng\",\n        \"Email\": \"ngovanhung@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0989012345\",\n        \"DiaChi\": \"90 Trần Hưng Đạo, Hà Nội\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-02-20\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000010\",\n        \"HoTen\": \"Đinh Thị Kim\",\n        \"Email\": \"dinhthikim@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0990123456\",\n        \"DiaChi\": \"11 Lê Lợi, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-02-25\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000011\",\n        \"HoTen\": \"Trương Văn Long\",\n        \"Email\": \"truongvanlong@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0901111111\",\n        \"DiaChi\": \"22 Hoàng Diệu, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-03-01\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000012\",\n        \"HoTen\": \"Lý Thị Mai\",\n        \"Email\": \"lythimai@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0902222222\",\n        \"DiaChi\": \"33 Pasteur, TP.HCM\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-03-05\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000013\",\n        \"HoTen\": \"Phan Văn Nam\",\n        \"Email\": \"phanvannam@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0903333333\",\n        \"DiaChi\": \"44 Bạch Đằng, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-03-10\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000014\",\n        \"HoTen\": \"Dương Thị Oanh\",\n        \"Email\": \"duongthioanh@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0904444444\",\n        \"DiaChi\": \"55 Ngô Quyền, Hà Nội\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-03-15\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000015\",\n        \"HoTen\": \"Vũ Văn Phúc\",\n        \"Email\": \"vuvanphuc@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0905555555\",\n        \"DiaChi\": \"66 Trần Quốc Toản, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-03-20\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000016\",\n        \"HoTen\": \"Mai Thị Quỳnh\",\n        \"Email\": \"maithiquynh@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0906666666\",\n        \"DiaChi\": \"77 Phan Đình Phùng, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-03-25\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000017\",\n        \"HoTen\": \"Cao Văn Sơn\",\n        \"Email\": \"caovanson@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0907777777\",\n        \"DiaChi\": \"88 Nguyễn Tri Phương, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-04-01\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000018\",\n        \"HoTen\": \"Lê Thị Thu\",\n        \"Email\": \"lethithu@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0908888888\",\n        \"DiaChi\": \"99 Võ Thị Sáu, TP.HCM\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-04-05\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000019\",\n        \"HoTen\": \"Trần Văn Uy\",\n        \"Email\": \"tranvanuy@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0909999999\",\n        \"DiaChi\": \"100 Lê Hồng Phong, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-04-10\"\n    },\n    {\n        \"MaKhachHang\": \"KH0000020\",\n        \"HoTen\": \"Nguyễn Thị Vân\",\n        \"Email\": \"nguyenthivan@gmail.com\",\n        \"MatKhau\": \"123456\",\n        \"SoDienThoai\": \"0910000000\",\n        \"DiaChi\": \"111 Đinh Tiên Hoàng, Đà Nẵng\",\n        \"LoaiTaiKhoan\": \"KhachHang\",\n        \"NgayTao\": \"2026-04-15\"\n    }\n]",
+              "raw": "{\n    \"MaKhachHang\": \"KH0000019\",\n    \"HoTen\": \"Nguyễn Trường Quốc\",\n    \"Email\": \"quoc93346@gmail.com\",\n    \"MatKhau\": \"se397h\",\n    \"SoDienThoai\": \"0877335286\",\n    \"DiaChi\": \"78A Phan Văn Trị, TP.Đà Nẵng\",\n    \"GioiTinh\": \"Nam\",\n    \"LoaiTaiKhoan\": \"Admin\",\n    \"NgayTao\": \"2026-04-07 00:00:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_PREXFIX}}/khachhangs",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "khachhangs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/khachhangs",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
               "options": {
                 "raw": {
                   "language": "json"
@@ -681,21 +730,11 @@
                   "type": "file",
                   "uuid": "e529130c-b007-4813-8283-a7cb9face8e4",
                   "src": [
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/acer-aspire-5-a515.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/acer-swift-3-sf314.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/asus-rog-strix-g16-2024.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/asus-zenbook-14-ux425.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/dell-inspiron-15-3520.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/dell-xps-15-9530.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/hp-elitebook-840-g10.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/hp-spectre-x360-14.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/lenovo-ideapad-gaming-3.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/lenovo-thinkpad-x1-carbon.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/macbook-air-15-m2.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/macbook-pro-14-m3-pro.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/msi-modern-15-b12m.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/msi-titan-gt77.jpg",
-                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/samsung-galaxy-book3-pro.jpg"
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/lenovo-legion-5-pro.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/dell-latitude-5540.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/hp-envy-x360-15.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/msi-prestige-14-evo.jpg",
+                    "/Users/truongquoc/workspace/SE-397H/backend/Assets/asus-expertbook-b9.jpg"
                   ]
                 }
               ]
@@ -739,6 +778,250 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "lienhehotros",
+      "item": [
+        {
+          "name": "api/lienhehotros",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n    \"MaLH\": \"LH002\",\n    \"MaKhachHang\": \"KH0000001\",\n    \"TieuDe\": \"Giao hàng chậm\",\n    \"NoiDung\": \"Đơn hàng của tôi giao trễ hơn dự kiến 3 ngày.\",\n    \"NgayGui\": \"2026-04-29\",\n    \"TrangThai\": \"Đã trả lời\"\n  },\n  {\n    \"MaLH\": \"LH003\",\n    \"MaKhachHang\": \"KH0000002\",\n    \"TieuDe\": \"Lỗi đăng nhập\",\n    \"NoiDung\": \"Tôi không thể đăng nhập vào tài khoản.\",\n    \"NgayGui\": \"2026-04-28\",\n    \"TrangThai\": \"Chưa trả lời\"\n  },\n  {\n    \"MaLH\": \"LH004\",\n    \"MaKhachHang\": \"KH0000005\",\n    \"TieuDe\": \"Yêu cầu đổi hàng\",\n    \"NoiDung\": \"Sản phẩm nhận được không đúng màu đã đặt.\",\n    \"NgayGui\": \"2026-04-27\",\n    \"TrangThai\": \"Đã trả lời\"\n  },\n  {\n    \"MaLH\": \"LH005\",\n    \"MaKhachHang\": \"KH0000003\",\n    \"TieuDe\": \"Hỏi về khuyến mãi\",\n    \"NoiDung\": \"Shop còn chương trình giảm giá nào không?\",\n    \"NgayGui\": \"2026-04-26\",\n    \"TrangThai\": \"Chưa trả lời\"\n  },\n  {\n    \"MaLH\": \"LH006\",\n    \"MaKhachHang\": \"KH0000006\",\n    \"TieuDe\": \"Sản phẩm lỗi\",\n    \"NoiDung\": \"Áo bị rách đường may khi mới nhận hàng.\",\n    \"NgayGui\": \"2026-04-25\",\n    \"TrangThai\": \"Đã trả lời\"\n  },\n  {\n    \"MaLH\": \"LH007\",\n    \"MaKhachHang\": \"KH0000007\",\n    \"TieuDe\": \"Hủy đơn hàng\",\n    \"NoiDung\": \"Tôi muốn hủy đơn vì đặt nhầm size.\",\n    \"NgayGui\": \"2026-04-24\",\n    \"TrangThai\": \"Chưa trả lời\"\n  },\n  {\n    \"MaLH\": \"LH008\",\n    \"MaKhachHang\": \"KH0000008\",\n    \"TieuDe\": \"Góp ý dịch vụ\",\n    \"NoiDung\": \"Nhân viên hỗ trợ rất nhiệt tình, tôi rất hài lòng.\",\n    \"NgayGui\": \"2026-04-23\",\n    \"TrangThai\": \"Đã trả lời\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_PREXFIX}}/lienhehotros",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "lienhehotros"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/lienhehotros",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_PREXFIX}}/lienhehotros",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "lienhehotros"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "danhgias",
+      "item": [
+        {
+          "name": "api/danhgias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/danhgias",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "danhgias"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/danhgias",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"MaDG\": \"DG001\",\n    \"MaKhachHang\": \"KH0000001\",\n    \"MaSP\": \"SP001\",\n    \"NoiDung\": \"Laptop chạy rất mượt, hiệu năng tốt cho công việc và học tập.\",\n    \"Diem\": 5,\n    \"NgayDG\": \"2026-04-21\"\n  },\n  {\n    \"MaDG\": \"DG002\",\n    \"MaKhachHang\": \"KH0000002\",\n    \"MaSP\": \"SP002\",\n    \"NoiDung\": \"Máy thiết kế đẹp, pin dùng khá lâu.\",\n    \"Diem\": 5,\n    \"NgayDG\": \"2026-04-22\"\n  },\n  {\n    \"MaDG\": \"DG003\",\n    \"MaKhachHang\": \"KH0000003\",\n    \"MaSP\": \"SP003\",\n    \"NoiDung\": \"Laptop hoạt động ổn định nhưng quạt hơi ồn khi chơi game.\",\n    \"Diem\": 4,\n    \"NgayDG\": \"2026-04-22\"\n  },\n  {\n    \"MaDG\": \"DG004\",\n    \"MaKhachHang\": \"KH0000004\",\n    \"MaSP\": \"SP004\",\n    \"NoiDung\": \"Màn hình sắc nét nhưng loa nghe ở mức trung bình.\",\n    \"Diem\": 3,\n    \"NgayDG\": \"2026-04-23\"\n  },\n  {\n    \"MaDG\": \"DG005\",\n    \"MaKhachHang\": \"KH0000005\",\n    \"MaSP\": \"SP005\",\n    \"NoiDung\": \"Bàn phím gõ rất êm, phù hợp dân văn phòng.\",\n    \"Diem\": 5,\n    \"NgayDG\": \"2026-04-24\"\n  },\n  {\n    \"MaDG\": \"DG006\",\n    \"MaKhachHang\": \"KH0000006\",\n    \"MaSP\": \"SP006\",\n    \"NoiDung\": \"Máy hơi nóng sau khi sử dụng liên tục nhiều giờ.\",\n    \"Diem\": 2,\n    \"NgayDG\": \"2026-04-25\"\n  },\n  {\n    \"MaDG\": \"DG007\",\n    \"MaKhachHang\": \"KH0000007\",\n    \"MaSP\": \"SP007\",\n    \"NoiDung\": \"Giá hợp lý, cấu hình tốt trong tầm giá.\",\n    \"Diem\": 4,\n    \"NgayDG\": \"2026-04-26\"\n  },\n  {\n    \"MaDG\": \"DG008\",\n    \"MaKhachHang\": \"KH0000008\",\n    \"MaSP\": \"SP008\",\n    \"NoiDung\": \"Laptop có lỗi nhỏ ở touchpad nhưng được hỗ trợ nhanh.\",\n    \"Diem\": 4,\n    \"NgayDG\": \"2026-04-27\"\n  },\n  {\n    \"MaDG\": \"DG009\",\n    \"MaKhachHang\": \"KH0000009\",\n    \"MaSP\": \"SP009\",\n    \"NoiDung\": \"Hiệu năng chưa như mong đợi, hơi lag khi mở nhiều ứng dụng.\",\n    \"Diem\": 2,\n    \"NgayDG\": \"2026-04-28\"\n  },\n  {\n    \"MaDG\": \"DG010\",\n    \"MaKhachHang\": \"KH0000010\",\n    \"MaSP\": \"SP010\",\n    \"NoiDung\": \"Rất hài lòng, máy đẹp và sử dụng ổn định.\",\n    \"Diem\": 5,\n    \"NgayDG\": \"2026-04-29\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_PREXFIX}}/danhgias",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "danhgias"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "thanhtoans",
+      "item": [
+        {
+          "name": "api/thanhtoans",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/donhangs",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "donhangs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/thanhtoans/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/donhangs/2",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "donhangs",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/thanhtoans",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"MaTT\": \"TT001\",\n    \"MaDH\": \"DH0000001\",\n    \"HinhThuc\": \"Chuyển khoản\",\n    \"NgayThanhToan\": \"2026-04-01\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT002\",\n    \"MaDH\": \"DH0000002\",\n    \"HinhThuc\": \"Ví điện tử\",\n    \"NgayThanhToan\": \"2026-04-02\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT003\",\n    \"MaDH\": \"DH0000003\",\n    \"HinhThuc\": \"Tiền mặt\",\n    \"NgayThanhToan\": \"2026-04-03\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT004\",\n    \"MaDH\": \"DH0000004\",\n    \"HinhThuc\": \"Chuyển khoản\",\n    \"NgayThanhToan\": \"2026-04-04\",\n    \"TrangThai\": \"Chờ thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT005\",\n    \"MaDH\": \"DH0000005\",\n    \"HinhThuc\": \"Ví điện tử\",\n    \"NgayThanhToan\": \"2026-04-05\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT006\",\n    \"MaDH\": \"DH0000006\",\n    \"HinhThuc\": \"Tiền mặt\",\n    \"NgayThanhToan\": \"2026-04-06\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT007\",\n    \"MaDH\": \"DH0000007\",\n    \"HinhThuc\": \"Chuyển khoản\",\n    \"NgayThanhToan\": \"2026-04-07\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT008\",\n    \"MaDH\": \"DH0000008\",\n    \"HinhThuc\": \"Ví điện tử\",\n    \"NgayThanhToan\": \"2026-04-08\",\n    \"TrangThai\": \"Chờ thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT009\",\n    \"MaDH\": \"DH0000009\",\n    \"HinhThuc\": \"Tiền mặt\",\n    \"NgayThanhToan\": \"2026-04-09\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT010\",\n    \"MaDH\": \"DH0000010\",\n    \"HinhThuc\": \"Chuyển khoản\",\n    \"NgayThanhToan\": \"2026-04-10\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT011\",\n    \"MaDH\": \"DH0000011\",\n    \"HinhThuc\": \"Ví điện tử\",\n    \"NgayThanhToan\": \"2026-04-11\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT012\",\n    \"MaDH\": \"DH0000012\",\n    \"HinhThuc\": \"Tiền mặt\",\n    \"NgayThanhToan\": \"2026-04-12\",\n    \"TrangThai\": \"Chờ thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT013\",\n    \"MaDH\": \"DH0000013\",\n    \"HinhThuc\": \"Chuyển khoản\",\n    \"NgayThanhToan\": \"2026-04-13\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT014\",\n    \"MaDH\": \"DH0000014\",\n    \"HinhThuc\": \"Ví điện tử\",\n    \"NgayThanhToan\": \"2026-04-14\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT015\",\n    \"MaDH\": \"DH0000015\",\n    \"HinhThuc\": \"Tiền mặt\",\n    \"NgayThanhToan\": \"2026-04-15\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT016\",\n    \"MaDH\": \"DH0000016\",\n    \"HinhThuc\": \"Chuyển khoản\",\n    \"NgayThanhToan\": \"2026-04-16\",\n    \"TrangThai\": \"Chờ thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT017\",\n    \"MaDH\": \"DH0000017\",\n    \"HinhThuc\": \"Ví điện tử\",\n    \"NgayThanhToan\": \"2026-04-17\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT018\",\n    \"MaDH\": \"DH0000018\",\n    \"HinhThuc\": \"Tiền mặt\",\n    \"NgayThanhToan\": \"2026-04-18\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT019\",\n    \"MaDH\": \"DH0000019\",\n    \"HinhThuc\": \"Chuyển khoản\",\n    \"NgayThanhToan\": \"2026-04-19\",\n    \"TrangThai\": \"Đã thanh toán\"\n  },\n  {\n    \"MaTT\": \"TT020\",\n    \"MaDH\": \"DH0000020\",\n    \"HinhThuc\": \"Ví điện tử\",\n    \"NgayThanhToan\": \"2026-04-20\",\n    \"TrangThai\": \"Chờ thanh toán\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_PREXFIX}}/thanhtoans",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "thanhtoans"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "giohangs",
+      "item": [
+        {
+          "name": "api/giohangs",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\n  {\n    \"MaGH\": \"GH020\",\n    \"MaKhachHang\": \"KH0000019\",\n    \"MaSP\": \"SP020\",\n    \"NgayTao\": \"2026-04-20\",\n    \"SoLuong\": 1\n  }\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_PREXFIX}}/giohangs",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "giohangs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/lienhehotros/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/lienhehotros/SP0000016",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "lienhehotros",
+                "SP0000016"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api/thanhtoans Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_PREXFIX}}/donhangs",
+              "host": [
+                "{{API_PREXFIX}}"
+              ],
+              "path": [
+                "donhangs"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "thongkes",
+      "item": []
     },
     {
       "name": "api/healthcheck",
