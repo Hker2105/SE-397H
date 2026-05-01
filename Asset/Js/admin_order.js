@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api';
+const API = 'http://127.0.0.1:3000/api';
 let allData = [];
 let khachHangMap = {};
 let sanPhamMap = {};
@@ -53,7 +53,7 @@ function renderTable(data) {
             <td>${sp.TenSP || item.MaSP || ''}</td>
             <td>${item.DonGia ? item.DonGia.toLocaleString('vi-VN') + ' VND' : ''}</td>
             <td>
-                <img src="http://localhost:3000/uploads/${sp.HinhAnh || ''}" 
+                <img src="http://127.0.0.1:3000/uploads/${sp.HinhAnh || ''}" 
                      style="width:50px; height:50px; object-fit:cover;"
                      onerror="this.src='/Asset/img/no-image.png'">
             </td>
