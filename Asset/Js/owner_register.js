@@ -88,3 +88,22 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         console.error(err);
     }
 });
+
+const Password = document.getElementById("password");
+const Password2 = document.getElementById("password2");
+
+const eye = document.getElementById("eye");
+const eye2 = document.getElementById("eye2");
+
+function togglePassword(input, icon) {
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        input.type = "password";
+        icon.classList.replace("fa-eye-slash", "fa-eye");
+    }
+}
+
+eye.onclick = () => togglePassword(Password, eye);
+eye2.onclick = () => togglePassword(Password2, eye2);
