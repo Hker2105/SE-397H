@@ -72,14 +72,14 @@ export const insertKhachHang = async (req, res) => {
             }
 
             const hashedPassword = await argon2.hash(item.MatKhau)
-            const { MaKhachHang, HoTen, Email, SoDienThoai, DiaChi, LoaiTaiKhoan, NgayTao } = item
+            const { MaKhachHang, HoTen, Email, SoDienThoai, DiaChi, GioiTinh, LoaiTaiKhoan, NgayTao } = item
             const ngayTaoFormatted = new Date(NgayTao).toISOString().split('T')[0]
 
             await db.sequelize.query(
-                `INSERT INTO khachhangs (MaKhachHang, HoTen, Email, MatKhau, SoDienThoai, DiaChi, LoaiTaiKhoan, NgayTao, createdAt, updatedAt) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
+                `INSERT INTO khachhangs (MaKhachHang, HoTen, Email, MatKhau, SoDienThoai, DiaChi, GioiTinh, LoaiTaiKhoan, NgayTao, createdAt, updatedAt) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
                 {
-                    replacements: [MaKhachHang, HoTen, Email, hashedPassword, SoDienThoai, DiaChi, LoaiTaiKhoan, ngayTaoFormatted],
+                    replacements: [MaKhachHang, HoTen, Email, hashedPassword, SoDienThoai, DiaChi, GioiTinh, LoaiTaiKhoan, ngayTaoFormatted],
                     type: db.Sequelize.QueryTypes.INSERT
                 }
             )
@@ -128,7 +128,7 @@ export async function updateKhachHang(req, res){
             console.log('đã hash:', data.MatKhau) 
         }
         const id = req.params.id
-        const updated = await db.KHACHHANG.update(req.body, { where: { MaKhachHang: id } });
+        const updated = await db.KHACHHANG.update(data, { where: { MaKhachHang: id } });
         if(updated[0] > 0) {
             return res.status(200).json({ message: 'Update khách hàng thành công' })
         } else {
