@@ -112,12 +112,20 @@ export async function deleteKhachHang(req, res){
 
 export async function updateKhachHang(req, res){
     try {
+        const data = { ...req.body }
+        console.log('data trước hash:', data) 
+
         const { error } = updatekhachHangRequest.validate(req.body)
         if(error) {
             return res.status(400).json({
                 message: 'Dữ liệu không hợp lệ',
                 error: error.details[0].message
             })
+        }
+
+        if (data.MatKhau) {
+            data.MatKhau = await argon2.hash(data.MatKhau)
+            console.log('đã hash:', data.MatKhau) 
         }
         const id = req.params.id
         const updated = await db.KHACHHANG.update(req.body, { where: { MaKhachHang: id } });
