@@ -1,11 +1,9 @@
-const API = 'http://localhost:3000/api';
+const API = 'http://127.0.0.1:3000/api';
 
-// Lấy id từ URL
 const urlParams = new URLSearchParams(window.location.search);
 const MaSP = urlParams.get('id');
 
 async function loadOptions(selectedDM, selectedHang, selectedNCC) {
-    // Load danh mục
     const dmRes = await fetch(`${API}/danhmucs`);
     const dmJson = await dmRes.json();
     const dmSelect = document.getElementById('MaDM');
@@ -13,7 +11,6 @@ async function loadOptions(selectedDM, selectedHang, selectedNCC) {
         dmSelect.innerHTML += `<option value="${item.MaDM}" ${item.MaDM === selectedDM ? 'selected' : ''}>${item.TenDanhMuc}</option>`
     });
 
-    // Load hãng sản xuất
     const hangRes = await fetch(`${API}/hangsanxuats`);
     const hangJson = await hangRes.json();
     const hangSelect = document.getElementById('MaHang');
@@ -21,7 +18,6 @@ async function loadOptions(selectedDM, selectedHang, selectedNCC) {
         hangSelect.innerHTML += `<option value="${item.MaHang}" ${item.MaHang === selectedHang ? 'selected' : ''}>${item.TenHang}</option>`
     });
 
-    // Load nhà cung cấp
     const nccRes = await fetch(`${API}/nhacungcaps`);
     const nccJson = await nccRes.json();
     const nccSelect = document.getElementById('MaNCC');
@@ -36,21 +32,17 @@ async function loadSanPham() {
         const json = await res.json();
         const sp = json.data;
 
-        // Điền data vào form
         document.getElementById('MaSP').value = sp.MaSP;
         document.getElementById('TenSP').value = sp.TenSP;
         document.getElementById('Gia').value = sp.Gia;
         document.getElementById('SoLuongTon').value = sp.SoLuongTon;
 
-        // Hiện ảnh hiện tại
         const img = document.getElementById('currentImage');
-        img.src = `http://localhost:3000/uploads/${sp.HinhAnh}`;
+        img.src = `http://127.0.0.1:3000/uploads/${sp.HinhAnh}`;
         img.onerror = () => img.src = '/Asset/img/no-image.png';
 
-        // Load options và chọn đúng giá trị
         await loadOptions(sp.MaDM, sp.MaHang, sp.MaNCC);
 
-        // Set mô tả vào CKEditor
         CKEDITOR.instances.editor.setData(sp.MoTa || '');
 
     } catch (err) {
@@ -121,7 +113,6 @@ document.getElementById('editProductForm').addEventListener('submit', async func
     }
 });
 
-// Load data khi trang sẵn sàng
 window.addEventListener('load', () => {
     if (MaSP) {
         loadSanPham();
