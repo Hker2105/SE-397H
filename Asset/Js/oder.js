@@ -1,59 +1,93 @@
-const inputs = {
-    name: document.querySelector('input[placeholder="Nhập họ và tên"]'),
-    phone: document.querySelector('input[placeholder="Nhập số điện thoại"]'),
-    email: document.querySelector('input[placeholder="Nhập email"]'),
-    address: document.querySelector('input[placeholder="Nhập địa chỉ"]'),
-    note: document.querySelector('input[placeholder="Ghi chú đơn hàng"]'),
-};
+document.addEventListener('DOMContentLoaded', () => {
+  const SHIPPING_FEE = 200000;
 
-const orderBtn = document.querySelector(".order-btn");
-const invoiceBox = document.querySelector(".invoice-box");
+  const inputs = {
+    name: document.querySelector('input[placeholder="Họ và tên"]'),
+    phone: document.querySelector('input[placeholder="Số điện thoại"]'),
+    email: document.querySelector('input[placeholder="Email"]'),
+    address: document.querySelector('input[placeholder="Địa chỉ"]'),
+    note: document.querySelector('input[placeholder="Ghi chú"]'),
+  };
 
-const validate = () => {
-    if (!inputs.name.value.trim()) return alert("Vui lòng nhập họ và tên");
-    if (!inputs.phone.value.trim()) return alert("Vui lòng nhập số điện thoại");
-    if (!inputs.email.value.trim()) return alert("Vui lòng nhập email");
-    if (!inputs.address.value.trim()) return alert("Vui lòng nhập địa chỉ");
+  const orderBtn = document.querySelector('.order-btn');
+  const productsEl = document.getElementById('order-products');
+  const subtotalEl = document.getElementById('order-subtotal');
+  const shippingEl = document.getElementById('order-shipping');
+  const paymentMethodEl = document.getElementById('order-payment-method');
+
+  if (!orderBtn || !productsEl || !subtotalEl || !shippingEl || !paymentMethodEl) return;
+
+  const format = (n) => `${Number(n || 0).toLocaleString('vi-VN')} VNĐ`;
+  const getCartItems = () => {
+    const checkoutItems = JSON.parse(localStorage.getItem('checkoutItems') || '[]');
+    if (Array.isArray(checkoutItems) && checkoutItems.length) return checkoutItems;
+    return JSON.parse(localStorage.getItem('cartItems') || '[]');
+  };
+
+  const renderInvoice = () => {
+    const items = getCartItems();
+    if (!items.length) {
+      productsEl.innerHTML = '<strong>Sản phẩm: (trống)</strong>';
+      subtotalEl.innerHTML = `<strong>Thành tiền: ${format(0)}</strong>`;
+      shippingEl.innerHTML = `<strong>Phí vận chuyển: ${format(0)}</strong>`;
+      orderBtn.disabled = true;
+      orderBtn.style.opacity = '0.6';
+      return;
+    }
+
+    const normalized = items.map((i) => ({
+      name: i.name || i.product || 'Sản phẩm',
+      quantity: Number(i.quantity || 1),
+      price: Number(i.price || 0),
+    }));
+
+    const subtotal = normalized.reduce((sum, i) => sum + i.price * i.quantity, 0);
+    const names = normalized.map((i) => `${i.name} x${i.quantity}`).join(', ');
+
+    productsEl.innerHTML = `<strong>Sản phẩm: ${names}</strong>`;
+    subtotalEl.innerHTML = `<strong>Thành tiền: ${format(subtotal)}</strong>`;
+    shippingEl.innerHTML = `<strong>Phí vận chuyển: ${format(SHIPPING_FEE)}</strong>`;
+    orderBtn.disabled = false;
+    orderBtn.style.opacity = '1';
+  };
+
+  const validate = () => {
+    if (!inputs.name.value.trim()) return alert('Vui lòng nhập họ và tên');
+    if (!inputs.phone.value.trim()) return alert('Vui lòng nhập số điện thoại');
+    if (!inputs.email.value.trim()) return alert('Vui lòng nhập email');
+    if (!inputs.address.value.trim()) return alert('Vui lòng nhập địa chỉ');
+    if (!paymentMethodEl.value) return alert('Vui lòng chọn phương thức thanh toán');
     return true;
-};
+  };
 
-const format = (n) =>
-    n.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
-
-orderBtn.addEventListener("click", () => {
+  orderBtn.addEventListener('click', () => {
+    const cartItems = getCartItems();
+    if (!cartItems.length) return alert('Giỏ hàng đang trống!');
     if (!validate()) return;
 
-    const order = {
-        product: "Laptop ABC",
-        price: 25000000,
-        shipping: 30000,
-        total: 25000000 + 30000,
-        name: inputs.name.value,
-        phone: inputs.phone.value,
-        email: inputs.email.value,
-        address: inputs.address.value,
-        note: inputs.note.value
+    const orderRecord = {
+      id: `OD${Date.now()}`,
+      name: inputs.name.value.trim(),
+      phone: inputs.phone.value.trim(),
+      email: inputs.email.value.trim(),
+      address: inputs.address.value.trim(),
+      note: inputs.note.value.trim(),
+      paymentMethod: paymentMethodEl.value,
+      cartItems,
+      createdAt: new Date().toISOString(),
+      status: 'Chờ xác nhận',
     };
 
-    // Lưu vào localStorage
-    localStorage.setItem("order", JSON.stringify(order));
+    localStorage.setItem('orderInfo', JSON.stringify(orderRecord));
+    const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+    history.unshift(orderRecord);
+    localStorage.setItem('orderHistory', JSON.stringify(history));
 
-    // Xóa nội dung cũ
-    invoiceBox.querySelectorAll(".invoice-item").forEach(e => e.remove());
+    alert('Đặt hàng thành công!');
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('checkoutItems');
+    window.location.href = '/index.html';
+  });
 
-    const html = `
-        <div class="invoice-item"><strong>Sản phẩm:</strong> ${order.product}</div>
-        <div class="invoice-item"><strong>Giá:</strong> ${format(order.price)}</div>
-        <div class="invoice-item"><strong>Phí ship:</strong> ${format(order.shipping)}</div>
-        <div class="invoice-item"><strong>Tổng cộng:</strong> ${format(order.total)}</div>
-        <div class="invoice-item"><strong>Tên:</strong> ${order.name}</div>
-        <div class="invoice-item"><strong>SĐT:</strong> ${order.phone}</div>
-        <div class="invoice-item"><strong>Email:</strong> ${order.email}</div>
-        <div class="invoice-item"><strong>Địa chỉ:</strong> ${order.address}</div>
-        <div class="invoice-item"><strong>Ghi chú:</strong> ${order.note}</div>
-    `;
-
-    invoiceBox.insertAdjacentHTML("beforeend", html);
-
-    alert("Đặt hàng thành công!");
+  renderInvoice();
 });
