@@ -1,6 +1,4 @@
 function initPayInvoice() {
-  if (document.body.dataset.payInitDone === '1') return;
-  document.body.dataset.payInitDone = '1';
   const SHIPPING_FEE = 200000;
   const productLine = document.getElementById('pay-products');
   const subtotalLine = document.getElementById('pay-subtotal');
@@ -14,7 +12,8 @@ function initPayInvoice() {
   const getCartItems = () => {
     try {
       const items = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      return Array.isArray(items) ? items : [];
+      if (Array.isArray(items)) return items;
+      return [];
     } catch {
       return [];
     }
@@ -64,3 +63,4 @@ function initPayInvoice() {
 }
 
 document.addEventListener('DOMContentLoaded', initPayInvoice);
+window.addEventListener('load', initPayInvoice);

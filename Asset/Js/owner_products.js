@@ -1,4 +1,4 @@
-const API = `${window.location.origin}/api`;
+const API = 'http://127.0.0.1:3000/api';
 let allProducts = [];
 
 function formatPrice(price) {
@@ -39,7 +39,7 @@ function renderProducts(products) {
   if (!grid) return;
 
   if (!products.length) {
-    grid.innerHTML = '<p class="product-empty">Không có sản phẩm phù hợp bộ lọc.</p>';
+    grid.innerHTML = '<p>Không có sản phẩm phù hợp bộ lọc.</p>';
     return;
   }
 
@@ -50,7 +50,7 @@ function renderProducts(products) {
         <div class="product-img-box">
           <img src="/backend/Assets/${item.HinhAnh}" alt="${safeName}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
         </div>
-        <h3 class="product-name" title="${safeName}">${item.TenSP}</h3>
+        <h3 class="product-name">${item.TenSP}</h3>
         <p class="product-price">${formatPrice(item.Gia)}</p>
         <div class="product-actions">
           <a href="/Owner/Product_details.html?id=${item.MaSP}" class="action-link">👁 Xem chi tiết</a>
@@ -73,9 +73,6 @@ function renderProducts(products) {
       else cartItems.push({ id, name, price, quantity: 1 });
 
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      if (typeof window.updateCartBadge === 'function') {
-        window.updateCartBadge();
-      }
       alert('Đã thêm vào giỏ hàng!');
     });
   });
@@ -84,9 +81,6 @@ function renderProducts(products) {
 async function loadProducts() {
   try {
     const res = await fetch(`${API}/sanphams?limit=200`);
-    if (!res.ok) {
-      throw new Error(`API error: ${res.status}`);
-    }
     const json = await res.json();
     allProducts = json.data || [];
     applyFilters();
@@ -104,11 +98,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.btn-filter')?.addEventListener('click', applyFilters);
   document.querySelectorAll('input[name="price-filter"]').forEach((el) => el.addEventListener('change', applyFilters));
   document.querySelector('.search-box button')?.addEventListener('click', applyFilters);
-  input?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      applyFilters();
-    }
-  });
   loadProducts();
 });

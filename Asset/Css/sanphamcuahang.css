@@ -7,9 +7,8 @@
 }
 
 body {
-    background: #f6f8fb;
-    color: #1f2937;
-    line-height: 1.4;
+    background-color: #ffffff;
+    color: #333;
 }
 
 a {
@@ -26,9 +25,7 @@ a {
 
 /* --- HEADER --- */
 .header {
-    padding: 18px 0;
-    background: #fff;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 20px 0;
 }
 
 .header-inner {
@@ -52,7 +49,7 @@ a {
 .search-box input {
     flex: 1;
     padding: 10px 15px;
-    border: 1px solid #d1d5db;
+    border: 1px solid #777;
     border-right: none;
     outline: none;
     font-size: 14px;
@@ -60,8 +57,8 @@ a {
 
 .search-box button {
     padding: 10px 20px;
-    background-color: #fff;
-    border: 1px solid #d1d5db;
+    background-color: #f8f9fa;
+    border: 1px solid #777;
     cursor: pointer;
     font-size: 16px;
 }
@@ -84,8 +81,8 @@ a {
 
 /* --- NAVBAR --- */
 .navbar {
-    border-bottom: 1px solid #e5e7eb;
-    background: #fff;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     position: relative;
     z-index: 100;
 }
@@ -141,8 +138,7 @@ a {
 
 .main-menu li a {
     font-size: 15px;
-    color: #111827;
-    font-weight: 600;
+    color: #333;
 }
 
 /* Đăng nhập / Thoát */
@@ -154,7 +150,7 @@ a {
 
 /* --- PAGE TITLE BANNER --- */
 .page-title-banner {
-    background: linear-gradient(90deg, #ecfeff 0%, #eef2ff 100%);
+    background-color: #f0f0ff; 
     text-align: center;
     padding: 15px 0;
     margin-bottom: 30px;
@@ -178,10 +174,6 @@ a {
 .sidebar {
     width: 250px;
     flex-shrink: 0;
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 16px;
 }
 
 .sidebar-title {
@@ -202,7 +194,7 @@ a {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #4b5563; 
+    color: #888; 
     font-size: 16px;
     cursor: pointer;
 }
@@ -291,7 +283,7 @@ a {
 
 /* Thẻ sản phẩm */
 .product-card {
-    border: 1px solid #e5e7eb;
+    border: 1px solid #eee;
     padding: 15px;
     background: #fff;
     display: flex;
@@ -328,7 +320,7 @@ a {
 }
 
 .product-name {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: normal;
     color: #333;
     line-height: 1.4;
@@ -339,7 +331,7 @@ a {
 }
 
 .product-price {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: #000;
     text-align: center;
@@ -355,39 +347,6 @@ a {
 }
 
 .action-link {
-    color: #0284c7;
+    color: #00e5ff;
     font-weight: bold;
-}
-
-.product-empty {
-    background: #fff;
-    border: 1px dashed #cbd5e1;
-    border-radius: 12px;
-    padding: 18px;
-}
-
-@media (max-width: 992px) {
-    .layout-flex {
-        flex-direction: column;
-    }
-    .sidebar {
-        width: 100%;
-    }
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .search-box {
-        width: 100%;
-        max-width: 420px;
-    }
-}
-
-@media (max-width: 640px) {
-    .header-inner, .nav-inner {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
 }

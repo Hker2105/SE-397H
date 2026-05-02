@@ -154,7 +154,6 @@ body {
 .dropdown {
     display: flex;
     align-items: center;
-    position: relative;
 }
 
 .form-container {
@@ -524,18 +523,6 @@ body {
 
 .cart-item-row {
     margin-top: 8px;
-}
-
-.cart-item-row .info_cart-frame {
-    background: #fff;
-}
-
-.cart-item-row {
-    margin-top: 8px;
-}
-
-.cart-item-row .info_cart-frame {
-    background: #fff;
 }
 
 .cart-item-row .info_cart-frame {

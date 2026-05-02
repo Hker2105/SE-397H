@@ -75,14 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.querySelector('.dropbtn');
     if (!menu || !btn || btn.dataset.categoryBound === '1') return false;
 
-    const host = document.querySelector('.dropdown');
-    if (host && menu.parentElement !== host) host.appendChild(menu);
-
     const placeMenu = () => {
-      menu.style.position = 'absolute';
-      menu.style.left = '0';
-      menu.style.top = '100%';
-      menu.style.width = `${btn.offsetWidth}px`;
+      const rect = btn.getBoundingClientRect();
+      menu.style.position = 'fixed';
+      menu.style.left = `${rect.left}px`;
+      menu.style.top = `${rect.bottom}px`;
+      menu.style.width = `${rect.width}px`;
       menu.style.zIndex = '9999';
     };
 

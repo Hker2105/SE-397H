@@ -16,5 +16,3 @@ backend/.env
 .DS_Store
 .vscode/
 .idea/
-
-backend/.yarn/install-state.gz
