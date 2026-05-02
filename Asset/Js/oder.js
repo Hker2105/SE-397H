@@ -13,8 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const productsEl = document.getElementById('order-products');
   const subtotalEl = document.getElementById('order-subtotal');
   const shippingEl = document.getElementById('order-shipping');
+  const paymentMethodEl = document.getElementById('order-payment-method');
 
-  if (!orderBtn || !productsEl || !subtotalEl || !shippingEl) return;
+  if (!orderBtn || !productsEl || !subtotalEl || !shippingEl || !paymentMethodEl) return;
 
   const format = (n) => `${Number(n || 0).toLocaleString('vi-VN')} VNĐ`;
   const getCartItems = () => {
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!inputs.phone.value.trim()) return alert('Vui lòng nhập số điện thoại');
     if (!inputs.email.value.trim()) return alert('Vui lòng nhập email');
     if (!inputs.address.value.trim()) return alert('Vui lòng nhập địa chỉ');
+    if (!paymentMethodEl.value) return alert('Vui lòng chọn phương thức thanh toán');
     return true;
   };
 
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       email: inputs.email.value.trim(),
       address: inputs.address.value.trim(),
       note: inputs.note.value.trim(),
+      paymentMethod: paymentMethodEl.value,
       cartItems,
     }));
 
