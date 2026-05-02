@@ -90,12 +90,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     return true;
   };
+
+  const bindCategoryFilter = () => {
+    const links = document.querySelectorAll('#home-category-list a');
+    if (!links.length) return;
+
+    const rules = {
+      'Gaming': ['gaming', 'tuf', 'rog', 'msi'],
+      'Macbook': ['macbook'],
+      'Học tập/văn phòng': ['aspire', 'vivobook', 'swift', 'inspiron', 'idea'],
+      'Đồ họa, Kỹ thuật': ['xps', 'thinkpad', 'legion', 'predator'],
+      'Cao cấp/Sang trọng': ['xps', 'spectre', 'zenbook', 'prestige', 'expertbook', 'macbook pro'],
+      'Cũ': ['cũ', 'used'],
+    };
+
+    links.forEach((link) => {
+      if (link.dataset.categoryBound === '1') return;
+      link.dataset.categoryBound = '1';
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const name = link.textContent.trim();
+        const keywords = rules[name] || [];
+        const cards = document.querySelectorAll('.product-grid .product-card');
+
+        cards.forEach((card) => {
+          const text = card.querySelector('.product-name')?.textContent?.toLowerCase() || '';
+          const show = !keywords.length || keywords.some((kw) => text.includes(kw));
+          card.style.display = show ? '' : 'none';
+        });
+
+        document.querySelector('.new-products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  };
   if (!bindCategoryToggle()) {
     const categoryTimer = setInterval(() => {
       if (bindCategoryToggle()) clearInterval(categoryTimer);
     }, 200);
     setTimeout(() => clearInterval(categoryTimer), 5000);
   }
+
+  bindCategoryFilter();
 
   if (!bindSearch()) {
     const timer = setInterval(() => {
