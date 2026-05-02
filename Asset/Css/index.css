@@ -91,7 +91,7 @@ a {
     list-style: none;
     position: absolute;
     top: 100%;
-    left: -156px;
+    left: 0;
     width: 98%;
     background: #fff;
     border: 1px solid #ddd;
@@ -281,4 +281,13 @@ a {
     border: 1px solid #ddd;
     text-align: center;
     vertical-align: middle;
+}
+
+
+.category-list {
+    display: none;
+}
+
+.category-list.is-open {
+    display: block;
 }
