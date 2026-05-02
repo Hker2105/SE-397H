@@ -1,16 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
   const SHIPPING_FEE = 200000;
 
-  const cartContainer = document.querySelector('.info_cart-title');
+  const cartContainer = document.querySelector('.info_cart');
+  const headerRow = document.querySelector('.info_cart-title');
   const totalPriceElem = document.querySelector('.total_price-number');
   const costCartElems = document.querySelectorAll('.cost_cart-number');
   const checkoutBtn = document.querySelector('.button_buy');
 
-  if (!cartContainer || !totalPriceElem || costCartElems.length < 2) return;
+  if (!cartContainer || !headerRow || !totalPriceElem || costCartElems.length < 2) return;
 
-  const cartRowsContainer = document.createElement('div');
-  cartRowsContainer.classList.add('cart-rows-container');
-  cartContainer.parentNode.appendChild(cartRowsContainer);
+  let cartRowsContainer = document.querySelector('.cart-rows-container');
+  if (!cartRowsContainer) {
+    cartRowsContainer = document.createElement('div');
+    cartRowsContainer.className = 'cart-rows-container';
+    cartContainer.appendChild(cartRowsContainer);
+  }
 
   const getCartItems = () => JSON.parse(localStorage.getItem('cartItems') || '[]');
   const saveCartItems = (items) => localStorage.setItem('cartItems', JSON.stringify(items));
@@ -20,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateTotal(cartItems) {
-    const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const subtotal = cartItems.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 0), 0);
     costCartElems[0].textContent = formatVnd(subtotal);
     costCartElems[1].textContent = formatVnd(SHIPPING_FEE);
     totalPriceElem.textContent = formatVnd(subtotal + SHIPPING_FEE);
@@ -31,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cartRowsContainer.innerHTML = '';
 
     if (cartItems.length === 0) {
+      cartRowsContainer.innerHTML = '<p style="margin:12px 0;">Giỏ hàng đang trống.</p>';
       updateTotal([]);
       if (typeof window.updateCartBadge === 'function') window.updateCartBadge();
       return;
@@ -38,21 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cartItems.forEach((item, index) => {
       const row = document.createElement('div');
-      row.classList.add('cart_row');
-      row.style.display = 'flex';
-      row.style.alignItems = 'center';
-      row.style.marginTop = '10px';
+      row.className = 'info_cart-title cart-item-row';
 
       row.innerHTML = `
-        <div style="width:150px;">${item.name}</div>
-        <div style="width:120px;">${formatVnd(item.price)}</div>
-        <div style="width:100px;">
-          <input type="number" min="1" value="${item.quantity}" class="qty-input" data-index="${index}" style="width:50px;">
-        </div>
-        <div style="width:120px;" class="item-total">${formatVnd(item.price * item.quantity)}</div>
-        <div style="width:60px;">
-          <button class="btn-remove" data-index="${index}">Xóa</button>
-        </div>
+        <div class="cart_about"><div class="info_cart-frame">${item.name || ''}</div></div>
+        <div class="cart_about"><div class="info_cart-frame">${formatVnd(item.price)}</div></div>
+        <div class="cart_about"><div class="info_cart-frame"><input type="number" min="1" value="${item.quantity}" class="qty-input" data-index="${index}" style="width:60px;"></div></div>
+        <div class="cart_about"><div class="info_cart-frame">${formatVnd(Number(item.price || 0) * Number(item.quantity || 0))}</div></div>
+        <div class="cart_about"><div class="info_cart-frame"><button class="btn-remove" data-index="${index}">Xóa</button></div></div>
       `;
 
       cartRowsContainer.appendChild(row);
@@ -66,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const idx = Number(e.target.dataset.index);
         let val = parseInt(e.target.value, 10);
         if (!Number.isFinite(val) || val < 1) val = 1;
-
         items[idx].quantity = val;
         saveCartItems(items);
         renderCart();
@@ -92,8 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Giỏ hàng đang trống!');
       return;
     }
-
-    alert('Đang chuyển đến bước thanh toán...');
     window.location.href = '/Owner/pay.html';
   });
 
