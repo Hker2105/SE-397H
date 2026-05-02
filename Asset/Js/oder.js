@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!cartItems.length) return alert('Giỏ hàng đang trống!');
     if (!validate()) return;
 
-    localStorage.setItem('orderInfo', JSON.stringify({
+    const orderRecord = {
+      id: `OD${Date.now()}`,
       name: inputs.name.value.trim(),
       phone: inputs.phone.value.trim(),
       email: inputs.email.value.trim(),
@@ -73,7 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
       note: inputs.note.value.trim(),
       paymentMethod: paymentMethodEl.value,
       cartItems,
-    }));
+      createdAt: new Date().toISOString(),
+      status: 'Chờ xác nhận',
+    };
+
+    localStorage.setItem('orderInfo', JSON.stringify(orderRecord));
+    const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+    history.unshift(orderRecord);
+    localStorage.setItem('orderHistory', JSON.stringify(history));
 
     alert('Đặt hàng thành công!');
     localStorage.removeItem('cartItems');
