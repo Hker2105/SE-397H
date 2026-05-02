@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>G5 Laptop - Đặt hàng</title>
-    <link rel="stylesheet" href="/Asset/Css/Style.css">
+    <link rel="stylesheet" href="/Asset/Css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -14,7 +14,7 @@
     <!-- HEADER -->
         <div id="header"></div>
 
-        <script src="../Asset/Js/header.js"></script>
+        <script src="/Asset/Js/header.js"></script>
 
     <!-- ORDER -->
     <section class="order-header">
@@ -54,17 +54,11 @@
             <div class="invoice-box">
                 <div class="invoice-title">Tổng hóa đơn</div>
 
-                <div class="invoice-item invoice-line">
-                    <strong>Sản phẩm</strong>
-                </div>
+                <div class="invoice-item invoice-line" id="order-products"><strong>Sản phẩm: --</strong></div>
 
-                <div class="invoice-item">
-                    <strong>Thành tiền</strong>
-                </div>
+                <div class="invoice-item" id="order-subtotal"><strong>Thành tiền: --</strong></div>
 
-                <div class="invoice-item">
-                    <strong>Phí vận chuyển</strong>
-                </div>
+                <div class="invoice-item" id="order-shipping"><strong>Phí vận chuyển: --</strong></div>
 
                 <div class="invoice-item">
                     <strong>Chọn phương thức thanh toán <i class="fa fa-caret-down"></i></strong>
