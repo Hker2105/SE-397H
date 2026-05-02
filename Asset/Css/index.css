@@ -73,8 +73,12 @@ a {
 
 /* Nút Danh mục */
 .category-wrapper {
-    position: relative;
+    position: absolute;
+    top: -52px;
+    left: 0;
     width: 250px;
+    height: 0;
+    z-index: 300;
 }
 
 .category-btn {
@@ -91,7 +95,7 @@ a {
     list-style: none;
     position: absolute;
     top: 100%;
-    left: -156px;
+    left: 0;
     width: 98%;
     background: #fff;
     border: 1px solid #ddd;
@@ -138,6 +142,7 @@ a {
 }
 
 .main-content {
+    position: relative;
     padding-top: 20px;
 }
 
@@ -281,4 +286,22 @@ a {
     border: 1px solid #ddd;
     text-align: center;
     vertical-align: middle;
+}
+
+
+
+
+
+.category-list {
+    display: none;
+    flex-direction: column;
+}
+
+.category-list.is-open {
+    display: block !important;
+}
+
+.category-list li {
+    display: block !important;
+    width: 100%;
 }

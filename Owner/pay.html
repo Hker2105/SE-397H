@@ -5,19 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>G5 Laptop - Pay</title>
-    <link rel="stylesheet" href="/Asset/Css/Style.css">
+    <link rel="stylesheet" href="/Asset/Css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <!-- HEADER -->
-
-    <body>
-
-        <div id="header"></div>
-        
-        <script src="../Asset/Js/header.js"></script>
-    </body>
+    <div id="header"></div>
+    <script src="/Asset/Js/header.js"></script>
 
     <div class="pay-header">
         <h1>Phương thức thanh toán</h1>
@@ -108,17 +102,11 @@
                         Tổng hoá đơn
                     </div>
 
-                    <div class="pay-invoice-item line">
-                        Sản phẩm
-                    </div>
+                    <div class="pay-invoice-item line" id="pay-products">Sản phẩm: --</div>
 
-                    <div class="pay-invoice-item">
-                        Thành tiền
-                    </div>
+                    <div class="pay-invoice-item" id="pay-subtotal">Thành tiền: --</div>
 
-                    <div class="pay-invoice-item">
-                        Phí vận chuyển
-                    </div>
+                    <div class="pay-invoice-item" id="pay-shipping">Phí vận chuyển: --</div>
 
                     <button class="pay-btn">
                         Đặt Hàng
@@ -131,6 +119,7 @@
         </div>
 
     </div>
+    <script src="/Asset/Js/pay.js"></script>
 </body>
 
 </html>
