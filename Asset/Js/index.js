@@ -31,4 +31,76 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Đã thêm vào giỏ hàng!');
     });
   });
+
+  const filterProducts = () => {
+    const input = document.querySelector('.search-box input');
+    const keyword = (input?.value || '').trim().toLowerCase();
+    const cards = document.querySelectorAll('.product-grid .product-card');
+
+    let visible = 0;
+    cards.forEach((card) => {
+      const name = card.querySelector('.product-name')?.textContent?.toLowerCase() || '';
+      const show = !keyword || name.includes(keyword);
+      card.style.display = show ? '' : 'none';
+      if (show) visible += 1;
+    });
+
+    if (keyword && visible === 0) {
+      window.location.href = `/Owner/sanphamcuahang.html?q=${encodeURIComponent(keyword)}`;
+      return;
+    }
+
+    document.querySelector('.new-products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const bindSearch = () => {
+    const input = document.querySelector('.search-box input');
+    const button = document.querySelector('.search-box button');
+    if (!input || !button || button.dataset.searchBound === '1') return false;
+
+    button.dataset.searchBound = '1';
+    button.addEventListener('click', filterProducts);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        filterProducts();
+      }
+    });
+    return true;
+  };
+
+
+  const bindCategoryToggle = () => {
+    const menu = document.getElementById('home-category-list');
+    const btn = document.querySelector('.dropbtn');
+    if (!menu || !btn || btn.dataset.categoryBound === '1') return false;
+
+    menu.classList.remove('is-open');
+    btn.dataset.categoryBound = '1';
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      menu.classList.toggle('is-open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('is-open');
+      }
+    });
+
+    return true;
+  };
+  if (!bindCategoryToggle()) {
+    const categoryTimer = setInterval(() => {
+      if (bindCategoryToggle()) clearInterval(categoryTimer);
+    }, 200);
+    setTimeout(() => clearInterval(categoryTimer), 5000);
+  }
+
+  if (!bindSearch()) {
+    const timer = setInterval(() => {
+      if (bindSearch()) clearInterval(timer);
+    }, 200);
+    setTimeout(() => clearInterval(timer), 5000);
+  }
 });

@@ -282,3 +282,12 @@ a {
     text-align: center;
     vertical-align: middle;
 }
+
+
+.category-list {
+    display: none;
+}
+
+.category-list.is-open {
+    display: block;
+}
