@@ -31,4 +31,40 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Đã thêm vào giỏ hàng!');
     });
   });
+
+  const filterProducts = () => {
+    const input = document.querySelector('.search-box input');
+    const keyword = (input?.value || '').trim().toLowerCase();
+    const cards = document.querySelectorAll('.product-grid .product-card');
+
+    cards.forEach((card) => {
+      const name = card.querySelector('.product-name')?.textContent?.toLowerCase() || '';
+      card.style.display = !keyword || name.includes(keyword) ? '' : 'none';
+    });
+
+    document.querySelector('.new-products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const bindSearch = () => {
+    const input = document.querySelector('.search-box input');
+    const button = document.querySelector('.search-box button');
+    if (!input || !button || button.dataset.searchBound === '1') return false;
+
+    button.dataset.searchBound = '1';
+    button.addEventListener('click', filterProducts);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        filterProducts();
+      }
+    });
+    return true;
+  };
+
+  if (!bindSearch()) {
+    const timer = setInterval(() => {
+      if (bindSearch()) clearInterval(timer);
+    }, 200);
+    setTimeout(() => clearInterval(timer), 5000);
+  }
 });
