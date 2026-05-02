@@ -91,6 +91,10 @@ async function loadProducts() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const query = new URLSearchParams(window.location.search).get('q');
+  const input = document.querySelector('.search-box input');
+  if (query && input) input.value = decodeURIComponent(query);
+
   document.querySelector('.btn-filter')?.addEventListener('click', applyFilters);
   document.querySelectorAll('input[name="price-filter"]').forEach((el) => el.addEventListener('change', applyFilters));
   document.querySelector('.search-box button')?.addEventListener('click', applyFilters);

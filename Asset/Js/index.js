@@ -37,10 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const keyword = (input?.value || '').trim().toLowerCase();
     const cards = document.querySelectorAll('.product-grid .product-card');
 
+    let visible = 0;
     cards.forEach((card) => {
       const name = card.querySelector('.product-name')?.textContent?.toLowerCase() || '';
-      card.style.display = !keyword || name.includes(keyword) ? '' : 'none';
+      const show = !keyword || name.includes(keyword);
+      card.style.display = show ? '' : 'none';
+      if (show) visible += 1;
     });
+
+    if (keyword && visible === 0) {
+      window.location.href = `/Owner/sanphamcuahang.html?q=${encodeURIComponent(keyword)}`;
+      return;
+    }
 
     document.querySelector('.new-products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
