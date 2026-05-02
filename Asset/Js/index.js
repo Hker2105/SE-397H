@@ -75,11 +75,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.querySelector('.dropbtn');
     if (!menu || !btn || btn.dataset.categoryBound === '1') return false;
 
+    const placeMenu = () => {
+      const rect = btn.getBoundingClientRect();
+      menu.style.position = 'fixed';
+      menu.style.left = `${rect.left}px`;
+      menu.style.top = `${rect.bottom}px`;
+      menu.style.width = `${rect.width}px`;
+      menu.style.zIndex = '9999';
+    };
+
     menu.classList.remove('is-open');
     btn.dataset.categoryBound = '1';
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      placeMenu();
       menu.classList.toggle('is-open');
+    });
+
+    window.addEventListener('resize', () => {
+      if (menu.classList.contains('is-open')) placeMenu();
     });
 
     document.addEventListener('click', (e) => {
