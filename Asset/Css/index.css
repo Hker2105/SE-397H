@@ -73,8 +73,12 @@ a {
 
 /* Nút Danh mục */
 .category-wrapper {
-    position: relative;
+    position: absolute;
+    top: -52px;
+    left: 0;
     width: 250px;
+    height: 0;
+    z-index: 300;
 }
 
 .category-btn {
@@ -138,6 +142,7 @@ a {
 }
 
 .main-content {
+    position: relative;
     padding-top: 20px;
 }
 
