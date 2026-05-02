@@ -15,6 +15,60 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
+
+function splitSqlTuple(row) {
+  const result = [];
+  let current = '';
+  let inString = false;
+  for (let i = 0; i < row.length; i += 1) {
+    const ch = row[i];
+    const prev = row[i - 1];
+    if (ch === "'" && prev !== '\\') inString = !inString;
+    if (ch === ',' && !inString) {
+      result.push(current.trim());
+      current = '';
+    } else {
+      current += ch;
+    }
+  }
+  if (current) result.push(current.trim());
+  return result;
+}
+
+function cleanSqlValue(value) {
+  if (value === 'NULL') return null;
+  if (value.startsWith("'") && value.endsWith("'")) {
+    return value.slice(1, -1).replace(/\'/g, "'");
+  }
+  const asNumber = Number(value);
+  return Number.isNaN(asNumber) ? value : asNumber;
+}
+
+async function readProductsFromSql() {
+  const sqlPath = path.join(__dirname, 'backend', 'database', 'shop_laptop.sql');
+  const sql = await fs.readFile(sqlPath, 'utf8');
+  const match = sql.match(/INSERT INTO `sanphams`[^]*?VALUES\s*([\s\S]*?);/);
+  if (!match) return [];
+
+  const tuples = match[1].match(/\((?:[^)(]+|'(?:\'|[^'])*')*\)/g) || [];
+  return tuples.map((tuple) => {
+    const cols = splitSqlTuple(tuple.slice(1, -1)).map(cleanSqlValue);
+    return {
+      MaSP: cols[0],
+      TenSP: cols[1],
+      MaDM: cols[2],
+      MaHang: cols[3],
+      MaNCC: cols[4],
+      MoTa: cols[5],
+      Gia: cols[6],
+      SoLuongTon: cols[7],
+      HinhAnh: cols[8],
+      UuDaiSV: cols[9],
+      NgayThem: cols[10],
+    };
+  });
+}
+
 async function ensureDataFile() {
   await fs.mkdir(DATA_DIR, { recursive: true });
   try {
@@ -33,6 +87,17 @@ async function readCustomers() {
 async function writeCustomers(customers) {
   await fs.writeFile(CUSTOMERS_FILE, JSON.stringify(customers, null, 2), 'utf8');
 }
+
+
+app.get('/api/sanphams', async (req, res) => {
+  try {
+    const limit = Number(req.query.limit) || 50;
+    const products = await readProductsFromSql();
+    return res.json({ data: products.slice(0, limit) });
+  } catch (error) {
+    return res.status(500).json({ message: 'Không thể lấy danh sách sản phẩm.' });
+  }
+});
 
 app.get('/api/khachhangs', async (req, res) => {
   try {
