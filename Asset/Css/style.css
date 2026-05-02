@@ -530,6 +530,14 @@ body {
     background: #fff;
 }
 
+.cart-item-row {
+    margin-top: 8px;
+}
+
+.cart-item-row .info_cart-frame {
+    background: #fff;
+}
+
 .cart-item-row .info_cart-frame {
     background: #fff;
 }
