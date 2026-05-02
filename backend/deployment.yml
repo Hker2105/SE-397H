@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: arm64v8/mysql:9.6.0
+    image: mysql:8.0
     container_name: mysql_container
     restart: always
     ports:
