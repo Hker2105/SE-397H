@@ -282,3 +282,8 @@ a {
     text-align: center;
     vertical-align: middle;
 }
+
+
+.category-list.is-hidden {
+    display: none;
+}
