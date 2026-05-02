@@ -17,7 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!orderBtn || !productsEl || !subtotalEl || !shippingEl) return;
 
   const format = (n) => `${Number(n || 0).toLocaleString('vi-VN')} VNĐ`;
-  const getCartItems = () => JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const getCartItems = () => {
+    const checkoutItems = JSON.parse(localStorage.getItem('checkoutItems') || '[]');
+    if (Array.isArray(checkoutItems) && checkoutItems.length) return checkoutItems;
+    return JSON.parse(localStorage.getItem('cartItems') || '[]');
+  };
 
   const renderInvoice = () => {
     const items = getCartItems();
@@ -70,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     alert('Đặt hàng thành công!');
     localStorage.removeItem('cartItems');
+    localStorage.removeItem('checkoutItems');
     window.location.href = '/index.html';
   });
 

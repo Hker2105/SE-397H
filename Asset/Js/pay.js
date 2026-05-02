@@ -54,8 +54,7 @@ function initPayInvoice() {
       return;
     }
 
-    alert('Đặt hàng thành công!');
-    localStorage.removeItem('cartItems');
+    localStorage.setItem('checkoutItems', JSON.stringify(cartItems));
     window.location.href = '/Owner/oder.html';
   };
 
