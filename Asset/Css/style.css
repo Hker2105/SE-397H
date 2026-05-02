@@ -529,6 +529,10 @@ body {
     background: #fff;
 }
 
+.info_cart-title .cart_about:nth-child(5) .info_cart-frame,
+.info_cart-title .cart_about:nth-child(5) li {
+    width: 70px;
+}
 .price_cart {
     border: 1px solid #ccc;
 }
