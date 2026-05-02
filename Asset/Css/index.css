@@ -284,6 +284,10 @@ a {
 }
 
 
-.category-list.is-hidden {
+.category-list {
     display: none;
+}
+
+.category-list.is-open {
+    display: block;
 }
