@@ -154,6 +154,7 @@ body {
 .dropdown {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .form-container {
