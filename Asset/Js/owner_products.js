@@ -48,7 +48,7 @@ function renderProducts(products) {
     return `
       <div class="product-card">
         <div class="product-img-box">
-          <img src="/Asset/img/${item.HinhAnh}" alt="${safeName}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
+          <img src="/backend/Assets/${item.HinhAnh}" alt="${safeName}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
         </div>
         <h3 class="product-name">${item.TenSP}</h3>
         <p class="product-price">${formatPrice(item.Gia)}</p>
