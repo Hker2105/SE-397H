@@ -1659,3 +1659,134 @@ footer {
         box-sizing: border-box;
     }
 }
+
+/* ===== Premium UI pass ===== */
+body {
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+.logo {
+    letter-spacing: .5px;
+    transition: opacity .2s ease;
+}
+
+.logo:hover { opacity: .85; }
+
+.search-box input {
+    border: 1px solid #dbe3ee;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+}
+
+.search-box button {
+    border: 1px solid #dbe3ee;
+    background: #fff;
+    border-radius: 0 10px 10px 0;
+}
+
+.navbar {
+    border-bottom: 1px solid #e7edf5;
+}
+
+.navbar ul {
+    margin: 0;
+    align-items: center;
+}
+
+.navbar ul li a {
+    font-weight: 500;
+}
+
+.menu-right a {
+    padding: 8px 12px;
+    border-radius: 999px;
+    transition: all .2s ease;
+}
+
+.menu-right a:hover {
+    background: #ecfeff;
+    color: #0f766e;
+}
+
+.dropdown-menu {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.dropdown-menu li a:hover {
+    background: #f3f4f6;
+}
+
+.product-actions {
+    gap: 12px;
+}
+
+.btn-addcart,
+.btn-review {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(23, 168, 181, 0.2);
+}
+
+.btn-addcart:active,
+.btn-review:active,
+.qty-btn:active {
+    transform: translateY(1px);
+}
+
+.tab-content {
+    border: 1px solid #e7edf5;
+    border-radius: 0 0 12px 12px;
+}
+
+.review-form-box {
+    background: #fafcff;
+    border: 1px solid #e6edf7;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.review-field textarea {
+    min-height: 130px;
+    line-height: 1.6;
+}
+
+.footer {
+    border-top: 1px solid #e6edf7;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+}
+
+.footer-column h3,
+.footer-column h4 {
+    color: #0f172a;
+}
+
+.footer-column p,
+.footer-column li,
+.footer-column a {
+    color: #475569;
+}
+
+@media (max-width: 992px) {
+    .header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding-left: 0;
+    }
+}
