@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     headerHost.innerHTML = html;
 
     updateCartBadge();
+    updateAuthMenu();
   } catch (error) {
     console.error('Không thể tải header:', error);
   }
@@ -19,6 +20,41 @@ function getCartItems() {
   } catch {
     return [];
   }
+}
+
+
+function getCurrentUser() {
+  try {
+    return JSON.parse(localStorage.getItem('khachHang') || 'null');
+  } catch {
+    return null;
+  }
+}
+
+function updateAuthMenu() {
+  const rightMenu = document.querySelector('.menu-right');
+  if (!rightMenu) return;
+
+  const user = getCurrentUser();
+  if (!user) {
+    rightMenu.innerHTML = `
+      <li><a href="/Owner/login.html">Đăng nhập</a></li>
+      <li><a href="/Owner/register.html">Đăng ký</a></li>
+    `;
+    return;
+  }
+
+  const fullName = user.HoTen || user.TenKhachHang || user.Email || 'Tài khoản';
+  rightMenu.innerHTML = `
+    <li><a href="/Owner/update_info.html">${fullName}</a></li>
+    <li><a href="#" id="logout-link">Đăng xuất</a></li>
+  `;
+
+  document.getElementById('logout-link')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.removeItem('khachHang');
+    window.location.href = '/Owner/login.html';
+  });
 }
 
 function updateCartBadge() {
