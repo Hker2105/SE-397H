@@ -153,3 +153,70 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => clearInterval(timer), 5000);
   }
 });
+
+const API = 'http://127.0.0.1:3000/api';
+
+async function loadSanPham() {
+    try {
+        const res = await fetch(`${API}/sanphams?limit=100`);
+        const json = await res.json();
+        const data = json.data || [];
+        renderProducts(data);
+    } catch (err) {
+        console.error('Lỗi load sản phẩm:', err);
+    }
+}
+
+function renderProducts(data) {
+    const grid = document.getElementById('product-grid');
+    if (!grid) return;
+
+    if (data.length === 0) {
+        grid.innerHTML = '<p>Không có sản phẩm nào</p>';
+        return;
+    }
+
+    grid.innerHTML = data.map(item => `
+        <div class="product-card">
+            <div class="product-img-box">
+                <img src="http://127.0.0.1:3000/uploads/${item.HinhAnh}" 
+                     alt="${item.TenSP}"
+                     onerror="this.src='/Asset/img/no-image.png'">
+            </div>
+            <h3 class="product-name">${item.TenSP}</h3>
+            <p class="product-price">${item.Gia.toLocaleString('vi-VN')} VND</p>
+            <div class="product-actions">
+                <a href="/Owner/Product_details.html?id=${item.MaSP}" class="action-link">👁 Xem chi tiết</a>
+                <a href="#" class="action-link" 
+                   data-id="${item.MaSP}"
+                   data-name="${item.TenSP}"
+                   data-price="${item.Gia}"
+                   data-img="${item.HinhAnh}">🛒 Thêm vào giỏ hàng</a>
+            </div>
+        </div>
+    `).join('');
+
+    // Gắn sự kiện thêm giỏ hàng
+    grid.querySelectorAll('.action-link[data-id]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            const existing = cartItems.find(item => item.id === this.dataset.id);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cartItems.push({
+                    id: this.dataset.id,
+                    name: this.dataset.name,
+                    price: parseInt(this.dataset.price),
+                    img: this.dataset.img,
+                    quantity: 1
+                });
+            }
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            alert('Đã thêm vào giỏ hàng!');
+        });
+    });
+}
+
+loadSanPham();
