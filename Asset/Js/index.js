@@ -156,6 +156,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const API = 'http://127.0.0.1:3000/api';
   let allProducts = [];
+  function escapeHtml(text) {
+      return String(text || '')
+          .replaceAll('&', '&amp;')
+          .replaceAll('"', '&quot;')
+          .replaceAll("'", '&#39;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;');
+  }
+
+  function getImageCandidates(fileName) {
+      const name = String(fileName || '').trim();
+      if (!name) return [];
+      if (/^https?:\/\//i.test(name)) return [name];
+      return [
+          `${API}/images/${encodeURIComponent(name)}`,
+          `/backend/Assets/${encodeURIComponent(name)}`,
+          `../backend/Assets/${encodeURIComponent(name)}`
+      ];
+  }
+
+  function imageTag(fileName, alt) {
+      const candidates = getImageCandidates(fileName);
+      const fallback = 'https://via.placeholder.com/320x220?text=No+Image';
+      const firstSrc = candidates[0] || fallback;
+      const onError = `
+        const arr = (${JSON.stringify(candidates)});
+        const idx = Number(this.dataset.imgIdx || 0) + 1;
+        this.dataset.imgIdx = idx;
+        this.src = arr[idx] || '${fallback}';
+        if (!arr[idx]) this.onerror = null;
+      `.replace(/\n/g, ' ');
+      return `<img src="${firstSrc}" alt="${escapeHtml(alt)}" data-img-idx="0" onerror="${onError}">`;
+  }
+
   let currentPage = 1;
   const pageSize = 15;
 
@@ -187,9 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       grid.innerHTML = data.map(item => `
           <div class="product-card">
               <div class="product-img-box">
-                  <img src="${API}/images/${item.HinhAnh}" 
-                      alt="${item.TenSP}"
-                      onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
+                  ${imageTag(item.HinhAnh, item.TenSP)}
               </div>
               <h3 class="product-name">${item.TenSP}</h3>
               <p class="product-price">${item.Gia.toLocaleString('vi-VN')} VND</p>
