@@ -210,6 +210,35 @@
         const productId = new URLSearchParams(window.location.search).get('id');
         const formatPrice = (n) => `${Number(n || 0).toLocaleString('vi-VN')} vnd`;
 
+
+        function getImageCandidates(fileName) {
+            const name = String(fileName || '').trim();
+            if (!name) return [];
+            if (/^https?:\/\//i.test(name)) return [name];
+            return [
+                `${API}/images/${encodeURIComponent(name)}`,
+                `/backend/Assets/${encodeURIComponent(name)}`,
+                `../backend/Assets/${encodeURIComponent(name)}`
+            ];
+        }
+
+        function bindImageFallback(img, fileName) {
+            if (!img) return;
+            const candidates = getImageCandidates(fileName);
+            const fallback = 'https://via.placeholder.com/520x360?text=No+Image';
+            let idx = 0;
+            img.src = candidates[0] || fallback;
+            img.onerror = () => {
+                idx += 1;
+                if (candidates[idx]) {
+                    img.src = candidates[idx];
+                    return;
+                }
+                img.onerror = null;
+                img.src = fallback;
+            };
+        }
+
         function renderStars(score) {
             return Array.from({ length: 5 }, (_, i) => `<i class="${i < score ? 'fas' : 'far'} fa-star"></i>`).join('');
         }
@@ -223,7 +252,7 @@
 
             document.getElementById('product-name').textContent = sp.TenSP || 'Sản phẩm';
             document.getElementById('product-price').textContent = formatPrice(sp.Gia);
-            document.getElementById('product-main-img').src = `${API}/images/${sp.HinhAnh}`;
+            bindImageFallback(document.getElementById('product-main-img'), sp.HinhAnh);
             const desc = sp.MoTa || 'Chưa có mô tả cho sản phẩm này.';
             document.getElementById('product-short-desc').innerHTML = `<p><strong>Mô tả:</strong></p><p>${desc}</p>`;
             document.getElementById('product-full-desc').innerHTML = `<h3>Mô tả sản phẩm</h3><p>${desc}</p>`;
