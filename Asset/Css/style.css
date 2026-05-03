@@ -1528,3 +1528,134 @@ footer {
     .product-image-box { flex: none; width: 100%; }
     .review-wrapper { flex-direction: column; }
 }
+
+/* ===== UI Polish (global consistency) ===== */
+:root {
+    --brand: #2ec9d3;
+    --brand-dark: #17a8b5;
+    --text-main: #1f2a37;
+    --text-muted: #6b7280;
+    --surface: #ffffff;
+    --surface-soft: #f8fbff;
+    --line: #e5e7eb;
+}
+
+.header,
+.navbar,
+.product-top,
+.tab-content,
+.footer {
+    background: var(--surface);
+}
+
+.header,
+.navbar {
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.05);
+}
+
+.menu-right a,
+.navbar ul li a,
+.product-name,
+.product-price,
+.review-list h3,
+.review-form-box h3 {
+    color: var(--text-main);
+}
+
+.page-banner {
+    background: linear-gradient(180deg, #eef2ff 0%, #f6f8ff 100%);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.product-wrapper {
+    max-width: 1280px;
+    padding: 0 18px;
+    box-sizing: border-box;
+}
+
+.product-top {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.product-main-img {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    object-fit: contain;
+    background: #fff;
+}
+
+.qty-box,
+.review-field select,
+.review-field textarea {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+.qty-btn,
+.btn-addcart,
+.btn-review,
+.dropbtn {
+    background: var(--brand);
+    transition: all .2s ease;
+}
+
+.qty-btn:hover,
+.btn-addcart:hover,
+.btn-review:hover,
+.dropbtn:hover {
+    background: var(--brand-dark);
+    color: #fff;
+}
+
+.product-tabs {
+    border-bottom: 1px solid var(--line);
+}
+
+.tab-btn.active {
+    border: 1px solid var(--line);
+    border-bottom-color: #fff;
+    color: var(--text-main);
+    box-shadow: 0 -2px 0 var(--brand) inset;
+}
+
+.review-item {
+    border-top: 1px dashed #d1d5db;
+}
+
+.review-note,
+.review-login-note,
+.product-short-desc,
+.tab-content,
+.no-review,
+.product-stars span {
+    color: var(--text-muted);
+}
+
+.review-field textarea:focus,
+.review-field select:focus,
+.search-box input:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(46, 201, 211, 0.15);
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .product-top {
+        padding: 18px;
+        border-radius: 10px;
+    }
+
+    .product-wrapper,
+    .tab-content,
+    .product-tabs {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        box-sizing: border-box;
+    }
+}
