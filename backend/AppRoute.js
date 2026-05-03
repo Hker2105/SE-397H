@@ -89,6 +89,7 @@ export function AppRoute(app) {
 
     router.get('/giohangs', asyncHandler(gioHangController.getGioHangs))
     router.post('/giohangs', asyncHandler(gioHangController.insertGioHang))
+    router.put('/giohangs/:id', asyncHandler(gioHangController.updateGioHang))
     router.delete('/giohangs/:id', asyncHandler(gioHangController.deleteGioHang))
 
     app.use('/api/', router)
