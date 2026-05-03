@@ -187,12 +187,12 @@
                             <textarea name="noi_dung" id="review-content" rows="6" required></textarea>
                         </div>
 
-                        <p class="review-login-note">
+                        <p class="review-login-note" id="review-login-note">
                             Bạn cần đăng nhập để đánh giá sản phẩm.
                             <a href="/Owner/login.html"><strong>Đăng nhập</strong></a>
                         </p>
 
-                        <button type="submit" class="btn-review">Gửi đánh giá</button>
+                        <button type="submit" class="btn-review" id="btn-review-submit">Gửi đánh giá</button>
                     </form>
                 </div>
 
@@ -285,6 +285,29 @@
         }
 
 
+
+        function getCurrentUser() {
+            try {
+                return JSON.parse(localStorage.getItem('khachHang') || 'null');
+            } catch {
+                return null;
+            }
+        }
+
+        function updateReviewPermission() {
+            const user = getCurrentUser();
+            const note = document.getElementById('review-login-note');
+            const btn = document.getElementById('btn-review-submit');
+            const score = document.getElementById('review-score');
+            const content = document.getElementById('review-content');
+
+            const canReview = Boolean(user && (user.MaKhachHang || user.Email));
+            if (note) note.style.display = canReview ? 'none' : 'block';
+            if (btn) btn.disabled = !canReview;
+            if (score) score.disabled = !canReview;
+            if (content) content.disabled = !canReview;
+        }
+
         function changeQty(delta) {
             const input = document.getElementById('qty');
             const hidden = document.getElementById('sl_hidden');
@@ -303,12 +326,17 @@
 
         document.getElementById('review-form')?.addEventListener('submit', async (e) => {
             e.preventDefault();
+            const user = getCurrentUser();
+            if (!user || !(user.MaKhachHang || user.Email)) {
+                alert('Bạn cần đăng nhập để đánh giá sản phẩm.');
+                return;
+            }
             const NoiDung = document.getElementById('review-content').value.trim();
             const Diem = Number(document.getElementById('review-score').value || 5);
             if (!NoiDung) return alert('Vui lòng nhập nội dung đánh giá');
             const payload = {
                 MaDG: `DG${Date.now()}`,
-                MaKhachHang: localStorage.getItem('userId') || 'KH001',
+                MaKhachHang: (getCurrentUser()?.MaKhachHang || getCurrentUser()?.Email || '').trim(),
                 MaSP: productId,
                 NoiDung,
                 Diem,
@@ -321,6 +349,7 @@
             loadReviews();
         });
 
+        updateReviewPermission();
         loadProductDetail();
         loadReviews();
     </script>
