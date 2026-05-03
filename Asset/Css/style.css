@@ -501,10 +501,6 @@ body {
     padding: 0;
 }
 
-.info_cart-title .cart_about {
-    display: flex;
-}
-
 .cart_about li {
     background-color: #eef0ff;
 }
@@ -610,7 +606,7 @@ body {
     margin-left: 17%;
     border: none;
     background-color: #7ffbff;
-    padding: 0;
+    padding: 14px;
     width: 69%;
     font-size: 1.1rem;
 }
@@ -885,18 +881,19 @@ a {
 }
 
 .btn-update {
+    font-weight: 600;
     width: 100%;
     padding: 10px;
-    background: #8f8f8f;
+    background: #7ffbff;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     margin-top: 10px;
 }
 
 .btn-update:hover {
-    background: #6f6f6f;
+    background: #a3d4d5;
 }
 
 .account-box input {
