@@ -324,6 +324,23 @@
             btn.classList.add('active');
         }
 
+
+        async function createReviewId() {
+            try {
+                const res = await fetch(`${API}/danhgias?limit=1000`);
+                const json = await res.json();
+                const list = Array.isArray(json.data) ? json.data : [];
+                let max = 0;
+                list.forEach((r) => {
+                    const m = String(r.MaDG || '').match(/(\d+)/);
+                    if (m) max = Math.max(max, Number(m[1]) || 0);
+                });
+                return `DG${String(max + 1).padStart(6, '0')}`;
+            } catch {
+                return `DG${Date.now()}`;
+            }
+        }
+
         document.getElementById('review-form')?.addEventListener('submit', async (e) => {
             e.preventDefault();
             const user = getCurrentUser();
@@ -341,12 +358,12 @@
             }
 
             const payload = {
-                MaDG: `DG${Date.now()}`,
+                MaDG: await createReviewId(),
                 MaKhachHang: maKhachHang,
                 MaSP: productId,
                 NoiDung,
                 Diem,
-                NgayDG: new Date().toISOString()
+                NgayDG: new Date().toISOString().slice(0, 10)
             };
             let res;
             try {
@@ -361,7 +378,7 @@
                 let msg = 'Gửi góp ý thất bại';
                 try {
                     const errJson = await res.json();
-                    msg = errJson.message || errJson.error || msg;
+                    msg = errJson.error || errJson.message || msg;
                 } catch {}
                 alert(msg);
                 return;
