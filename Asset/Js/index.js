@@ -166,9 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getImageCandidates(fileName) {
-      const name = String(fileName || '').trim();
+      const raw = String(fileName || '').trim();
+      if (!raw) return [];
+      if (/^https?:\/\//i.test(raw)) return [raw];
+      const name = raw.split('/').pop().split('\\').pop();
       if (!name) return [];
-      if (/^https?:\/\//i.test(name)) return [name];
       return [
           `${API}/images/${encodeURIComponent(name)}`,
           `/backend/Assets/${encodeURIComponent(name)}`,
