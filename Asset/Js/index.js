@@ -156,6 +156,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const API = 'http://127.0.0.1:3000/api';
   let allProducts = [];
+  function escapeHtml(text) {
+      return String(text || '')
+          .replaceAll('&', '&amp;')
+          .replaceAll('"', '&quot;')
+          .replaceAll("'", '&#39;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;');
+  }
+
+  function getImageCandidates(fileName) {
+      const name = String(fileName || '').trim();
+      if (!name) return [];
+      if (/^https?:\/\//i.test(name)) return [name];
+      return [
+          `${API}/images/${encodeURIComponent(name)}`,
+          `/backend/Assets/${encodeURIComponent(name)}`,
+          `../backend/Assets/${encodeURIComponent(name)}`
+      ];
+  }
+
+  function imageTag(fileName, alt) {
+      const candidates = getImageCandidates(fileName);
+      const fallback = 'https://via.placeholder.com/320x220?text=No+Image';
+      const firstSrc = candidates[0] || fallback;
+      const encodedCandidates = encodeURIComponent(JSON.stringify(candidates));
+      return `<img src="${firstSrc}" alt="${escapeHtml(alt)}" data-img-idx="0" data-fallback="${fallback}" data-candidates="${encodedCandidates}" class="product-image">`;
+  }
+
+  function bindProductImageFallbacks(scope = document) {
+      scope.querySelectorAll('img.product-image').forEach((img) => {
+          if (img.dataset.fallbackBound === '1') return;
+          img.dataset.fallbackBound = '1';
+          img.addEventListener('error', () => {
+              const candidates = JSON.parse(decodeURIComponent(img.dataset.candidates || '%5B%5D'));
+              const next = Number(img.dataset.imgIdx || 0) + 1;
+              img.dataset.imgIdx = String(next);
+              if (candidates[next]) {
+                  img.src = candidates[next];
+                  return;
+              }
+              img.onerror = null;
+              img.src = img.dataset.fallback || 'https://via.placeholder.com/320x220?text=No+Image';
+          });
+      });
+  }
+
   let currentPage = 1;
   const pageSize = 15;
 
@@ -187,9 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
       grid.innerHTML = data.map(item => `
           <div class="product-card">
               <div class="product-img-box">
-                  <img src="http://127.0.0.1:3000/uploads/${item.HinhAnh}" 
-                      alt="${item.TenSP}"
-                      onerror="this.src='/Asset/img/no-image.png'">
+                  ${imageTag(item.HinhAnh, item.TenSP)}
               </div>
               <h3 class="product-name">${item.TenSP}</h3>
               <p class="product-price">${item.Gia.toLocaleString('vi-VN')} VND</p>
@@ -203,6 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
           </div>
       `).join('');
+
+      bindProductImageFallbacks(grid);
 
       // Gắn sự kiện thêm giỏ hàng
       grid.querySelectorAll('.action-link[data-id]').forEach(btn => {
