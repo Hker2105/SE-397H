@@ -180,14 +180,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const candidates = getImageCandidates(fileName);
       const fallback = 'https://via.placeholder.com/320x220?text=No+Image';
       const firstSrc = candidates[0] || fallback;
-      const onError = `
-        const arr = (${JSON.stringify(candidates)});
-        const idx = Number(this.dataset.imgIdx || 0) + 1;
-        this.dataset.imgIdx = idx;
-        this.src = arr[idx] || '${fallback}';
-        if (!arr[idx]) this.onerror = null;
-      `.replace(/\n/g, ' ');
-      return `<img src="${firstSrc}" alt="${escapeHtml(alt)}" data-img-idx="0" onerror="${onError}">`;
+      const encodedCandidates = encodeURIComponent(JSON.stringify(candidates));
+      return `<img src="${firstSrc}" alt="${escapeHtml(alt)}" data-img-idx="0" data-fallback="${fallback}" data-candidates="${encodedCandidates}" class="product-image">`;
+  }
+
+  function bindProductImageFallbacks(scope = document) {
+      scope.querySelectorAll('img.product-image').forEach((img) => {
+          if (img.dataset.fallbackBound === '1') return;
+          img.dataset.fallbackBound = '1';
+          img.addEventListener('error', () => {
+              const candidates = JSON.parse(decodeURIComponent(img.dataset.candidates || '%5B%5D'));
+              const next = Number(img.dataset.imgIdx || 0) + 1;
+              img.dataset.imgIdx = String(next);
+              if (candidates[next]) {
+                  img.src = candidates[next];
+                  return;
+              }
+              img.onerror = null;
+              img.src = img.dataset.fallback || 'https://via.placeholder.com/320x220?text=No+Image';
+          });
+      });
   }
 
   let currentPage = 1;
@@ -235,6 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
           </div>
       `).join('');
+
+      bindProductImageFallbacks(grid);
 
       // Gắn sự kiện thêm giỏ hàng
       grid.querySelectorAll('.action-link[data-id]').forEach(btn => {
