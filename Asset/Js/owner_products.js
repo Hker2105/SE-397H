@@ -73,6 +73,7 @@ function renderProducts(products) {
       else cartItems.push({ id, name, price, quantity: 1 });
 
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      if (typeof window.updateCartBadge === 'function') window.updateCartBadge();
       alert('Đã thêm vào giỏ hàng!');
     });
   });
