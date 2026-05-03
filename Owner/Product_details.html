@@ -301,7 +301,7 @@
             const score = document.getElementById('review-score');
             const content = document.getElementById('review-content');
 
-            const canReview = Boolean(user && (user.MaKhachHang || user.Email));
+            const canReview = Boolean(user && (user.MaKhachHang || user.maKhachHang || user.id || user.Email));
             if (note) note.style.display = canReview ? 'none' : 'block';
             if (btn) btn.disabled = !canReview;
             if (score) score.disabled = !canReview;
@@ -327,23 +327,45 @@
         document.getElementById('review-form')?.addEventListener('submit', async (e) => {
             e.preventDefault();
             const user = getCurrentUser();
-            if (!user || !(user.MaKhachHang || user.Email)) {
+            if (!user || !(user.MaKhachHang || user.maKhachHang || user.id || user.Email)) {
                 alert('Bạn cần đăng nhập để đánh giá sản phẩm.');
                 return;
             }
             const NoiDung = document.getElementById('review-content').value.trim();
             const Diem = Number(document.getElementById('review-score').value || 5);
             if (!NoiDung) return alert('Vui lòng nhập nội dung đánh giá');
+            const maKhachHang = String(user.MaKhachHang || user.maKhachHang || user.id || '').trim();
+            if (!maKhachHang) {
+                alert('Không tìm thấy mã khách hàng. Vui lòng đăng nhập lại.');
+                return;
+            }
+
             const payload = {
                 MaDG: `DG${Date.now()}`,
-                MaKhachHang: (getCurrentUser()?.MaKhachHang || getCurrentUser()?.Email || '').trim(),
+                MaKhachHang: maKhachHang,
                 MaSP: productId,
                 NoiDung,
                 Diem,
                 NgayDG: new Date().toISOString()
             };
-            const res = await fetch(`${API}/danhgias`, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
-            if (!res.ok) return alert('Gửi góp ý thất bại');
+            let res;
+            try {
+                res = await fetch(`${API}/danhgias`, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+            } catch (error) {
+                console.error('Lỗi mạng khi gửi đánh giá:', error);
+                alert('Không kết nối được server đánh giá.');
+                return;
+            }
+
+            if (!res.ok) {
+                let msg = 'Gửi góp ý thất bại';
+                try {
+                    const errJson = await res.json();
+                    msg = errJson.message || errJson.error || msg;
+                } catch {}
+                alert(msg);
+                return;
+            }
             document.getElementById('review-form').reset();
             alert('Gửi góp ý thành công!');
             loadReviews();
