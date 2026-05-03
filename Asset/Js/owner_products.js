@@ -1,6 +1,14 @@
 const API = 'http://127.0.0.1:3000/api';
 let allProducts = [];
 
+function getCurrentCustomer() {
+  return JSON.parse(localStorage.getItem('khachHang') || 'null');
+}
+
+function generateMaGH() {
+  return `GH${Date.now()}${Math.floor(Math.random() * 1000)}`;
+}
+
 function formatPrice(price) {
   return `${Number(price || 0).toLocaleString('vi-VN')} vnđ`;
 }
@@ -61,19 +69,39 @@ function renderProducts(products) {
   }).join('');
 
   grid.querySelectorAll('.add-to-cart').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', async (e) => {
       e.preventDefault();
-      const id = btn.dataset.id;
-      const name = btn.dataset.name;
-      const price = Number(btn.dataset.price || 0);
-      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      const existing = cartItems.find((item) => item.id === id);
+      const khachHang = getCurrentCustomer();
+      if (!khachHang?.MaKhachHang) {
+        alert('Vui lòng đăng nhập để thêm vào giỏ hàng!');
+        window.location.href = '/Owner/login.html';
+        return;
+      }
 
-      if (existing) existing.quantity += 1;
-      else cartItems.push({ id, name, price, quantity: 1 });
+      const MaSP = btn.dataset.id;
 
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      alert('Đã thêm vào giỏ hàng!');
+      try {
+        const res = await fetch(`${API}/giohangs`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            MaGH: generateMaGH(),
+            MaKhachHang: khachHang.MaKhachHang,
+            MaSP,
+            NgayTao: new Date().toISOString().slice(0, 10),
+            SoLuong: 1
+          })
+        });
+
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.message || 'Không thêm được vào giỏ hàng');
+
+        alert('Đã thêm vào giỏ hàng!');
+        if (typeof window.updateCartBadge === 'function') window.updateCartBadge();
+      } catch (error) {
+        console.error(error);
+        alert('Lỗi khi thêm giỏ hàng qua API.');
+      }
     });
   });
 }
@@ -100,4 +128,3 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.search-box button')?.addEventListener('click', applyFilters);
   loadProducts();
 });
-
