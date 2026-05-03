@@ -154,69 +154,127 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-const API = 'http://127.0.0.1:3000/api';
+  const API = 'http://127.0.0.1:3000/api';
+  let allProducts = [];
+  let currentPage = 1;
+  const pageSize = 15;
 
-async function loadSanPham() {
-    try {
-        const res = await fetch(`${API}/sanphams?limit=100`);
-        const json = await res.json();
-        const data = json.data || [];
-        renderProducts(data);
-    } catch (err) {
-        console.error('Lỗi load sản phẩm:', err);
-    }
-}
+  async function loadSanPham() {
+      try {
+          const res = await fetch(`${API}/sanphams?limit=100`);
+          const json = await res.json();
+          allProducts = json.data || [];
+          renderProducts();
+          renderPagination();
+      } catch (err) {
+          console.error('Lỗi load sản phẩm:', err);
+      }
+  }
 
-function renderProducts(data) {
-    const grid = document.getElementById('product-grid');
-    if (!grid) return;
+  function renderProducts() {
+      const grid = document.getElementById('product-grid');
+      if (!grid) return;
 
-    if (data.length === 0) {
-        grid.innerHTML = '<p>Không có sản phẩm nào</p>';
-        return;
-    }
+      const start = (currentPage - 1) * pageSize;
+      const end = start + pageSize;
+      const data = allProducts.slice(start, end);
 
-    grid.innerHTML = data.map(item => `
-        <div class="product-card">
-            <div class="product-img-box">
-                <img src="http://127.0.0.1:3000/uploads/${item.HinhAnh}" 
-                     alt="${item.TenSP}"
-                     onerror="this.src='/Asset/img/no-image.png'">
-            </div>
-            <h3 class="product-name">${item.TenSP}</h3>
-            <p class="product-price">${item.Gia.toLocaleString('vi-VN')} VND</p>
-            <div class="product-actions">
-                <a href="/Owner/Product_details.html?id=${item.MaSP}" class="action-link">👁 Xem chi tiết</a>
-                <a href="#" class="action-link" 
-                   data-id="${item.MaSP}"
-                   data-name="${item.TenSP}"
-                   data-price="${item.Gia}"
-                   data-img="${item.HinhAnh}">🛒 Thêm vào giỏ hàng</a>
-            </div>
-        </div>
-    `).join('');
+      if (data.length === 0) {
+          grid.innerHTML = '<p>Không có sản phẩm nào</p>';
+          return;
+      }
 
-    // Gắn sự kiện thêm giỏ hàng
-    grid.querySelectorAll('.action-link[data-id]').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-            const existing = cartItems.find(item => item.id === this.dataset.id);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cartItems.push({
-                    id: this.dataset.id,
-                    name: this.dataset.name,
-                    price: parseInt(this.dataset.price),
-                    img: this.dataset.img,
-                    quantity: 1
-                });
-            }
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-            alert('Đã thêm vào giỏ hàng!');
-        });
-    });
-}
+      grid.innerHTML = data.map(item => `
+          <div class="product-card">
+              <div class="product-img-box">
+                  <img src="http://127.0.0.1:3000/uploads/${item.HinhAnh}" 
+                      alt="${item.TenSP}"
+                      onerror="this.src='/Asset/img/no-image.png'">
+              </div>
+              <h3 class="product-name">${item.TenSP}</h3>
+              <p class="product-price">${item.Gia.toLocaleString('vi-VN')} VND</p>
+              <div class="product-actions">
+                  <a href="/Owner/Product_details.html?id=${item.MaSP}" class="action-link">👁 Xem chi tiết</a>
+                  <a href="#" class="action-link"
+                    data-id="${item.MaSP}"
+                    data-name="${item.TenSP}"
+                    data-price="${item.Gia}"
+                    data-img="${item.HinhAnh}">🛒 Thêm vào giỏ hàng</a>
+              </div>
+          </div>
+      `).join('');
 
-loadSanPham();
+      // Gắn sự kiện thêm giỏ hàng
+      grid.querySelectorAll('.action-link[data-id]').forEach(btn => {
+          btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+              const existing = cartItems.find(item => item.id === this.dataset.id);
+              if (existing) {
+                  existing.quantity += 1;
+              } else {
+                  cartItems.push({
+                      id: this.dataset.id,
+                      name: this.dataset.name,
+                      price: parseInt(this.dataset.price),
+                      img: this.dataset.img,
+                      quantity: 1
+                  });
+              }
+              localStorage.setItem('cartItems', JSON.stringify(cartItems));
+              alert('Đã thêm vào giỏ hàng!');
+          });
+      });
+  }
+
+  function renderPagination() {
+      const totalPages = Math.ceil(allProducts.length / pageSize);
+      
+      // Xoá pagination cũ nếu có
+      let pagination = document.getElementById('pagination');
+      if (!pagination) {
+          pagination = document.createElement('div');
+          pagination.id = 'pagination';
+          pagination.style.cssText = 'display:flex; justify-content:center; gap:8px; margin:30px 0;';
+          document.getElementById('product-grid').after(pagination);
+      }
+
+      let html = '';
+
+      // Nút Prev
+      html += `<button onclick="changePage(${currentPage - 1})" 
+          ${currentPage === 1 ? 'disabled' : ''}
+          style="padding:8px 16px; cursor:pointer; border:1px solid #ccc; background:${currentPage === 1 ? '#eee' : '#fff'}">
+          ← Trước
+      </button>`;
+
+      // Số trang
+      for (let i = 1; i <= totalPages; i++) {
+          html += `<button onclick="changePage(${i})"
+              style="padding:8px 14px; cursor:pointer; border:1px solid #ccc; 
+              background:${i === currentPage ? '#00e5ff' : '#fff'};
+              font-weight:${i === currentPage ? 'bold' : 'normal'}">
+              ${i}
+          </button>`;
+      }
+
+      // Nút Next
+      html += `<button onclick="changePage(${currentPage + 1})"
+          ${currentPage === totalPages ? 'disabled' : ''}
+          style="padding:8px 16px; cursor:pointer; border:1px solid #ccc; background:${currentPage === totalPages ? '#eee' : '#fff'}">
+          Tiếp →
+      </button>`;
+
+      pagination.innerHTML = html;
+  }
+
+  function changePage(page) {
+      const totalPages = Math.ceil(allProducts.length / pageSize);
+      if (page < 1 || page > totalPages) return;
+      currentPage = page;
+      renderProducts();
+      renderPagination();
+      document.querySelector('.new-products').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  loadSanPham();
