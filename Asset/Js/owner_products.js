@@ -6,7 +6,7 @@ function getCurrentCustomer() {
 }
 
 function generateMaGH() {
-  return `GH${Date.now()}${Math.floor(Math.random() * 1000)}`;
+  return `GH${Date.now().toString().slice(-8)}${Math.floor(Math.random() * 100)}`;
 }
 
 function formatPrice(price) {
@@ -81,17 +81,31 @@ function renderProducts(products) {
       const MaSP = btn.dataset.id;
 
       try {
-        const res = await fetch(`${API}/giohangs`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            MaGH: generateMaGH(),
-            MaKhachHang: khachHang.MaKhachHang,
-            MaSP,
-            NgayTao: new Date().toISOString().slice(0, 10),
-            SoLuong: 1
+        const listRes = await fetch(`${API}/giohangs?limit=1000`);
+        const listJson = await listRes.json();
+        const cartRows = listJson.data || [];
+
+        const existingItem = cartRows.find(
+          (item) => String(item.MaKhachHang) === String(khachHang.MaKhachHang) && String(item.MaSP) === String(MaSP)
+        );
+
+        const res = existingItem
+          ? await fetch(`${API}/giohangs/${existingItem.MaGH}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ SoLuong: Number(existingItem.SoLuong || 0) + 1 })
           })
-        });
+          : await fetch(`${API}/giohangs`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              MaGH: generateMaGH(),
+              MaKhachHang: khachHang.MaKhachHang,
+              MaSP,
+              NgayTao: new Date().toISOString(),
+              SoLuong: 1
+            })
+          });
 
         const json = await res.json();
         if (!res.ok) throw new Error(json.message || 'Không thêm được vào giỏ hàng');

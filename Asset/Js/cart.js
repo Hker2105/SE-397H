@@ -22,28 +22,33 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchCartItems() {
     const khachHang = getCurrentCustomer();
     if (!khachHang?.MaKhachHang) return [];
+    try {
+      const [cartRes, productRes] = await Promise.all([
+        fetch(`${API}/giohangs?limit=1000`),
+        fetch(`${API}/sanphams?limit=500`)
+      ]);
+      if (!cartRes.ok || !productRes.ok) return [];
 
-    const [cartRes, productRes] = await Promise.all([
-      fetch(`${API}/giohangs?limit=500`),
-      fetch(`${API}/sanphams?limit=500`)
-    ]);
+      const cartJson = await cartRes.json();
+      const productJson = await productRes.json();
+      const products = productJson.data || [];
 
-    const cartJson = await cartRes.json();
-    const productJson = await productRes.json();
-    const products = productJson.data || [];
-
-    return (cartJson.data || [])
-      .filter((item) => item.MaKhachHang === khachHang.MaKhachHang)
-      .map((item) => {
-        const product = products.find((p) => p.MaSP === item.MaSP);
-        return {
-          MaGH: item.MaGH,
-          MaSP: item.MaSP,
-          name: product?.TenSP || 'Sản phẩm',
-          price: Number(product?.Gia || 0),
-          quantity: Number(item.SoLuong || 1)
-        };
-      });
+      return (cartJson.data || [])
+        .filter((item) => String(item.MaKhachHang) === String(khachHang.MaKhachHang))
+        .map((item) => {
+          const product = products.find((p) => String(p.MaSP) === String(item.MaSP));
+          return {
+            MaGH: item.MaGH,
+            MaSP: item.MaSP,
+            name: product?.TenSP || 'Sản phẩm',
+            price: Number(product?.Gia || 0),
+            quantity: Number(item.SoLuong || 1)
+          };
+        });
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
   function formatVnd(value) {
