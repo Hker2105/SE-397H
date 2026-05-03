@@ -1,14 +1,6 @@
 const API = 'http://127.0.0.1:3000/api';
 let allProducts = [];
 
-function getCurrentCustomer() {
-  return JSON.parse(localStorage.getItem('khachHang') || 'null');
-}
-
-function generateMaGH() {
-  return `GH${Date.now().toString().slice(-8)}${Math.floor(Math.random() * 100)}`;
-}
-
 function formatPrice(price) {
   return `${Number(price || 0).toLocaleString('vi-VN')} vnđ`;
 }
@@ -69,53 +61,19 @@ function renderProducts(products) {
   }).join('');
 
   grid.querySelectorAll('.add-to-cart').forEach((btn) => {
-    btn.addEventListener('click', async (e) => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const khachHang = getCurrentCustomer();
-      if (!khachHang?.MaKhachHang) {
-        alert('Vui lòng đăng nhập để thêm vào giỏ hàng!');
-        window.location.href = '/Owner/login.html';
-        return;
-      }
+      const id = btn.dataset.id;
+      const name = btn.dataset.name;
+      const price = Number(btn.dataset.price || 0);
+      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      const existing = cartItems.find((item) => item.id === id);
 
-      const MaSP = btn.dataset.id;
+      if (existing) existing.quantity += 1;
+      else cartItems.push({ id, name, price, quantity: 1 });
 
-      try {
-        const listRes = await fetch(`${API}/giohangs?limit=1000`);
-        const listJson = await listRes.json();
-        const cartRows = listJson.data || [];
-
-        const existingItem = cartRows.find(
-          (item) => String(item.MaKhachHang) === String(khachHang.MaKhachHang) && String(item.MaSP) === String(MaSP)
-        );
-
-        const res = existingItem
-          ? await fetch(`${API}/giohangs/${existingItem.MaGH}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ SoLuong: Number(existingItem.SoLuong || 0) + 1 })
-          })
-          : await fetch(`${API}/giohangs`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              MaGH: generateMaGH(),
-              MaKhachHang: khachHang.MaKhachHang,
-              MaSP,
-              NgayTao: new Date().toISOString(),
-              SoLuong: 1
-            })
-          });
-
-        const json = await res.json();
-        if (!res.ok) throw new Error(json.message || 'Không thêm được vào giỏ hàng');
-
-        alert('Đã thêm vào giỏ hàng!');
-        if (typeof window.updateCartBadge === 'function') window.updateCartBadge();
-      } catch (error) {
-        console.error(error);
-        alert('Lỗi khi thêm giỏ hàng qua API.');
-      }
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      alert('Đã thêm vào giỏ hàng!');
     });
   });
 }
@@ -142,3 +100,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.search-box button')?.addEventListener('click', applyFilters);
   loadProducts();
 });
+
