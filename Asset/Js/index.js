@@ -187,9 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
       grid.innerHTML = data.map(item => `
           <div class="product-card">
               <div class="product-img-box">
-                  <img src="http://127.0.0.1:3000/uploads/${item.HinhAnh}" 
+                  <img src="${API}/images/${item.HinhAnh}" 
                       alt="${item.TenSP}"
-                      onerror="this.src='/Asset/img/no-image.png'">
+                      onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
               </div>
               <h3 class="product-name">${item.TenSP}</h3>
               <p class="product-price">${item.Gia.toLocaleString('vi-VN')} VND</p>

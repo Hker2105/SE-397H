@@ -31,14 +31,14 @@
         [DATA] Thay src bằng đường dẫn ảnh từ database
         PHP: src="img/<?= $product['hinh_anh'] ?>"
       -->
-                <img src="img/macbook.jpg" alt="Ảnh sản phẩm" class="product-main-img" />
+                <img src="https://via.placeholder.com/520x360?text=No+Image" alt="Ảnh sản phẩm" class="product-main-img" id="product-main-img" />
             </div>
 
             <!-- Thông tin sản phẩm -->
             <div class="product-info">
 
                 <!-- [DATA] Tên sản phẩm: <?= $product['ten_sp'] ?> -->
-                <h1 class="product-name">Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core</h1>
+                <h1 class="product-name" id="product-name">Đang tải sản phẩm...</h1>
 
                 <!-- Đánh giá sao -->
                 <div class="product-stars">
@@ -48,14 +48,14 @@
                     <i class="far fa-star"></i>
                     <i class="far fa-star"></i>
                     <!-- [DATA] Số đánh giá: (<?= $so_danh_gia ?> đánh giá) -->
-                    <span>(0 đánh giá)</span>
+                    <span id="product-review-count">(0 đánh giá)</span>
                 </div>
 
                 <!-- [DATA] Giá: <?= number_format($product['gia']) ?> vnd -->
-                <div class="product-price">27.490.000 vnd</div>
+                <div class="product-price" id="product-price">0 vnd</div>
 
                 <!-- [DATA] Mô tả ngắn: <?= $product['mo_ta_ngan'] ?> -->
-                <div class="product-short-desc">
+                <div class="product-short-desc" id="product-short-desc">
                     <p><strong>Mô tả:</strong></p>
                     <p>Laptop <strong>Apple MacBook Air M1 2020</strong> thuộc dòng laptop cao cấp sang trọng có cấu
                         hình mạnh mẽ, chinh phục được các tính năng văn phòng lẫn đồ họa mà bạn mong muốn, thời lượng
@@ -84,7 +84,7 @@
           PHP: action="addcart.php" + input hidden id_sp
         -->
                     <form action="addcart.php" method="POST" style="display:inline;">
-                        <input type="hidden" name="id_sp" value="1" /> <!-- [DATA] <?= $product['id_sp'] ?> -->
+                        <input type="hidden" name="id_sp" id="cart-product-id" value="" />
                         <input type="hidden" name="so_luong" id="sl_hidden" value="1" />
                         <button type="submit" class="btn-addcart">
                             <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
@@ -106,13 +106,13 @@
 
         <!-- ===== TABS: MÔ TẢ / ĐÁNH GIÁ ===== -->
         <div class="product-tabs">
-            <button class="tab-btn active" onclick="switchTab('motа', this)">Mô tả</button>
+            <button class="tab-btn active" onclick="switchTab('mota', this)">Mô tả</button>
             <!-- [DATA] Số đánh giá: <?= $so_danh_gia ?> -->
-            <button class="tab-btn" onclick="switchTab('danhgia', this)">Đánh giá (0)</button>
+            <button class="tab-btn" id="review-tab-btn" onclick="switchTab('danhgia', this)">Đánh giá (0)</button>
         </div>
 
         <!-- Tab Mô tả -->
-        <div class="tab-content" id="tab-mota">
+        <div class="tab-content" id="tab-mota"><div id="product-full-desc">
             <h3>Mô tả sản phẩm</h3>
             <!--
       [DATA] Nội dung mô tả đầy đủ từ database
@@ -133,7 +133,7 @@
                 của thân máy là 16.1 mm có tính cơ động cao, dễ đem theo xử lý công việc.</p>
             <p>Vỏ máy được thiết kế nguyên khối từ nguyên liệu nhôm tái chế 100% vừa góp phần bảo vệ môi trường vừa cho
                 độ bền cao, chịu va đập tốt bảo vệ các linh kiện bên trong an toàn nếu có xảy ra va chạm mạnh.</p>
-        </div>
+        </div></div>
 
         <!-- Tab Đánh giá -->
         <div class="tab-content" id="tab-danhgia" style="display:none;">
@@ -145,8 +145,8 @@
           [DATA] Tên sản phẩm + số đánh giá
           PHP: <?= $so_danh_gia ?> đánh giá cho <?= $product['ten_sp'] ?>
         -->
-                    <h3>0 đánh giá cho Laptop Apple MacBook Air M1 2020 8GB/256GB</h3>
-                    <p class="no-review">Chưa có đánh giá nào cho sản phẩm này.</p>
+                    <h3 id="review-title">0 đánh giá cho sản phẩm</h3>
+                    <div id="review-list-content"><p class="no-review">Chưa có đánh giá nào cho sản phẩm này.</p></div>
                     <!--
           [DATA] Vòng lặp hiển thị đánh giá từ database
           PHP foreach ($danh_gia as $dg):
@@ -168,12 +168,12 @@
           PHP: action="danhgia.php" method="POST"
                input hidden id_sp: <?= $product['id_sp'] ?>
         -->
-                    <form action="danhgia.php" method="POST">
-                        <input type="hidden" name="id_sp" value="1" /> <!-- [DATA] <?= $product['id_sp'] ?> -->
+                    <form id="review-form">
+                        <input type="hidden" name="id_sp" id="review-product-id" value="" />
 
                         <div class="review-field">
                             <label>Số sao * :</label>
-                            <select name="so_sao">
+                            <select name="so_sao" id="review-score">
                                 <option value="1">1 Sao</option>
                                 <option value="2">2 Sao</option>
                                 <option value="3">3 Sao</option>
@@ -184,7 +184,7 @@
 
                         <div class="review-field">
                             <label>Nội dung đánh giá *</label>
-                            <textarea name="noi_dung" rows="6" required></textarea>
+                            <textarea name="noi_dung" id="review-content" rows="6" required></textarea>
                         </div>
 
                         <p class="review-login-note">
@@ -204,26 +204,95 @@
 
     <script src="/Asset/Js/footer.js"></script>
 
+    
     <script>
-        // Đổi số lượng
+        const API = 'http://127.0.0.1:3000/api';
+        const productId = new URLSearchParams(window.location.search).get('id');
+        const formatPrice = (n) => `${Number(n || 0).toLocaleString('vi-VN')} vnd`;
+
+        function renderStars(score) {
+            return Array.from({ length: 5 }, (_, i) => `<i class="${i < score ? 'fas' : 'far'} fa-star"></i>`).join('');
+        }
+
+        async function loadProductDetail() {
+            if (!productId) return;
+            const res = await fetch(`${API}/sanphams/${productId}`);
+            const json = await res.json();
+            const sp = json.data;
+            if (!sp) return;
+
+            document.getElementById('product-name').textContent = sp.TenSP || 'Sản phẩm';
+            document.getElementById('product-price').textContent = formatPrice(sp.Gia);
+            document.getElementById('product-main-img').src = `${API}/images/${sp.HinhAnh}`;
+            const desc = sp.MoTa || 'Chưa có mô tả cho sản phẩm này.';
+            document.getElementById('product-short-desc').innerHTML = `<p><strong>Mô tả:</strong></p><p>${desc}</p>`;
+            document.getElementById('product-full-desc').innerHTML = `<h3>Mô tả sản phẩm</h3><p>${desc}</p>`;
+            document.getElementById('review-product-id').value = sp.MaSP;
+            const cartProductId = document.getElementById('cart-product-id');
+            if (cartProductId) cartProductId.value = sp.MaSP;
+        }
+
+        async function loadReviews() {
+            const res = await fetch(`${API}/danhgias?limit=500`);
+            const json = await res.json();
+            const all = Array.isArray(json.data) ? json.data : [];
+            const reviews = all.filter(r => String(r.MaSP) === String(productId));
+            const count = reviews.length;
+            document.getElementById('product-review-count').textContent = `(${count} đánh giá)`;
+            document.getElementById('review-tab-btn').textContent = `Đánh giá (${count})`;
+            document.getElementById('review-title').textContent = `${count} đánh giá cho sản phẩm`;
+
+            const avg = count ? Math.round(reviews.reduce((s, r) => s + Number(r.Diem || 0), 0) / count) : 0;
+            document.querySelector('.product-stars').innerHTML = `${renderStars(avg)} <span id="product-review-count">(${count} đánh giá)</span>`;
+
+            const box = document.getElementById('review-list-content');
+            if (!count) {
+                box.innerHTML = '<p class="no-review">Chưa có đánh giá nào cho sản phẩm này.</p>';
+                return;
+            }
+            box.innerHTML = reviews.map(r => `<div class="review-item"><strong>${r.MaKhachHang || 'Khách hàng'}</strong><span> - ${new Date(r.NgayDG).toLocaleDateString('vi-VN')}</span><p>${r.NoiDung}</p><p>${renderStars(Number(r.Diem || 0))}</p></div>`).join('');
+        }
+
+
         function changeQty(delta) {
             const input = document.getElementById('qty');
             const hidden = document.getElementById('sl_hidden');
-            let val = parseInt(input.value) + delta;
+            let val = parseInt(input.value || '1', 10) + delta;
             if (val < 1) val = 1;
             input.value = val;
             hidden.value = val;
         }
 
-        // Chuyển tab
         function switchTab(tab, btn) {
             document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('tab-' + tab).style.display = 'block';
             btn.classList.add('active');
         }
-    </script>
 
+        document.getElementById('review-form')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const NoiDung = document.getElementById('review-content').value.trim();
+            const Diem = Number(document.getElementById('review-score').value || 5);
+            if (!NoiDung) return alert('Vui lòng nhập nội dung đánh giá');
+            const payload = {
+                MaDG: `DG${Date.now()}`,
+                MaKhachHang: localStorage.getItem('userId') || 'KH001',
+                MaSP: productId,
+                NoiDung,
+                Diem,
+                NgayDG: new Date().toISOString()
+            };
+            const res = await fetch(`${API}/danhgias`, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+            if (!res.ok) return alert('Gửi góp ý thất bại');
+            document.getElementById('review-form').reset();
+            alert('Gửi góp ý thành công!');
+            loadReviews();
+        });
+
+        loadProductDetail();
+        loadReviews();
+    </script>
 </body>
 
 </html>
