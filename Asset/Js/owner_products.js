@@ -39,7 +39,7 @@ function renderProducts(products) {
   if (!grid) return;
 
   if (!products.length) {
-    grid.innerHTML = '<p>Không có sản phẩm phù hợp bộ lọc.</p>';
+    grid.innerHTML = '<p>Không có sản phẩm ở mức giá này</p>';
     return;
   }
 
@@ -100,3 +100,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.search-box button')?.addEventListener('click', applyFilters);
   loadProducts();
 });
+
