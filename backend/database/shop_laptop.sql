@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: mysql:3306
--- Thời gian đã tạo: Th5 01, 2026 lúc 07:21 AM
+-- Thời gian đã tạo: Th5 04, 2026 lúc 06:42 AM
 -- Phiên bản máy phục vụ: 9.6.0
 -- Phiên bản PHP: 8.3.26
 
@@ -43,6 +43,7 @@ CREATE TABLE `danhgias` (
 --
 
 INSERT INTO `danhgias` (`MaDG`, `MaKhachHang`, `MaSP`, `NoiDung`, `Diem`, `NgayDG`, `createdAt`, `updatedAt`) VALUES
+('DG000011', 'KH0000020', 'SP006', 'Máy nóng, dễ giật lag', 3, '2026-05-04 00:00:00', '2026-05-04 02:45:53', '2026-05-04 02:45:53'),
 ('DG001', 'KH0000001', 'SP001', 'Laptop chạy rất mượt, hiệu năng tốt cho công việc và học tập.', 5, '2026-04-21 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
 ('DG002', 'KH0000002', 'SP002', 'Máy thiết kế đẹp, pin dùng khá lâu.', 5, '2026-04-22 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
 ('DG003', 'KH0000003', 'SP003', 'Laptop hoạt động ổn định nhưng quạt hơi ồn khi chơi game.', 4, '2026-04-22 00:00:00', '2026-04-30 08:09:03', '2026-04-30 08:09:03'),
@@ -237,8 +238,9 @@ INSERT INTO `khachhangs` (`MaKhachHang`, `HoTen`, `Email`, `MatKhau`, `SoDienTho
 ('KH0000016', 'Mai Thị Quỳnh', 'maithiquynh@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$U9yrdmd7jxrVKGw9kTC3GQ$s/5A9ji2ccmt4JJQDQLJzbo79eSwiGvXufaisjGSthk', '0906666666', '77 Phan Đình Phùng, Đà Nẵng', 'Nữ', 'KhachHang', '2026-03-25 00:00:00', '2026-04-28 10:59:13', '2026-04-28 10:59:13'),
 ('KH0000017', 'Cao Văn Sơn', 'caovanson@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$fxLayIbUNAZUQDWMFDe6eQ$fzzZ0N+8tQLvjqkluhufr+cXqO1riwRcnRb0olmq89E', '0907777777', '88 Nguyễn Tri Phương, Đà Nẵng', 'Nam', 'KhachHang', '2026-04-01 00:00:00', '2026-04-28 10:59:14', '2026-04-28 10:59:14'),
 ('KH0000018', 'Lê Thị Thu', 'lethithu@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$AbPTK20f+z4gr9jJnFYVzg$xWXk6ru9JZka2LTS1G1M0HXr4XdXPflOdyGEoBImxM0', '0908888888', '99 Võ Thị Sáu, TP.HCM', 'Nữ', 'KhachHang', '2026-04-05 00:00:00', '2026-04-28 10:59:14', '2026-04-28 10:59:14'),
-('KH0000019', 'Nguyễn Trường Quốc', 'quoc93346@gmail.com', '12345678', '0877335286', '78A Phan Văn Trị, TP.Đà Nẵng', 'Nam', 'Admin', '2026-04-06 00:00:00', '2026-04-29 04:29:57', '2026-05-01 05:50:19'),
-('KH0000020', 'Vĩnh Bảo Quốc Trung', 'trung@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$eU4r8y8G8PeQKPHuHaowiA$+2tpnzE/xTNp4Qeyqk0IjMqTigrGUjaM7zqizwGEAAI', '0877335299', '286 Hùng Vương, An Khê, Đà Nẵng', NULL, 'KhachHang', '2026-05-01 00:00:00', '2026-05-01 06:16:36', '2026-05-01 06:16:36');
+('KH0000019', 'Hướng Tổ Quốc', 'quoc@gmail.com', '123456789', '0877333333', '78A Phan Văn Trị, TP.Đà Nẵng', 'Nam', 'KhachHang', '2026-04-06 00:00:00', '2026-04-29 04:29:57', '2026-05-01 05:50:19'),
+('KH0000020', 'Vĩnh Bảo Quốc Trung', 'trung@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$J2hQ7cArpaKS0sOeNT43nw$vCQurOQX/orZwc1e8pkfhcFmhkFMv1F6fP5EhsyCQjE', '0877335299', '286 Hà Huy Tập, An Khê, Đà Nẵng', 'Nam', 'KhachHang', '2026-05-01 00:00:00', '2026-05-01 10:57:10', '2026-05-04 02:44:11'),
+('KH0000021', 'Nguyễn Trường Quốc', 'quoc93346@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$cNCOMxccSEUxByIWWbiXpA$Qiq20hQZCWEDV8lV+qmuixg2JQUbwf3Bb5Dz4QL3Snc', '0877335286', '78A Phan Văn Trị, An Khê, Đà Nẵng', 'Nam', 'Admin', '2026-04-06 00:00:00', '2026-05-01 11:08:55', '2026-05-04 02:49:17');
 
 -- --------------------------------------------------------
 
