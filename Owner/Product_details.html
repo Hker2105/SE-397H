@@ -73,13 +73,13 @@
           [DATA] Form thêm vào giỏ hàng
           PHP: action="addcart.php" + input hidden id_sp
         -->
-                    <form id="add-to-cart-form" method="POST" style="display:inline;">
+                    <div id="add-to-cart-form" style="display:inline;">
                         <input type="hidden" name="id_sp" id="cart-product-id" value="" />
                         <input type="hidden" name="so_luong" id="sl_hidden" value="1" />
-                        <button type="submit" class="btn-addcart">
+                        <button type="button" class="btn-addcart" id="btn-add-to-cart">
                             <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
                         </button>
-                    </form>
+                    </div>
                 </div>
 
                 <!-- Share -->
@@ -351,9 +351,7 @@
             loadReviews();
         });
 
-        document.getElementById('add-to-cart-form')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-
+        document.getElementById('btn-add-to-cart')?.addEventListener('click', () => {
             const id = String(document.getElementById('cart-product-id')?.value || productId || '').trim();
             const name = String(document.getElementById('product-name')?.textContent || 'Sản phẩm').trim();
             const priceText = String(document.getElementById('product-price')?.textContent || '0');
