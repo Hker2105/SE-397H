@@ -83,7 +83,7 @@
           [DATA] Form thêm vào giỏ hàng
           PHP: action="addcart.php" + input hidden id_sp
         -->
-                    <form method="POST" style="display:inline;">
+                    <form id="add-to-cart-form" method="POST" style="display:inline;">
                         <input type="hidden" name="id_sp" id="cart-product-id" value="" />
                         <input type="hidden" name="so_luong" id="sl_hidden" value="1" />
                         <button type="submit" class="btn-addcart">
@@ -386,6 +386,31 @@
             document.getElementById('review-form').reset();
             alert('Gửi góp ý thành công!');
             loadReviews();
+        });
+
+        document.getElementById('add-to-cart-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const id = String(document.getElementById('cart-product-id')?.value || productId || '').trim();
+            const name = String(document.getElementById('product-name')?.textContent || 'Sản phẩm').trim();
+            const priceText = String(document.getElementById('product-price')?.textContent || '0');
+            const price = Number((priceText.match(/\d+/g) || []).join('')) || 0;
+            const quantity = Math.max(1, Number(document.getElementById('sl_hidden')?.value || 1));
+
+            if (!id) {
+                alert('Không tìm thấy mã sản phẩm để thêm vào giỏ hàng.');
+                return;
+            }
+
+            const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            const existing = cartItems.find((item) => String(item.id) === id);
+
+            if (existing) existing.quantity += quantity;
+            else cartItems.push({ id, name, price, quantity });
+
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            if (typeof window.updateCartBadge === 'function') window.updateCartBadge();
+            alert('Đã thêm vào giỏ hàng!');
         });
 
         updateReviewPermission();
