@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api';
+const API = 'http://127.0.0.1:3000/api';
 const khachHang = JSON.parse(localStorage.getItem('khachHang'));
 
 if (!khachHang) {
