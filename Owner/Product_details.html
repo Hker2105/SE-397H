@@ -27,17 +27,11 @@
 
             <!-- Hình ảnh sản phẩm -->
             <div class="product-image-box">
-                <!--
-        [DATA] Thay src bằng đường dẫn ảnh từ database
-        PHP: src="img/<?= $product['hinh_anh'] ?>"
-      -->
                 <img src="https://via.placeholder.com/520x360?text=No+Image" alt="Ảnh sản phẩm" class="product-main-img" id="product-main-img" />
             </div>
 
             <!-- Thông tin sản phẩm -->
             <div class="product-info">
-
-                <!-- [DATA] Tên sản phẩm: <?= $product['ten_sp'] ?> -->
                 <h1 class="product-name" id="product-name">Đang tải sản phẩm...</h1>
 
                 <!-- Đánh giá sao -->
@@ -47,14 +41,11 @@
                     <i class="far fa-star"></i>
                     <i class="far fa-star"></i>
                     <i class="far fa-star"></i>
-                    <!-- [DATA] Số đánh giá: (<?= $so_danh_gia ?> đánh giá) -->
                     <span id="product-review-count">(0 đánh giá)</span>
                 </div>
 
-                <!-- [DATA] Giá: <?= number_format($product['gia']) ?> vnd -->
                 <div class="product-price" id="product-price">0 vnd</div>
 
-                <!-- [DATA] Mô tả ngắn: <?= $product['mo_ta_ngan'] ?> -->
                 <div class="product-short-desc" id="product-short-desc">
                     <p><strong>Mô tả:</strong></p>
                     <p>Laptop <strong>Apple MacBook Air M1 2020</strong> thuộc dòng laptop cao cấp sang trọng có cấu
@@ -72,7 +63,6 @@
                         1.29 kg và mỏng của thân máy là 16.1 mm có tính cơ động cao, dễ đem theo xử lý công việc.</p>
                 </div>
 
-                <!-- Số lượng + Thêm giỏ hàng -->
                 <div class="product-actions">
                     <div class="qty-box">
                         <button class="qty-btn" onclick="changeQty(-1)">-</button>
@@ -104,20 +94,14 @@
             </div>
         </div>
 
-        <!-- ===== TABS: MÔ TẢ / ĐÁNH GIÁ ===== -->
         <div class="product-tabs">
             <button class="tab-btn active" onclick="switchTab('mota', this)">Mô tả</button>
-            <!-- [DATA] Số đánh giá: <?= $so_danh_gia ?> -->
             <button class="tab-btn" id="review-tab-btn" onclick="switchTab('danhgia', this)">Đánh giá (0)</button>
         </div>
 
-        <!-- Tab Mô tả -->
         <div class="tab-content" id="tab-mota"><div id="product-full-desc">
             <h3>Mô tả sản phẩm</h3>
-            <!--
-      [DATA] Nội dung mô tả đầy đủ từ database
-      PHP: <?= $product['mo_ta'] ?>
-    -->
+
             <p>Laptop <strong>Apple MacBook Air M1 2020</strong> thuộc dòng laptop cao cấp sang trọng có cấu hình mạnh
                 mẽ, chinh phục được các tính năng văn phòng lẫn đồ họa mà bạn mong muốn, thời lượng pin dài, thiết kế
                 mỏng nhẹ sẽ đáp ứng tốt các nhu cầu làm việc của bạn.</p>
@@ -135,39 +119,18 @@
                 độ bền cao, chịu va đập tốt bảo vệ các linh kiện bên trong an toàn nếu có xảy ra va chạm mạnh.</p>
         </div></div>
 
-        <!-- Tab Đánh giá -->
         <div class="tab-content" id="tab-danhgia" style="display:none;">
             <div class="review-wrapper">
 
-                <!-- Bên trái: danh sách đánh giá -->
                 <div class="review-list">
-                    <!--
-          [DATA] Tên sản phẩm + số đánh giá
-          PHP: <?= $so_danh_gia ?> đánh giá cho <?= $product['ten_sp'] ?>
-        -->
                     <h3 id="review-title">0 đánh giá cho sản phẩm</h3>
                     <div id="review-list-content"><p class="no-review">Chưa có đánh giá nào cho sản phẩm này.</p></div>
-                    <!--
-          [DATA] Vòng lặp hiển thị đánh giá từ database
-          PHP foreach ($danh_gia as $dg):
-          <div class="review-item">
-            <strong><?= $dg['ten_nguoi'] ?></strong>
-            <span><?= $dg['ngay'] ?></span>
-            <p><?= $dg['noi_dung'] ?></p>
-          </div>
-          PHP endforeach;
-        -->
                 </div>
 
-                <!-- Bên phải: form đánh giá -->
                 <div class="review-form-box">
                     <h3>Đánh giá</h3>
                     <p class="review-note">Your email address will not be published. Required fields are marked *</p>
-                    <!--
-          [DATA] Form gửi đánh giá
-          PHP: action="danhgia.php" method="POST"
-               input hidden id_sp: <?= $product['id_sp'] ?>
-        -->
+                    
                     <form id="review-form">
                         <input type="hidden" name="id_sp" id="review-product-id" value="" />
 
