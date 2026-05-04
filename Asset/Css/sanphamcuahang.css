@@ -24,9 +24,9 @@ a {
 }
 
 /* --- HEADER --- */
-.header {
+/* .header {
     padding: 20px 0;
-}
+} */
 
 .header-inner {
     display: flex;
