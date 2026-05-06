@@ -1,25 +1,25 @@
 const API = 'http://127.0.0.1:3000/api';
 let allMessages = [];
 let khachHangMap = {};
-let sanPhamMap = {};
 let currentKH = null;
 
 async function loadData() {
-    const [khRes, spRes, lhRes] = await Promise.all([
-        fetch(`${API}/khachhangs?limit=100`),
-        fetch(`${API}/sanphams?limit=100`),
-        fetch(`${API}/lienhehotros?limit=100`)
-    ]);
+    try {
+        const [khRes, lhRes] = await Promise.all([
+            fetch(`${API}/khachhangs?limit=100`),
+            fetch(`${API}/lienhehotros?limit=100`)
+        ]);
 
-    const khJson = await khRes.json();
-    const spJson = await spRes.json();
-    const lhJson = await lhRes.json();
+        const khJson = await khRes.json();
+        const lhJson = await lhRes.json();
 
-    (khJson.data || []).forEach(item => khachHangMap[item.MaKhachHang] = item);
-    (spJson.data || []).forEach(item => sanPhamMap[item.MaSP] = item);
-    allMessages = lhJson.data || [];
+        (khJson.data || []).forEach(item => khachHangMap[item.MaKhachHang] = item);
+        allMessages = lhJson.data || [];
 
-    renderList(allMessages);
+        renderList(allMessages);
+    } catch (err) {
+        console.error('Lỗi load inbox:', err);
+    }
 }
 
 function getInitials(name) {
@@ -33,10 +33,12 @@ function renderList(data) {
         return;
     }
 
+    // Group theo khách hàng
     const grouped = {};
     data.forEach(item => {
-        if (!grouped[item.MaKhachHang]) grouped[item.MaKhachHang] = [];
-        grouped[item.MaKhachHang].push(item);
+        const key = item.MaKhachHang || 'unknown';
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(item);
     });
 
     container.innerHTML = Object.entries(grouped).map(([maKH, msgs]) => {
@@ -47,7 +49,8 @@ function renderList(data) {
         const time = last.NgayGui ? last.NgayGui.split('T')[0] : '';
 
         return `
-        <div class="inbox-item ${currentKH === maKH ? 'active' : ''}" onclick="openChat('${maKH}')">
+        <div class="inbox-item ${currentKH === maKH ? 'active' : ''}" 
+             onclick="openChat('${maKH}')" style="cursor:pointer;">
             <div class="inbox-avatar">${initials}</div>
             <div class="inbox-item-info">
                 <div class="inbox-item-name">${kh.HoTen || maKH}</div>
@@ -65,14 +68,13 @@ function openChat(maKH) {
     currentKH = maKH;
     const kh = khachHangMap[maKH] || {};
     const msgs = allMessages.filter(m => m.MaKhachHang === maKH);
-    const lastMsg = msgs[msgs.length - 1];
     const initials = getInitials(kh.HoTen);
 
     document.getElementById('inbox-chat').innerHTML = `
         <div class="chat-header">
             <div class="chat-header-name">${kh.HoTen || maKH}</div>
-            <div class="chat-header-product">${lastMsg?.TieuDe || ''}</div>
-            <div class="chat-header-seen">Last seen: just now</div>
+            <div class="chat-header-product">${kh.Email || ''}</div>
+            <div class="chat-header-seen">${kh.SoDienThoai || ''}</div>
         </div>
 
         <div class="chat-messages" id="chat-messages">
@@ -81,32 +83,41 @@ function openChat(maKH) {
                     <div class="chat-msg-avatar">${initials}</div>
                     <div>
                         <strong style="font-size:13px;">${kh.HoTen || maKH}</strong>
+                        <div style="font-size:12px; color:#aaa; margin-bottom:4px;">${msg.TieuDe || ''}</div>
                         <div>${msg.NoiDung || ''}</div>
+                        <div style="font-size:11px; color:#aaa; margin-top:4px;">
+                            ${msg.NgayGui ? msg.NgayGui.split('T')[0] : ''}
+                            — Trạng thái: <b>${msg.TrangThai || ''}</b>
+                        </div>
                     </div>
                 </div>
             `).join('')}
         </div>
 
         <div class="chat-quick-replies">
-            <button class="quick-btn" onclick="quickReply('Cảm ơn review!')">Cảm ơn review!</button>
-            <button class="quick-btn" onclick="quickReply('Sẽ kiểm tra')">Sẽ kiểm tra</button>
-            <button class="quick-btn" onclick="quickReply('Đã sửa lỗi')">Đã sửa lỗi</button>
-            <button class="quick-btn" onclick="quickReply('Sản phẩm khác?')">Sản phẩm khác?</button>
-            <button class="quick-btn" onclick="quickReply('Xem đánh giá gốc')">Xem đánh giá gốc</button>
+            <button class="quick-btn" onclick="quickReply('Cảm ơn bạn đã liên hệ!')">Cảm ơn liên hệ!</button>
+            <button class="quick-btn" onclick="quickReply('Chúng tôi sẽ kiểm tra ngay.')">Sẽ kiểm tra</button>
+            <button class="quick-btn" onclick="quickReply('Đã được xử lý, cảm ơn bạn!')">Đã xử lý</button>
+            <button class="quick-btn" onclick="quickReply('Bạn có thể mô tả chi tiết hơn không?')">Mô tả thêm?</button>
         </div>
 
         <div class="chat-input-area">
             <input type="text" id="chat-input" placeholder="Nhập tin nhắn phản hồi...">
             <button class="btn-send" onclick="sendReply()">Gửi</button>
-            <button class="btn-suggest">Chọn sản phẩm gợi ý</button>
         </div>
     `;
 
+    // Scroll xuống cuối
     const chatMessages = document.getElementById('chat-messages');
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
+    // Highlight item đang chọn
     document.querySelectorAll('.inbox-item').forEach(el => el.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+    document.querySelectorAll('.inbox-item').forEach(el => {
+        if (el.getAttribute('onclick').includes(maKH)) {
+            el.classList.add('active');
+        }
+    });
 }
 
 function quickReply(text) {
