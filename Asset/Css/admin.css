@@ -97,6 +97,10 @@ li a {
     cursor: pointer;
 }
 
+.nav-item a {
+    position:relative;
+}
+
 /* MAIN */
 .main {
     display: grid;
@@ -568,4 +572,22 @@ td {
     border-radius: 4px;
     cursor: pointer;
     font-size: 13px;
+}
+
+#inbox-unread-badge{
+    display:none;
+    position:absolute;
+    top:-8px;
+    right:-12px;
+    background:#e74c3c;
+    color:#fff;
+    border-radius:50%;
+    min-width:20px;
+    height:20px;
+    font-size:12px;
+    font-weight:700;
+    line-height:20px;
+    text-align:center;
+    padding:0 4px;
+    box-sizing:border-box;
 }
