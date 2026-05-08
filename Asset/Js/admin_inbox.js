@@ -1,4 +1,3 @@
-
 const API = 'http://127.0.0.1:3000/api';
 
 let allMessages = [];
@@ -214,6 +213,7 @@ function markDone(maLH) {
         item.TrangThai = 'Đã trả lời';
         renderList(filtered(allMessages));
         renderChat(item);
+        loadUnreadBadge();
     }
 }
 
