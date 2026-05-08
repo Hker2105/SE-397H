@@ -73,7 +73,7 @@ export function AppRoute(app) {
     router.post('/images/uploads', upload.any(), asyncHandler(imageController.uploadImages))
     router.get('/images/:fileName', asyncHandler(imageController.viewImage))
 
-    router.get('/lienhehotros', asyncHandler(lienHeHoTroController.getLienHeHoTro))
+    router.get('/lienhehotros', asyncHandler(lienHeHoTroController.getLienHeHoTros))
     router.get('/lienhehotros/:id', asyncHandler(lienHeHoTroController.getLienHeHoTroById))
     router.post('/lienhehotros', asyncHandler(lienHeHoTroController.insertLienHeHoTro))
     router.delete('/lienhehotros/:id', asyncHandler(lienHeHoTroController.deleteLienHeHoTro))
