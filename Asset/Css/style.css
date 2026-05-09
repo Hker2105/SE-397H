@@ -1790,3 +1790,13 @@ body {
         padding-left: 0;
     }
 }
+
+.admin-back-link {
+    background: #111827;
+    color: #fff !important;
+}
+
+.admin-back-link:hover {
+    background: #00e5ff !important;
+    color: #111827 !important;
+}

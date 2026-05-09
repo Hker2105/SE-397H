@@ -1,3 +1,22 @@
+function getAdminCurrentUser() {
+    try {
+        return JSON.parse(localStorage.getItem('khachHang') || 'null');
+    } catch {
+        return null;
+    }
+}
+
+function isAdminAccount(user) {
+    return String(user?.LoaiTaiKhoan || '').toLowerCase() === 'admin';
+}
+
+function protectAdminPage() {
+    if (!isAdminAccount(getAdminCurrentUser())) {
+        alert('Chỉ tài khoản admin mới được truy cập trang quản trị.');
+        window.location.href = '/Owner/login.html';
+    }
+}
+
 function toggleMenu(e, element){
     e.preventDefault();
 
@@ -34,4 +53,7 @@ async function loadUnreadBadge() {
     } catch (_) {}
 }
 
-document.addEventListener('DOMContentLoaded', loadUnreadBadge);
+document.addEventListener('DOMContentLoaded', () => {
+    protectAdminPage();
+    loadUnreadBadge();
+});
