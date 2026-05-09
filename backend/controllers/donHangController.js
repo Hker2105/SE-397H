@@ -4,13 +4,24 @@ import db from "../models";
 import insertDonHangRequest from '../dtos/requests/donHang/insertDonHangRequests';
 export async function getDonHangs(req, res){
     try {
-        const {page = 1, limit} = req.query;
+        const {page = 1, limit, maKhachHang, MaKhachHang} = req.query;
         const pageSize = limit ? parseInt(limit) : 10;
-        const offset = (page - 1) * pageSize;
-        const donHangs = await db.DONHANG.findAll({ limit: pageSize, offset });
+        const currentPage = parseInt(page, 10);
+        const offset = (currentPage - 1) * pageSize;
+        const customerId = maKhachHang || MaKhachHang;
+        const whereClause = customerId ? { MaKhachHang: customerId } : {};
+
+        const [donHangs, totalDonHangs] = await Promise.all([
+            db.DONHANG.findAll({ where: whereClause, limit: pageSize, offset }),
+            db.DONHANG.count({ where: whereClause })
+        ]);
+
         res.status(200).json({
             message: 'Lấy danh sách đơn hàng thành công',
-            data: donHangs
+            data: donHangs,
+            currentPage,
+            totalPages: Math.ceil(totalDonHangs / pageSize),
+            totalDonHangs
         });
     } catch (error) {
         res.status(500).json({ message: 'Xảy ra lỗi', error: error.message })
