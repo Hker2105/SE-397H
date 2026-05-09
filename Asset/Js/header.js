@@ -31,6 +31,10 @@ function getCurrentUser() {
   }
 }
 
+function isAdminUser(user) {
+  return String(user?.LoaiTaiKhoan || '').toLowerCase() === 'admin';
+}
+
 function updateAuthMenu() {
   const rightMenu = document.querySelector('.menu-right');
   if (!rightMenu) return;
@@ -45,7 +49,12 @@ function updateAuthMenu() {
   }
 
   const fullName = user.HoTen || user.TenKhachHang || user.Email || 'Tài khoản';
+  const adminLink = isAdminUser(user)
+    ? '<li><a href="/Admin/category.html" class="admin-back-link">Quay lại Admin</a></li>'
+    : '';
+
   rightMenu.innerHTML = `
+    ${adminLink}
     <li><a href="/Owner/update_info.html">${fullName}</a></li>
     <li><a href="#" id="logout-link">Đăng xuất</a></li>
   `;

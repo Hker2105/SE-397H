@@ -18,6 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!orderBtn || !productsEl || !subtotalEl || !shippingEl || !paymentMethodEl) return;
 
   const format = (n) => `${Number(n || 0).toLocaleString('vi-VN')} VNĐ`;
+  const readJson = (key, fallback) => {
+    try {
+      const value = JSON.parse(localStorage.getItem(key) || 'null');
+      return value ?? fallback;
+    } catch {
+      return fallback;
+    }
+  };
+  const getCurrentUser = () => readJson('khachHang', null);
+  const getCurrentUserId = () => {
+    const user = getCurrentUser();
+    return user?.MaKhachHang || user?.Email || 'guest';
+  };
+  const getOrderHistoryKey = () => `orderHistory_${getCurrentUserId()}`;
+  const getOrderInfoKey = () => `orderInfo_${getCurrentUserId()}`;
+
   const getCartItems = () => {
     const checkoutItems = JSON.parse(localStorage.getItem('checkoutItems') || '[]');
     if (Array.isArray(checkoutItems) && checkoutItems.length) return checkoutItems;
@@ -65,8 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!cartItems.length) return alert('Giỏ hàng đang trống!');
     if (!validate()) return;
 
+    const currentUser = getCurrentUser();
+    const currentUserId = getCurrentUserId();
+    const subtotal = cartItems.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 0), 0);
+
     const orderRecord = {
       id: `OD${Date.now()}`,
+      customerId: currentUserId,
+      MaKhachHang: currentUser?.MaKhachHang || '',
       name: inputs.name.value.trim(),
       phone: inputs.phone.value.trim(),
       email: inputs.email.value.trim(),
@@ -74,14 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
       note: inputs.note.value.trim(),
       paymentMethod: paymentMethodEl.value,
       cartItems,
+      total: subtotal,
       createdAt: new Date().toISOString(),
       status: 'Chờ xác nhận',
     };
 
-    localStorage.setItem('orderInfo', JSON.stringify(orderRecord));
-    const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
-    history.unshift(orderRecord);
-    localStorage.setItem('orderHistory', JSON.stringify(history));
+    localStorage.setItem(getOrderInfoKey(), JSON.stringify(orderRecord));
+    const history = readJson(getOrderHistoryKey(), []);
+    const safeHistory = Array.isArray(history) ? history : [];
+    safeHistory.unshift(orderRecord);
+    localStorage.setItem(getOrderHistoryKey(), JSON.stringify(safeHistory));
 
     alert('Đặt hàng thành công!');
     localStorage.removeItem('cartItems');

@@ -1,5 +1,8 @@
 const API = 'http://127.0.0.1:3000/api';
 let allProducts = [];
+let filteredProducts = [];
+let currentPage = 1;
+const PRODUCTS_PER_PAGE = 15;
 
 function formatPrice(price) {
   return `${Number(price || 0).toLocaleString('vi-VN')} vnđ`;
@@ -31,7 +34,20 @@ function applyFilters() {
     return okPrice && okName;
   });
 
-  renderProducts(filtered);
+  filteredProducts = filtered;
+  currentPage = 1;
+  renderCurrentPage();
+}
+
+function renderCurrentPage() {
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE));
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+  const products = filteredProducts.slice(start, start + PRODUCTS_PER_PAGE);
+
+  renderProducts(products);
+  renderPagination(totalPages);
 }
 
 function renderProducts(products) {
@@ -75,6 +91,40 @@ function renderProducts(products) {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
       if (typeof window.updateCartBadge === 'function') window.updateCartBadge();
       alert('Đã thêm vào giỏ hàng!');
+    });
+  });
+}
+
+
+function renderPagination(totalPages) {
+  const pagination = document.querySelector('.product-pagination');
+  if (!pagination) return;
+
+  if (!filteredProducts.length || totalPages <= 1) {
+    pagination.innerHTML = '';
+    return;
+  }
+
+  const createPageButton = (page, label = page, disabled = false, active = false) => `
+    <button class="pagination-btn${active ? ' active' : ''}" data-page="${page}" ${disabled ? 'disabled' : ''}>
+      ${label}
+    </button>
+  `;
+
+  let html = createPageButton(currentPage - 1, '‹ Trước', currentPage === 1);
+  for (let page = 1; page <= totalPages; page += 1) {
+    html += createPageButton(page, page, false, page === currentPage);
+  }
+  html += createPageButton(currentPage + 1, 'Sau ›', currentPage === totalPages);
+
+  pagination.innerHTML = html;
+  pagination.querySelectorAll('.pagination-btn').forEach((button) => {
+    button.addEventListener('click', () => {
+      const page = Number(button.dataset.page);
+      if (!Number.isFinite(page) || page < 1 || page > totalPages || page === currentPage) return;
+      currentPage = page;
+      renderCurrentPage();
+      document.querySelector('.new-products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 }
