@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     alert('Đặt hàng thành công!');
     localStorage.removeItem('cartItems');
     localStorage.removeItem('checkoutItems');
-    window.location.href = '/index.html';
+    window.location.href = 'order_history.html';
   });
 
   renderInvoice();
