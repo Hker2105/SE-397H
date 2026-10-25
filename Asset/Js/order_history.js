@@ -1,4 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  const API = 'http://127.0.0.1:3000/api';
+  const UPLOAD_URL = 'http://127.0.0.1:3000/uploads/';
+  const NO_IMAGE = '/Asset/img/no-image.png';
+
   const tbody = document.querySelector('.order-table tbody');
   if (!tbody) return;
 
@@ -19,6 +23,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // ---------- Lấy danh sách sản phẩm từ API để có hình ảnh ----------
+  const productById = {};
+  const productByName = {};
+  try {
+    const res = await fetch(`${API}/sanphams?limit=100`);
+    const json = await res.json();
+    (json.data || []).forEach((sp) => {
+      productById[sp.MaSP] = sp;
+      productByName[String(sp.TenSP || '').trim().toLowerCase()] = sp;
+    });
+  } catch (err) {
+    console.warn('Không lấy được danh sách sản phẩm:', err);
+  }
+
+  const findProduct = (item) => {
+    const id = item.MaSP || item.id || item.productId;
+    if (id && productById[id]) return productById[id];
+    const name = String(item.name || item.product || '').trim().toLowerCase();
+    return productByName[name] || null;
+  };
+
+  const getImageUrl = (item) => {
+    const file = item.HinhAnh || item.image || findProduct(item)?.HinhAnh;
+    if (!file) return NO_IMAGE;
+    if (/^(https?:|data:|\/)/.test(file)) return file; // đã là URL đầy đủ
+    return UPLOAD_URL + file;
+  };
+
+  const imageHtml = (items) => {
+    if (!items.length) return '--';
+    return items.map((it) => `
+      <img src="${getImageUrl(it)}" alt="${it.name || 'Sản phẩm'}"
+           style="width:50px; height:50px; object-fit:cover; margin:2px;"
+           onerror="this.onerror=null; this.src='${NO_IMAGE}'">
+    `).join('');
+  };
+
+  // ---------- Lấy đơn hàng ----------
   const currentUser = readJson('khachHang', null);
   const currentUserId = currentUser?.MaKhachHang || currentUser?.Email || 'guest';
   const historyKey = `orderHistory_${currentUserId}`;
@@ -46,13 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
   tbody.innerHTML = visibleOrders.map((order) => {
     const items = Array.isArray(order.cartItems) ? order.cartItems : [];
     const productsText = items.map((it) => `${it.name || 'Sản phẩm'} x${Number(it.quantity || 1)}`).join(', ');
-    const imageText = items.map((it) => it.image || it.HinhAnh || '').filter(Boolean).join(', ') || '--';
     const subtotal = items.reduce((sum, it) => sum + Number(it.price || 0) * Number(it.quantity || 0), 0);
 
     return `
       <tr>
         <td>${productsText || '--'}</td>
-        <td>${imageText}</td>
+        <td>${imageHtml(items)}</td>
         <td>${formatVnd(order.total || subtotal)}</td>
         <td>${order.phone || '--'}</td>
         <td>${order.address || '--'}</td>
