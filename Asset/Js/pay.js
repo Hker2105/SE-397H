@@ -7,13 +7,12 @@ function initPayInvoice() {
 
   if (!productLine || !subtotalLine || !shippingLine || !orderBtn) return;
 
-  const formatVnd = (value) => `${Number(value).toLocaleString('vi-VN')} VNĐ`;
+  const formatVnd = (value) => `${Number(value || 0).toLocaleString('vi-VN')} VNĐ`;
 
   const getCartItems = () => {
     try {
       const items = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      if (Array.isArray(items)) return items;
-      return [];
+      return Array.isArray(items) ? items : [];
     } catch {
       return [];
     }
@@ -37,8 +36,8 @@ function initPayInvoice() {
       price: Number(item.price || 0),
     }));
 
-    const productText = normalized.map((item) => `${item.name} x${item.quantity}`).join(', ');
-    const subtotal = normalized.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const productText = normalized.map((i) => `${i.name} x${i.quantity}`).join(', ');
+    const subtotal = normalized.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
     productLine.textContent = `Sản phẩm: ${productText}`;
     subtotalLine.textContent = `Thành tiền: ${formatVnd(subtotal)}`;
@@ -54,6 +53,18 @@ function initPayInvoice() {
       return;
     }
 
+    const selected = document.querySelector('input[type="radio"]:checked');
+    if (!selected) {
+      alert('Vui lòng chọn phương thức thanh toán!');
+      return;
+    }
+
+    // Nếu radio chưa có value thì lấy nhãn bên cạnh làm giá trị
+    const method = selected.value && selected.value !== 'on'
+      ? selected.value
+      : (selected.closest('label, div')?.textContent.trim().split('\n')[0] || 'COD');
+
+    localStorage.setItem('paymentMethod', method);
     localStorage.setItem('checkoutItems', JSON.stringify(cartItems));
     window.location.href = '/Owner/oder.html';
   };
@@ -62,5 +73,12 @@ function initPayInvoice() {
   window.addEventListener('storage', renderInvoice);
 }
 
-document.addEventListener('DOMContentLoaded', initPayInvoice);
-window.addEventListener('load', initPayInvoice);
+// Chỉ chạy một lần, tránh gán sự kiện trùng
+let payInitialized = false;
+function runOnce() {
+  if (payInitialized) return;
+  payInitialized = true;
+  initPayInvoice();
+}
+document.addEventListener('DOMContentLoaded', runOnce);
+window.addEventListener('load', runOnce);
